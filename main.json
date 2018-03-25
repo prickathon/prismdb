@@ -62,6 +62,49 @@
                 "brand":"twinkle ribbon"
               }
             ]
+        },
+        {
+            "episode":{
+                "series":"プリパラ",
+                "title":"約束やぶっちゃダメぷりっ",
+                "number":2
+            },
+            "start_at":"20:00",
+            "end_at":"23:00",
+            "team":{
+                "name":"らぁら & みれぃ",
+                "members":[
+                    "真中 らぁら",
+                    "南 みれぃ"
+                ]
+            },
+            "song":{
+              "title":"Make it!",
+              "team":{
+                "name":"らぁら & みれぃ",
+                "members":[
+                    "真中 らぁら",
+                    "南 みれぃ"
+                ]
+              }
+            },
+            "MD":{
+              "title":"レッツゴー!プリパラ!",
+              "team":{
+                "name":"らぁら & みれぃ",
+                "members":[
+                    "真中 らぁら",
+                    "南 みれぃ"
+                ]
+              }
+            },
+            "coordinate":[
+              {
+                "chara":"真中らぁら",
+                "name":"ワンダーランドマカロン",
+                "brand":"twinkle ribbon"
+              }
+            ]
         }
     ]
 }

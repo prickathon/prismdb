@@ -1,0 +1,66 @@
+{
+    "live":[
+        {
+            "episode":{
+                "series":"プリパラ",
+                "number":1
+            },
+            "start_at":"20:00",
+            "end_at":"23:00",
+            "team":{
+                "name":"らぁら & みれぃ",
+                "members":[
+                    "真中 らぁら",
+                    "南 みれぃ"
+                ]
+            },
+            "song":{
+              "title":"Make it!",
+              "team":{
+                "name":"らぁら & みれぃ",
+                "members":[
+                    "真中 らぁら",
+                    "南 みれぃ"
+                ]
+              }
+            },
+            "MD":{
+              "title":"TODO",
+              "team":{
+                "name":"らぁら & みれぃ",
+                "members":[
+                    "真中 らぁら",
+                    "南 みれぃ"
+                ]
+              }
+            },
+            "coordinate":[
+              {
+                "chara":"真中らぁら",
+                "name":"キューティーリボン",
+                "tops":{
+                  "id":"A-001",
+                  "name":"キューティーリボン　トップス",
+                  "image":"http://pripara.jp/item/image/25001.jpg"
+                },
+                "bottoms":{
+                  "id":"A-002",
+                  "name":"キューティーリボン　スカート",
+                  "image":"http://pripara.jp/item/image/25002.jpg"
+                },
+                "shoes":{
+                  "id":"A-003",
+                  "name":"キューティーリボン　シューズ",
+                  "image":"http://pripara.jp/item/image/25003.jpg"
+                },
+                "hair":{
+                  "id":"A-004",
+                  "name":"キューティーリボン　ヘアアクセ",
+                  "image":"http://pripara.jp/item/image/25004.jpg"
+                },
+                "brand":"twinkle ribbon"
+              }
+            ]
+        }
+    ]
+}

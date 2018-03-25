@@ -105,6 +105,54 @@
                 "brand":"twinkle ribbon"
               }
             ]
+        },
+        {
+            "episode":{
+                "series":"プリパラ",
+                "title":"異議あり？らぁらがウチにやってきたっぷり！",
+                "number":6
+            },
+            "start_at":"20:00",
+            "end_at":"23:00",
+            "team":{
+                "name":"らぁら & みれぃ",
+                "members":[
+                    "真中 らぁら",
+                    "南 みれぃ"
+                ]
+            },
+            "song":{
+              "title":"ま～ぶるMake up a-ha-ha!",
+              "team":{
+                "name":"らぁら & みれぃ",
+                "members":[
+                    "真中 らぁら",
+                    "南 みれぃ"
+                ]
+              }
+            },
+            "MD":{
+              "title":"もぎたてスイーツパーク",
+              "team":{
+                "name":"らぁら & みれぃ",
+                "members":[
+                    "真中 らぁら",
+                    "南 みれぃ"
+                ]
+              }
+            },
+            "coordinate":[
+              {
+                "chara":"南 みれぃ",
+                "name":"もぎたてライム",
+                "brand":"Candy Alamode"
+              },
+              {
+                "chara":"真中らぁら",
+                "name":"もぎたてオレンジ",
+                "brand":"Candy Alamode"
+              }
+            ]
         }
     ]
 }

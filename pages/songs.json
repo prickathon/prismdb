@@ -1,0 +1,33 @@
+---
+permalink: /songs.json
+---
+[
+  {%- for s in site.data.pripara-songs -%}
+  {
+    "name": "{{ s.name }}",
+    "artists" : {
+      "teams":[
+        {%- for st in site.data.pripara-song-team -%}{%- if st.song == s.key -%}
+        {%- for t in site.data.pripara-teams -%}{%- if st.team == t.key -%}
+        "{{ t.key }}",
+        {%- endif -%}{%- endfor -%}
+        {%- endif -%}{%- endfor -%}
+      ],
+      "characters":[
+        {%- for sc in site.data.pripara-song-character -%}{%- if sc.song == s.key -%}
+        {%- for c in site.data.pripara-characters -%}{%- if sc.character == c.key -%}
+        "{{ c.key }}",
+        {%- endif -%}{%- endfor -%}
+        {%- endif -%}{%- endfor -%}
+      ],
+      "realunits":[
+        {%- for sr in site.data.pripara-song-realunit -%}{%- if sr.song == s.key -%}
+        {%- for r in site.data.realunits -%}{%- if sr.realunit == r.key -%}
+        "{{ r.key }}",
+        {%- endif -%}{%- endfor -%}
+        {%- endif -%}{%- endfor -%}
+      ]
+    }
+  },
+  {%- endfor -%}
+]

@@ -1,0 +1,8 @@
+---
+permalink: /teams.json
+---
+[
+  {% for i in site.data.pripara-teams %}
+  "{{ i.key }}":{{ i | jsonify }},
+  {%- endfor -%}
+]

@@ -1,8 +1,8 @@
 ---
 permalink: /characters.json
 ---
-[
+{
   {% for i in site.data.pripara-characters %}
   "{{ i.key }}":{{ i | jsonify }},
   {%- endfor -%}
-]
+}

@@ -1,9 +1,9 @@
 ---
 permalink: /songs.json
 ---
-[
+{
   {%- for s in site.data.pripara-songs -%}
-  {
+  "{{ s.key }}": {
     "name": "{{ s.name }}",
     "artists" : {
       "teams":[
@@ -27,7 +27,8 @@ permalink: /songs.json
         {%- endif -%}{%- endfor -%}
         {%- endif -%}{%- endfor -%}
       ]
-    }
+    },
+    "lives": {{ site.data.pripara-lives | where: "song", s.key | jsonify }}
   },
   {%- endfor -%}
-]
+}

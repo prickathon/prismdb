@@ -2,7 +2,7 @@
 permalink: /songs.json
 ---
 {
-  {%- for s in site.data.pripara-songs -%}
+  {%- for s in site.data.songs -%}
   "{{ s.key }}": {
     "name": "{{ s.name }}",
     "artists" : {

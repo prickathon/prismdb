@@ -3,6 +3,6 @@ permalink: /characters.json
 ---
 {
   {% for i in site.data.pripara-characters %}
-  "{{ i.key }}":{{ i | jsonify }},
+  "{{ i.key }}":{{ i | jsonify }}{% unless forloop.last %},{% endunless %}
   {%- endfor -%}
 }

@@ -3,6 +3,6 @@ permalink: /episodes.json
 ---
 {
   {% for i in site.data.pripara-episodes %}
-  "{{ i.key }}":{{ i | jsonify }},
+  "{{ i.key }}":{{ i | jsonify }}{% unless forloop.last %},{% endunless %}
   {%- endfor -%}
 }

@@ -1,4 +1,0 @@
----
-permalink: /lives.json
----
-{{ site.data.pripara-lives | jsonify }}

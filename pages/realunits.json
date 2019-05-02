@@ -1,8 +1,0 @@
----
-permalink: /realunits.json
----
-{
-  {% for i in site.data.realunits %}
-  "{{ i.key }}":{{ i | jsonify }}{% unless forloop.last %},{% endunless %}
-  {%- endfor -%}
-}

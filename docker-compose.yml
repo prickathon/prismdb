@@ -1,0 +1,24 @@
+version: '3'
+services:
+  sparql:
+    image: tenforce/virtuoso:1.3.1-virtuoso7.2.2
+    environment:
+      SPARQL_UPDATE: "true"
+      DEFAULT_GRAPH: "http://localhost:8890"
+    volumes:
+      - ./virtuoso:/data
+    ports:
+      - "8890:8890"
+  nuxt:
+    image: node:11.9.0
+    working_dir: "/var/www/app"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=80
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/app
+    command: bash -c "npm i && npm run dev"
+    depends_on:
+      - sparql

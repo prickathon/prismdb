@@ -1,0 +1,6 @@
+{
+    "subjectBaseUrl": "/ontology/",
+    "PredicateBaseUrl": "/preds/",
+    "dataCsvPath": "_data/ontology/prism-schema.csv",
+    "colmnsCsvPath": "_data/ontology/prism-schema-colmns.csv"
+}

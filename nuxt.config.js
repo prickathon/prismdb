@@ -1,6 +1,7 @@
 import pkg from './package'
 
 export default {
+  srcDir: 'nuxt/',
   mode: 'universal',
 
   /*
@@ -38,13 +39,18 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://buefy.github.io/#/documentation
-    'nuxt-buefy'
+    'nuxt-buefy',
+    '@nuxtjs/proxy'
   ],
   /*
    ** Axios module configuration
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  proxy: {
+    '/sparql': 'http://sparql:8890/sparql'
   },
 
   /*

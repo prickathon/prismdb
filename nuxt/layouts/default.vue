@@ -1,36 +1,32 @@
 <template>
   <div>
-    <nav
-      class="navbar header has-shadow is-primary"
-      role="navigation"
-      aria-label="main navigation"
-    >
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          <img src="~assets/buefy.png" alt="Buefy" height="28" />
-        </a>
-
-        <div class="navbar-burger">
-          <span />
-          <span />
-          <span />
+    <nav class="navbar has-shadow is-spaced">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="~assets/prickathon-logo.png" alt="Buefy" height="28" />
+          </a>
+          <div class="navbar-burger"><span /><span /><span /></div>
+        </div>
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <a class="navbar-item" href="/">Home</a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="/rdfs/">RDF</a>
+              <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="/rdfs/characters/">Characters</a>
+                <a class="navbar-item" href="/rdfs/hoge/">Modifiers</a>
+                <a class="navbar-item" href="/rdfs/hoge/">Modifiers</a>
+                <a class="navbar-item" href="/rdfs/hoge/">Modifiers</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
 
-    <section class="main-content columns">
-      <aside class="column is-2 section">
-        <p class="menu-label is-hidden-touch">General</p>
-        <ul class="menu-list">
-          <li v-for="(item, key) of items" :key="key">
-            <nuxt-link :to="item.to" exact-active-class="is-active">
-              <b-icon :icon="item.icon" /> {{ item.title }}
-            </nuxt-link>
-          </li>
-        </ul>
-      </aside>
-
-      <div class="container column is-10">
+    <section class="main-content section">
+      <div class="container">
         <nuxt />
       </div>
     </section>

@@ -1,6 +1,6 @@
 {
-    "subjectBaseUrl": "/rdfs/characters/#",
-    "PredicateBaseUrl": "/preds/#",
+    "subjectBaseUrl": "/rdfs/characters/",
+    "PredicateBaseUrl": "/preds/",
     "dataCsvPath": "_data/pripara-characters.csv",
     "colmnsCsvPath": "_data/convert-settings/pripara-characters-colmns.csv"
 }

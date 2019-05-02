@@ -14,8 +14,8 @@ interface Setting {
 
 const addQuad = (store: N3.N3Store, key, predicate, subject, setting: Setting) => {
     store.addQuad(
-        namedNode(process.env.baseUrl + setting.subjectBaseUrl + key), //主語
-        namedNode(process.env.baseUrl + setting.PredicateBaseUrl + predicate), //述語
+        namedNode(process.env.BASE_URL + setting.subjectBaseUrl + key), //主語
+        namedNode(process.env.BASE_URL + setting.PredicateBaseUrl + predicate), //述語
         literal(subject) //目的語
     );
 }
@@ -23,7 +23,7 @@ const addQuad = (store: N3.N3Store, key, predicate, subject, setting: Setting) =
 const getCsvData = async (filePath: string): Promise<Object[]> => {
     const fullPath = path.join(process.cwd(), filePath)
     const colmnsFileData = await fs.readFileSync(fullPath)
-    const csvData = await csv.parse(colmnsFileData, { columns: true })
+    const csvData = await csv.parse(colmnsFileData.toString(), { columns: true })
     return csvData as Object[]
 }
 

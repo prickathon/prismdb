@@ -31,7 +31,7 @@ const getDatas = async (path: string): Promise<Object[]> => {
     return await getCsvData(path)
 }
 
-const getColomns = async (path: string): Promise<{ key: string, prdicate: string }[]> => {
+const getColumns = async (path: string): Promise<{ key: string, prdicate: string }[]> => {
     return await getCsvData(path) as { key: string, prdicate: string }[]
 }
 
@@ -50,7 +50,7 @@ export default class {
     async load(settingPath: string):Promise<void> {
         const setting = await getSettings(settingPath)
         const datas = await getDatas(setting.dataCsvPath)
-        const columns = await getColomns(setting.columnsCsvPath)
+        const columns = await getColumns(setting.columnsCsvPath)
         datas.forEach(row => {
             columns.forEach(col => {
                 if (row[col.key].length > 0) addQuad(this.store, row["key"], col.prdicate, row[col.key], setting)

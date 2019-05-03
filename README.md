@@ -37,8 +37,15 @@ CircleCI -> AWS Code Deploy -> EC2
 
 - `.circleci` : CircleCI の設定があります(code deploy が起動します)
 - `.appspec` : code deploy の設定があります( `scripts/start.sh` が起動します)
-- `scripts/` : デプロイ時の処理が定義されています
+- `scripts/` : デプロイ時にEC"上で動作する処理が定義されています
 
 ## コントリビューション
 
 随時受け付けております！
+
+1. Forkする
+2. Cloneする
+3. Branchを新しく作る
+4. ソースコード等を編集する
+5. Pushする
+6. Pull Requestを作る

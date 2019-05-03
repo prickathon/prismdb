@@ -1,8 +1,13 @@
 # prismdb-csv2rdf
 
-> プリティーシリーズの情報をまとめるプラットフォームです
+> CSVファイルをRDFへ変換するための処理を定義するディレクトリです
 
 ## Environment
+
+- docker
+- docker-compose
+
+または
 
 - node(新しめのやつ)
 - npm(新しめのやつ)
@@ -10,13 +15,20 @@
 ## Usage
 
 ```bash
+# 変換処理が実行されます
+$ docker-compose -f ../docker-compose.csv2rdf.yml up
+```
+
+または
+
+```bash
 # 依存パッケージのインストール
 $ npm i
 
-# 
+# 環境変数を設定します
 $ export BASE_URL=https://prismdb.takanakahiko.me
 
-# ローカルでサーバが立ち上がります(http://localhost)
+# 変換処理が実行されます
 $ npm run start
 ```
 
@@ -25,14 +37,19 @@ $ npm run start
 まだまだ未完成かつ不完全な仕様です...
 ツッコミやPRをいただけると有り難いです．
 
+### 方針
+
+- CSV編集者にRDF(Sparql)を意識させないようにする
+- 場合によってはリポジトリを分離できるよう，結合度が低くなるようにする
+
 ### ファイルの種類
 
 `_data/` 内にあります．
 それぞれの利用方法については次項にあります．
 
-- `XXXX.csv` : プライマリのデータ．( `プライマリCSV` )
-- `XXXX-setting.json` : 変換する際に必要なデータを定義( `カラム定義CSV` )
-- `XXXX-colmns.csv` : プライマリデータCSVのカラムとRDFの語彙を紐付けるCSV( `セッティングJSON` )
+- `XXXX.csv` : プライマリのデータ．( `プライマリCSV` と呼称)
+- `XXXX-setting.json` : 変換する際に必要なデータを定義( `カラム定義CSV` と呼称)
+- `XXXX-colmns.csv` : プライマリデータCSVのカラムとRDFの語彙を紐付けるCSV( `セッティングJSON` と呼称)
 
 ### 例
 
@@ -63,7 +80,7 @@ $ npm run start
 その `プライマリCSV` の内容が以下のようなものだとします．
 
 注意点として，一番左のカラムを `key` として，そのカラムでは「スネークケースの英数字」である前提になっています．
-これは，URLで使用するためです．
+これは，`key` をURLで使用するためです．
 
 `characters.csv`
 ```csv
@@ -89,6 +106,7 @@ key,prdicate
 と，こんな感じでファイルが用意されている場合に以下のようなttlが生成されます．
 また，環境変数は `BASE_URL=https://example.com` としているとします．
 
+`output.ttl`
 ```
 <https://example.com/rdfs/characters/manaka_laala>
     <https://example.com/preds/name> "真中 らぁら";

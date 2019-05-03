@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  deploy:
+    docker:
+      - image: cdssnc/aws-cli
+    steps:
+      - run:
+          name: "Set AWS region"
+          command: aws configure set region ap-northeast-1
+      - run:
+          name: "Deploy Staging"
+          command: aws deploy create-deployment --application-name appA-name --deployment-group-name appA-deploy-group --github-location repository="your/repository",commitId="$CIRCLE_SHA1"
+workflows:
+  version: 2
+  build_deploy:
+    jobs:
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

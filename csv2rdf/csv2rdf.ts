@@ -9,7 +9,7 @@ interface Setting {
     subjectBaseUrl: string
     PredicateBaseUrl: string
     dataCsvPath: string
-    colmnsCsvPath: string
+    columnsCsvPath: string
 }
 
 const addQuad = (store: N3.N3Store, key, predicate, subject, setting: Setting) => {
@@ -22,8 +22,8 @@ const addQuad = (store: N3.N3Store, key, predicate, subject, setting: Setting) =
 
 const getCsvData = async (filePath: string): Promise<Object[]> => {
     const fullPath = path.join(process.cwd(), filePath)
-    const colmnsFileData = await fs.readFileSync(fullPath)
-    const csvData = await csv.parse(colmnsFileData.toString(), { columns: true })
+    const columnsFileData = await fs.readFileSync(fullPath)
+    const csvData = await csv.parse(columnsFileData.toString(), { columns: true })
     return csvData as Object[]
 }
 
@@ -50,9 +50,9 @@ export default class {
     async load(settingPath: string):Promise<void> {
         const setting = await getSettings(settingPath)
         const datas = await getDatas(setting.dataCsvPath)
-        const colmns = await getColomns(setting.colmnsCsvPath)
+        const columns = await getColomns(setting.columnsCsvPath)
         datas.forEach(row => {
-            colmns.forEach(col => {
+            columns.forEach(col => {
                 if (row[col.key].length > 0) addQuad(this.store, row["key"], col.prdicate, row[col.key], setting)
             })
         })

@@ -109,6 +109,6 @@ key,prdicate
 このttlは，例えば
 
 - `https://example.com/rdfs/characters/manaka_laala` の `https://example.com/preds/name` が `"真中 らぁら"`
-- `https://example.com/preds/name_kana` が `"まなか らぁら"`
+- `https://example.com/rdfs/characters/manaka_laala` の `https://example.com/preds/name_kana` が `"まなか らぁら"`
 
 みたいな意味です．

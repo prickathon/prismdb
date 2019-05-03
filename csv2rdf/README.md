@@ -49,7 +49,7 @@ $ npm run start
 
 - `XXXX.csv` : プライマリのデータ．( `プライマリCSV` と呼称)
 - `XXXX-setting.json` : 変換する際に必要なデータを定義( `カラム定義CSV` と呼称)
-- `XXXX-colmns.csv` : プライマリデータCSVのカラムとRDFの語彙を紐付けるCSV( `セッティングJSON` と呼称)
+- `XXXX-columns.csv` : プライマリデータCSVのカラムとRDFの語彙を紐付けるCSV( `セッティングJSON` と呼称)
 
 ### 例
 
@@ -64,7 +64,7 @@ $ npm run start
     "subjectBaseUrl": "/rdfs/characters/",
     "PredicateBaseUrl": "/preds/",
     "dataCsvPath": "characters.csv",
-    "colmnsCsvPath": "characters-colmns.csv"
+    "columnsCsvPath": "characters-columns.csv"
 }
 ```
 
@@ -74,7 +74,7 @@ $ npm run start
 - `subjectBaseUrl` : ObjectのURIのベースになるパスです．
 - `PredicateBaseUrl` : PredicateのURIのベースになるパスです．
 - `dataCsvPath` : `プライマリCSV` のパス
-- `colmnsCsvPath` : `カラム定義CSV` のパス
+- `columnsCsvPath` : `カラム定義CSV` のパス
 
 `セッティングJSON` では `プライマリCSV` に `characters.csv` とあります．
 その `プライマリCSV` の内容が以下のようなものだとします．
@@ -90,12 +90,12 @@ minami_mirei,南 みれぃ,みなみ みれぃ,芹澤優
 hojo_sophie,北条 そふぃ,ほうじょう そふぃ,久保田未夢
 ```
 
-また `セッティングJSON` では `カラム定義CSV` に `characters-colmns.csv` とあります．
+また `セッティングJSON` では `カラム定義CSV` に `characters-columns.csv` とあります．
 その `カラム定義CSV` の内容が以下のようなものだとします．
 
 先程のCSVに `key,名前,かな,声優` というカラムがあるので， `key` を除いた `名前,かな,声優` について，それぞれ紐づく定義を指定します．
 
-`characters.csv`
+`characters-columns.csv`
 ```csv
 key,prdicate
 名前,name

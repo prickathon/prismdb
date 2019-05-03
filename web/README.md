@@ -1,22 +1,30 @@
-# webapi-mock-up
+# prismdb-web
 
-> プリパラDB(仮)で用いるWebAPIのモックアップです．
+> prismdbのWebページを提供するNuxt.jsのアプリケーションです
 
-## Build Setup
+## Environment
 
-``` bash
-# install dependencies
-$ npm install
+- docker
+- docker-compose
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+または
 
-# build for production and launch server
-$ npm run build
-$ npm start
+- node(新しめのやつ)
+- npm(新しめのやつ)
 
-# generate static project
-$ npm run generate
+## Usage
+
+```bash
+# ローカルでサーバが立ち上がります(http://localhost)
+$ docker-compose -f ../docker-compose.dev.yml up
 ```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+または
+
+```bash
+# 依存パッケージのインストール
+$ npm i
+
+# ローカルでサーバが立ち上がります(http://localhost)
+$ npm run dev
+```

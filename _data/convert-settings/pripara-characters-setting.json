@@ -2,5 +2,6 @@
     "subjectBaseUrl": "/rdfs/characters/",
     "PredicateBaseUrl": "/preds/",
     "dataCsvPath": "../_data/pripara-characters.csv",
-    "columnsCsvPath": "../_data/convert-settings/pripara-characters-columns.csv"
+    "columnsCsvPath": "../_data/convert-settings/pripara-characters-columns.csv",
+    "rdfType": "$BASE_URL/prism-schema.ttl#Character"
 }

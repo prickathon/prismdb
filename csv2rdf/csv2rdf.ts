@@ -10,6 +10,7 @@ interface Setting {
     PredicateBaseUrl: string
     dataCsvPath: string
     columnsCsvPath: string
+    rdfType: string
 }
 
 const addQuad = (store: N3.N3Store, key, predicate, subject, setting: Setting) => {
@@ -52,6 +53,13 @@ export default class {
         const datas = await getDatas(setting.dataCsvPath)
         const columns = await getColumns(setting.columnsCsvPath)
         datas.forEach(row => {
+            if (setting.rdfType) {
+                this.store.addQuad(
+                    process.env.BASE_URL + setting.subjectBaseUrl + row["key"],
+                    namedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
+                    namedNode(setting.rdfType.replace("$BASE_URL", process.env.BASE_URL))
+                );
+            }
             columns.forEach(col => {
                 if (row[col.key].length > 0) addQuad(this.store, row["key"], col.prdicate, row[col.key], setting)
             })

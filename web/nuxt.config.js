@@ -1,7 +1,6 @@
 import pkg from './package'
 
 export default {
-  srcDir: 'nuxt/',
   mode: 'universal',
 
   /*

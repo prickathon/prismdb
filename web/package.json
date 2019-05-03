@@ -1,7 +1,7 @@
 {
-  "name": "webapi-mock-up",
+  "name": "prismdb-web",
   "version": "1.0.0",
-  "description": "プリパラDB(仮)で用いるWebAPIのモックアップです．",
+  "description": "prismdb は プリティーシリーズの二次創作です",
   "author": "takanakahiko",
   "private": true,
   "scripts": {

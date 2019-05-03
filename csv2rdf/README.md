@@ -78,7 +78,7 @@ hojo_sophie,北条 そふぃ,ほうじょう そふぃ,久保田未夢
 
 先程のCSVに `key,名前,かな,声優` というカラムがあるので， `key` を除いた `名前,かな,声優` について，それぞれ紐づく定義を指定します．
 
-`characters.csv`
+`characters-columns.csv`
 ```csv
 key,prdicate
 名前,name

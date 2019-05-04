@@ -16,5 +16,8 @@ import * as rimraf from 'rimraf'
   // output.ttl(virtuosoにロードするデータ)を作成
   const csv2rdf = new Csv2rdf()
   await csv2rdf.load('../_data/convert-settings/pripara-characters-setting.json')
+  await csv2rdf.load('../_data/convert-settings/pripara-episodes-setting.json')
+  await csv2rdf.load('../_data/convert-settings/ipp-episodes-setting.json')
+  await csv2rdf.load('../_data/convert-settings/prichan-episodes-setting.json')
   await csv2rdf.export('../virtuoso/toLoad/output.ttl')
 })()

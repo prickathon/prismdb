@@ -15,8 +15,8 @@ interface Setting {
 
 const addQuad = (store: N3.N3Store, key, predicate, subject, setting: Setting) => {
     store.addQuad(
-        namedNode(process.env.BASE_URL + setting.subjectBaseUrl + key), //主語
-        namedNode(process.env.BASE_URL + setting.PredicateBaseUrl + predicate), //述語
+        namedNode(setting.subjectBaseUrl + key), //主語
+        namedNode(setting.PredicateBaseUrl + predicate), //述語
         literal(subject) //目的語
     );
 }
@@ -36,9 +36,15 @@ const getColumns = async (path: string): Promise<{ key: string, prdicate: string
     return await getCsvData(path) as { key: string, prdicate: string }[]
 }
 
+const replaceBaseurl = (str:string) => str.replace("$BASE_URL", process.env.BASE_URL)
+
 const getSettings = async (filePath: string): Promise<Setting> => {
     const fullPath = path.join(process.cwd(), filePath)
-    return JSON.parse(fs.readFileSync(fullPath, 'utf8')) as Setting
+    const setting =  JSON.parse(fs.readFileSync(fullPath, 'utf8')) as Setting
+    setting.subjectBaseUrl = replaceBaseurl(setting.subjectBaseUrl)
+    setting.PredicateBaseUrl = replaceBaseurl(setting.PredicateBaseUrl)
+    setting.rdfType = replaceBaseurl(setting.rdfType)
+    return setting
 }
 
 export default class {
@@ -55,9 +61,9 @@ export default class {
         datas.forEach(row => {
             if (setting.rdfType) {
                 this.store.addQuad(
-                    process.env.BASE_URL + setting.subjectBaseUrl + row["key"],
+                    setting.subjectBaseUrl + row["key"],
                     namedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
-                    namedNode(setting.rdfType.replace("$BASE_URL", process.env.BASE_URL))
+                    namedNode(setting.rdfType)
                 );
             }
             columns.forEach(col => {

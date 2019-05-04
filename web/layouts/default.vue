@@ -21,6 +21,11 @@
               </div>
             </div>
           </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <a class="button is-light" href="/sparql/">Sparql Endpoint</a>
+            </div>
+          </div>
         </div>
       </div>
     </nav>

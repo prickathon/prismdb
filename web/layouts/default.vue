@@ -15,10 +15,15 @@
               <a class="navbar-link" href="/rdfs/">RDF</a>
               <div class="navbar-dropdown is-boxed">
                 <a class="navbar-item" href="/rdfs/characters/">Characters</a>
-                <a class="navbar-item" href="/rdfs/hoge/">Modifiers</a>
-                <a class="navbar-item" href="/rdfs/hoge/">Modifiers</a>
-                <a class="navbar-item" href="/rdfs/hoge/">Modifiers</a>
+                <a class="navbar-item" href="/rdfs/episodes/">Episodes</a>
+                <a class="navbar-item" href="/rdfs/songs/">Songs</a>
+                <a class="navbar-item" href="/rdfs/lives/">Lives</a>
               </div>
+            </div>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <a class="button is-light" href="/sparql/">Sparql Endpoint</a>
             </div>
           </div>
         </div>

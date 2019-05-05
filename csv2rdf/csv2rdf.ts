@@ -13,11 +13,27 @@ interface Setting {
     rdfType: string
 }
 
-const addQuad = (store: N3.N3Store, key, predicate, subject, setting: Setting) => {
+
+interface ColumnSetting {
+    key: string,
+    predicate: string,
+    dataType: string
+}
+
+const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, setting: Setting) => {
+    let objectValue = row[columnSetting.key]
+    if (row[columnSetting.key].length == 0) return
+    let object:N3.Literal
+    if(columnSetting.dataType.length){
+        const dataTypeNode = namedNode(columnSetting.dataType)
+        object = literal(objectValue, dataTypeNode)
+    }else{
+        object = literal(objectValue)
+    }
     store.addQuad(
-        namedNode(setting.subjectBaseUrl + key), //主語
-        namedNode(setting.PredicateBaseUrl + predicate), //述語
-        literal(subject) //目的語
+        namedNode(setting.subjectBaseUrl + row["key"]), //主語
+        namedNode(setting.PredicateBaseUrl + columnSetting.predicate), //述語
+        object //目的語
     );
 }
 
@@ -28,12 +44,12 @@ const getCsvData = async (filePath: string): Promise<Object[]> => {
     return csvData as Object[]
 }
 
-const getDatas = async (path: string): Promise<Object[]> => {
-    return await getCsvData(path)
+const getDatas = async (path: string): Promise<object[]> => {
+    return await getCsvData(path) as object[]
 }
 
-const getColumns = async (path: string): Promise<{ key: string, prdicate: string }[]> => {
-    return await getCsvData(path) as { key: string, prdicate: string }[]
+const getColumns = async (path: string): Promise<ColumnSetting[]> => {
+    return await getCsvData(path) as ColumnSetting[]
 }
 
 const replaceBaseurl = (str:string) => str.replace("$BASE_URL", process.env.BASE_URL)
@@ -57,7 +73,7 @@ export default class {
     async load(settingPath: string):Promise<void> {
         const setting = await getSettings(settingPath)
         const datas = await getDatas(setting.dataCsvPath)
-        const columns = await getColumns(setting.columnsCsvPath)
+        const columnSettings = await getColumns(setting.columnsCsvPath)
         datas.forEach(row => {
             if (setting.rdfType) {
                 this.store.addQuad(
@@ -66,8 +82,8 @@ export default class {
                     namedNode(setting.rdfType)
                 );
             }
-            columns.forEach(col => {
-                if (row[col.key].length > 0) addQuad(this.store, row["key"], col.prdicate, row[col.key], setting)
+            columnSettings.forEach(columnSetting => {
+                addQuad(this.store, row, columnSetting, setting)
             })
         })
     }

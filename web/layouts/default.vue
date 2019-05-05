@@ -18,6 +18,7 @@
                 <a class="navbar-item" href="/rdfs/episodes/">Episodes</a>
                 <a class="navbar-item" href="/rdfs/songs/">Songs</a>
                 <a class="navbar-item" href="/rdfs/lives/">Lives</a>
+                <a class="navbar-item" href="/rdfs/series/">Series</a>
               </div>
             </div>
           </div>

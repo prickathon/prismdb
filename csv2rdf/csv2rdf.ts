@@ -11,6 +11,7 @@ interface Setting {
     dataCsvPath: string
     columnsCsvPath: string
     rdfType: string
+    relateToMany: {predicate: string, inversePredicate: string, convertSettingPath: string}[]
 }
 
 
@@ -60,6 +61,13 @@ const getSettings = async (filePath: string): Promise<Setting> => {
     setting.subjectBaseUrl = replaceBaseurl(setting.subjectBaseUrl)
     setting.PredicateBaseUrl = replaceBaseurl(setting.PredicateBaseUrl)
     setting.rdfType = replaceBaseurl(setting.rdfType)
+    if (setting.relateToMany) {
+        setting.relateToMany = setting.relateToMany.map(s => {
+            s.predicate = replaceBaseurl(s.predicate)
+            s.inversePredicate = replaceBaseurl(s.inversePredicate)
+            return s
+        })
+    }
     return setting
 }
 
@@ -74,7 +82,7 @@ export default class {
         const setting = await getSettings(settingPath)
         const datas = await getDatas(setting.dataCsvPath)
         const columnSettings = await getColumns(setting.columnsCsvPath)
-        datas.forEach(row => {
+        for (const row of datas) {
             if (setting.rdfType) {
                 this.store.addQuad(
                     setting.subjectBaseUrl + row["key"],
@@ -85,7 +93,28 @@ export default class {
             columnSettings.forEach(columnSetting => {
                 addQuad(this.store, row, columnSetting, setting)
             })
-        })
+            if (setting.relateToMany) {
+                const fromKey = row["key"]
+                const subject = setting.subjectBaseUrl + fromKey
+                for (const s of setting.relateToMany) {
+                    const toSetting = await getSettings(s.convertSettingPath.replace("$KEY", row["key"]))
+                    const toDatas = await getDatas(toSetting.dataCsvPath)
+                    toDatas.forEach(toRow => {
+                        const object = toSetting.subjectBaseUrl + toRow["key"]
+                        this.store.addQuad(
+                            namedNode(subject),
+                            namedNode(s.predicate),
+                            namedNode(object)
+                        );
+                        this.store.addQuad(
+                            namedNode(object),
+                            namedNode(s.inversePredicate),
+                            namedNode(subject)
+                        );
+                    })
+                }
+            }
+        }
     }
 
     async export(path: string):Promise<void> {

@@ -12,6 +12,7 @@
       <li><a href="/rdfs/episodes">Episode</a></li>
       <li><a href="/rdfs/songs">Song</a></li>
       <li><a href="/rdfs/lives">Live</a></li>
+      <li><a href="/rdfs/series">Series</a></li>
     </ul>
   </div>
 </template>

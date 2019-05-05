@@ -1,5 +1,4 @@
 key,predicate,dataType
-シリーズ,シリーズ,
 話数,話数,http://www.w3.org/2001/XMLSchema#integer
 サブタイトル,サブタイトル,
 脚本,脚本,

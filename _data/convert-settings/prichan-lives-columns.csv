@@ -1,4 +1,4 @@
-key,predicate,dataType,objectUriPrefix
-episode,liveOfEpisode,,https://prismdb.takanakahiko.me/rdfs/episodes/prichan_
-song,songPerformed,,
-team,performer,,
+key,predicate,dataType,objectUriPrefix,inversePredicate
+episode,liveOfEpisode,,$BASE_URL/rdfs/episodes/prichan_,livePerformed
+song,songPerformed,,,
+team,performer,,,

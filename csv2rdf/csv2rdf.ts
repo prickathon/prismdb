@@ -21,25 +21,41 @@ interface ColumnSetting {
     predicate: string,
     dataType: string,
     objectUriPrefix: string
+    inversePredicate: string
 }
 
 const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, setting: Setting) => {
     let objectValue = row[columnSetting.key]
     if (row[columnSetting.key].length == 0) return
-    let object:N3.Term
-    if(columnSetting.dataType.length){
+
+    const subject = namedNode(setting.subjectBaseUrl + subjectKey(row, setting))
+    const predicate = namedNode(setting.PredicateBaseUrl + columnSetting.predicate)
+    let object:N3.Quad_Object
+
+    if (columnSetting.objectUriPrefix && columnSetting.objectUriPrefix.length) {
+        object = namedNode(replaceBaseurl(columnSetting.objectUriPrefix) + objectValue)
+    
+        // namedNodeが目的語のときだけ逆参照も可能
+        if (columnSetting.inversePredicate && columnSetting.inversePredicate.length) {
+            store.addQuad(
+                object,
+                namedNode(setting.PredicateBaseUrl + columnSetting.inversePredicate),
+                subject
+            );
+        }
+    } else if (columnSetting.dataType.length) {
         const dataTypeNode = namedNode(columnSetting.dataType)
         object = literal(objectValue, dataTypeNode)
-    } else if (columnSetting.objectUriPrefix && columnSetting.objectUriPrefix.length) {
-        object = namedNode(columnSetting.objectUriPrefix + objectValue)
     } else {
         object = literal(objectValue)
     }
+
     store.addQuad(
-        namedNode(setting.subjectBaseUrl + subjectKey(row, setting)), //主語
-        namedNode(setting.PredicateBaseUrl + columnSetting.predicate), //述語
-        object //目的語
+        subject,
+        predicate,
+        object
     );
+
 }
 
 const getCsvData = async (filePath: string): Promise<Object[]> => {

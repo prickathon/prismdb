@@ -19,17 +19,20 @@ interface Setting {
 interface ColumnSetting {
     key: string,
     predicate: string,
-    dataType: string
+    dataType: string,
+    objectUriPrefix: string
 }
 
 const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, setting: Setting) => {
     let objectValue = row[columnSetting.key]
     if (row[columnSetting.key].length == 0) return
-    let object:N3.Literal
+    let object:N3.Term
     if(columnSetting.dataType.length){
         const dataTypeNode = namedNode(columnSetting.dataType)
         object = literal(objectValue, dataTypeNode)
-    }else{
+    } else if (columnSetting.objectUriPrefix && columnSetting.objectUriPrefix.length) {
+        object = namedNode(columnSetting.objectUriPrefix + objectValue)
+    } else {
         object = literal(objectValue)
     }
     store.addQuad(

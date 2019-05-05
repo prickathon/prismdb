@@ -11,11 +11,11 @@ import * as rimraf from 'rimraf'
   // schema.ttl を作成
   const schema = new Csv2rdf()
   await schema.load('../_data/schema/classes-setting.json')
-  await schema.export('../virtuoso/toLoad/schema.ttl')
+  await schema.export('../virtuoso/toLoad/prism-schema.ttl')
 
   // webでホストする schema.ttl も更新
-  if(fs.existsSync('../web/static/schema.ttl')) fs.unlinkSync('../web/static/schema.ttl')
-  await schema.export('../web/static/schema.ttl')
+  if(fs.existsSync('../web/static/prism-schema.ttl')) fs.unlinkSync('../web/static/prism-schema.ttl')
+  await schema.export('../web/static/prism-schema.ttl')
 
   // output.ttl(virtuosoにロードするデータ)を作成
   const csv2rdf = new Csv2rdf()

@@ -84,4 +84,4 @@ dist
 sw.*
 
 
-virtuoso/
+static/prism-schema.ttl

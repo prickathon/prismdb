@@ -1,0 +1,7 @@
+{
+    "subjectBaseUrl": "$BASE_URL/prism-schema.ttl#",
+    "PredicateBaseUrl": "",
+    "dataCsvPath": "../_data/schema/classes.csv",
+    "columnsCsvPath": "../_data/schema/classes-columns.csv",
+    "rdfType": "http://www.w3.org/2000/01/rdf-schema#Class"
+}

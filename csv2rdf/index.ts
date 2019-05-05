@@ -9,9 +9,13 @@ import * as rimraf from 'rimraf'
   fs.mkdirSync('../virtuoso/toLoad')
 
   // schema.ttl を作成
-  // const csv2rdf_ = new Csv2rdf()
-  // await csv2rdf_.load('./_data/ontology/prism-schema.json')
-  // await csv2rdf_.export('./virtuoso/toLoad/schema.ttl')
+  const schema = new Csv2rdf()
+  await schema.load('../_data/schema/classes-setting.json')
+  await schema.export('../virtuoso/toLoad/prism-schema.ttl')
+
+  // webでホストする schema.ttl も更新
+  if(fs.existsSync('../web/static/prism-schema.ttl')) fs.unlinkSync('../web/static/prism-schema.ttl')
+  await schema.export('../web/static/prism-schema.ttl')
 
   // output.ttl(virtuosoにロードするデータ)を作成
   const csv2rdf = new Csv2rdf()

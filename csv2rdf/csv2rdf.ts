@@ -7,6 +7,7 @@ const { namedNode, literal, defaultGraph, quad } = DataFactory;
 
 interface Setting {
     subjectBaseUrl: string
+    subjectKey: {keys: string[], pattern: string}
     PredicateBaseUrl: string
     dataCsvPath: string
     columnsCsvPath: string
@@ -32,7 +33,7 @@ const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, set
         object = literal(objectValue)
     }
     store.addQuad(
-        namedNode(setting.subjectBaseUrl + row["key"]), //主語
+        namedNode(setting.subjectBaseUrl + subjectKey(row, setting)), //主語
         namedNode(setting.PredicateBaseUrl + columnSetting.predicate), //述語
         object //目的語
     );
@@ -71,6 +72,18 @@ const getSettings = async (filePath: string): Promise<Setting> => {
     return setting
 }
 
+const subjectKey = (row: Object, setting: Setting) => {
+    if (setting.subjectKey) {
+        var s = setting.subjectKey.pattern
+        setting.subjectKey.keys.forEach((key, index) => {
+            s = s.replace("$" + index, row[key])
+        })
+        return s
+    } else {
+        return row["key"]
+    }
+}
+
 export default class {
     private store
 
@@ -83,9 +96,10 @@ export default class {
         const datas = await getDatas(setting.dataCsvPath)
         const columnSettings = await getColumns(setting.columnsCsvPath)
         for (const row of datas) {
+            const key = subjectKey(row, setting)
             if (setting.rdfType) {
                 this.store.addQuad(
-                    setting.subjectBaseUrl + row["key"],
+                    setting.subjectBaseUrl + key,
                     namedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
                     namedNode(setting.rdfType)
                 );
@@ -94,10 +108,9 @@ export default class {
                 addQuad(this.store, row, columnSetting, setting)
             })
             if (setting.relateToMany) {
-                const fromKey = row["key"]
-                const subject = setting.subjectBaseUrl + fromKey
+                const subject = setting.subjectBaseUrl + key
                 for (const s of setting.relateToMany) {
-                    const toSetting = await getSettings(s.convertSettingPath.replace("$KEY", row["key"]))
+                    const toSetting = await getSettings(s.convertSettingPath.replace("$KEY", key))
                     const toDatas = await getDatas(toSetting.dataCsvPath)
                     toDatas.forEach(toRow => {
                         const object = toSetting.subjectBaseUrl + toRow["key"]

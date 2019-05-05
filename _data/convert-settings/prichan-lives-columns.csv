@@ -1,0 +1,4 @@
+key,predicate,dataType
+episode,liveOfEpisode,
+song,songPerformed,
+team,performer,

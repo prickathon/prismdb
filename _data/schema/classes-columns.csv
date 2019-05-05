@@ -1,4 +1,4 @@
-key,prdicate,dataType
+key,predicate,dataType
 label,http://www.w3.org/2000/01/rdf-schema#label,
 comment,http://www.w3.org/2000/01/rdf-schema#comment,
 subClassOf,http://www.w3.org/2000/01/rdf-schema#subClassOf,

@@ -48,12 +48,14 @@ $ npm run start
 それぞれの利用方法については次項にあります．
 
 - `XXXX.csv` : プライマリのデータ．( `プライマリCSV` と呼称)
-- `XXXX-setting.json` : 変換する際に必要なデータを定義( `カラム定義CSV` と呼称)
-- `XXXX-columns.csv` : プライマリデータCSVのカラムとRDFの語彙を紐付けるCSV( `セッティングJSON` と呼称)
+- `XXXX-setting.json` : `プライマリCSV` をRDFに変換する際に必要なデータを定義( `セッティングJSON` と呼称)．csv2rdfによる変換処理の入力ファイルとなる．
+- `XXXX-columns.csv` : `プライマリCSV` のカラムとRDFの語彙を紐付けるCSV( `カラム定義CSV` と呼称)． `セッティングJSON` から参照され、各行のRDF変換を定義する．
 
 ### 例
 
 まず，csv2rdfは指定されたJSON( `セッティングJSON` )を見に行きます．
+
+#### セッティングJSON
 
 例えば `セッティングJSON` に `characters-setting.json` を指定した場合について解説します．
 その `セッティングJSON` の内容が以下のようなものだとします．
@@ -61,20 +63,25 @@ $ npm run start
 `characters-setting.json`
 ```json
 {
-    "subjectBaseUrl": "/rdfs/characters/",
-    "PredicateBaseUrl": "/preds/",
+    "subjectBaseUrl": "$BASE_URL/rdfs/characters/",
+    "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
     "dataCsvPath": "characters.csv",
-    "columnsCsvPath": "characters-columns.csv"
+    "columnsCsvPath": "characters-columns.csv",
+    "rdfType": "$BASE_URL/prism-schema.ttl#Character"
 }
 ```
 
-それぞれの要素について記述します．
+`セッティングJSON` では下記の項目を指定できます．
+それぞれの要素について記述します．いくつかの項目はオプショナルです．この例で不要な項目については後述します．
 (例を見ながらのほうがわかりやすいのでざっくり)
 
-- `subjectBaseUrl` : ObjectのURIのベースになるパスです．
+- `subjectBaseUrl` : SubjectのURIのベースになるパスです．
 - `PredicateBaseUrl` : PredicateのURIのベースになるパスです．
 - `dataCsvPath` : `プライマリCSV` のパス
 - `columnsCsvPath` : `カラム定義CSV` のパス
+- `rdfType`: Subjectのクラス( `rdf:type` )
+- `subjectKey` (optional) : (この例では不要) 複数カラムからSubjectのURIのキーを生成するフォーマット (例: 「 `プリパラ1話` の `make_it` 」をキーとする `Live`)
+- `relateToMany` (optional) : (この例では不要) 別の `プライマリCSV` から生成されるSubject全てに対してRDFの関係と逆関係を生成する (例: 1シリーズ to nエピソード)
 
 `セッティングJSON` では `プライマリCSV` に `characters.csv` とあります．
 その `プライマリCSV` の内容が以下のようなものだとします．
@@ -89,6 +96,8 @@ manaka_laala,真中 らぁら,まなか らぁら,茜屋日海夏
 minami_mirei,南 みれぃ,みなみ みれぃ,芹澤優
 hojo_sophie,北条 そふぃ,ほうじょう そふぃ,久保田未夢
 ```
+
+#### カラム定義CSV
 
 また `セッティングJSON` では `カラム定義CSV` に `characters-columns.csv` とあります．
 その `カラム定義CSV` の内容が以下のようなものだとします．
@@ -130,3 +139,49 @@ key,prdicate
 - `https://example.com/rdfs/characters/manaka_laala` の `https://example.com/preds/name_kana` が `"まなか らぁら"`
 
 みたいな意味です．
+
+### 例: セッティングJSONの `subjectKey`
+
+「プリパラの第n話に出てきたsという曲のライブ」について `プライマリCSV` である `pripara-lives.csv` があるとします．
+また、RDFでライブという主語を生成するときのURIのキーとして、シリーズ+話数+曲を採用します．
+
+このとき、`プライマリCSV` にある `episode` `song` の2カラムを使ってキーを生成するため、 `セッティングJSON` の `subjectKey` を使いキー生成パターンを定義します．
+
+`"subjectKey": {"keys": ["episode", "song"], "pattern": "pripara_$0_$1"}`
+
+ライブに対して生成されるURIは `$BASE_URL/rdfs/lives/pripara_1_make_it` のようになります．
+
+### 例: セッティングJSONの `relateToMany`
+
+シリーズ一覧 (`プリパラ` `アイドルタイムプリパラ` `キラッとプリ☆チャン` ...) と それぞれのシリーズについてエピソード一覧の `プライマリCSV` があるときに、それらをRDF上で関連づけます．シリーズとエピソードは1対nです．
+
+シリーズの `セッティングJSON` で `relateToMany` をつかって下記のように紐づけを定義します．
+
+
+```
+    "relateToMany": [{
+        "predicate": "$BASE_URL/prism-schema.ttl#hasEpisode",
+        "inversePredicate": "$BASE_URL/prism-schema.ttl#episodeOfSeries",
+        "convertSettingPath": "../_data/convert-settings/$KEY-episodes-setting.json"
+    }]
+```
+
+* `predicate`: 1側からn側を参照するときの述語
+* `inversePredicate`: n側から1側を参照するときの述語
+* `convertSettingPath `: n側の `プライマリCSV` の変換に使う `セッティングJSON` ．`$KEY` でシリーズの `key` を参照可能
+
+生成される関係は次のようになります．
+
+1対n側
+
+```
+<https://prismdb.takanakahiko.me/rdfs/series/pripara> a <https://prismdb.takanakahiko.me/prism-schema.ttl#Series>;
+    <https://prismdb.takanakahiko.me/prism-schema.ttl#hasEpisode> <https://prismdb.takanakahiko.me/rdfs/episodes/pripara_1>, <https://prismdb.takanakahiko.me/rdfs/episodes/pripara_2>, ...
+```
+
+逆参照
+
+```
+<https://prismdb.takanakahiko.me/rdfs/episodes/pripara_1> <https://prismdb.takanakahiko.me/prism-schema.ttl#episodeOfSeries> <https://prismdb.takanakahiko.me/rdfs/series/pripara>.
+:
+```

@@ -18,7 +18,7 @@
                 <a class="navbar-item" href="/rdfs/episode/">Episodes</a>
                 <a class="navbar-item" href="/rdfs/song/">Songs</a>
                 <a class="navbar-item" href="/rdfs/live/">Lives</a>
-                <a class="navbar-item" href="/rdfs/serie/">Series</a>
+                <a class="navbar-item" href="/rdfs/series/">Series</a>
               </div>
             </div>
           </div>

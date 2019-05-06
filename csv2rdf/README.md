@@ -106,7 +106,7 @@ hojo_sophie,北条 そふぃ,ほうじょう そふぃ,久保田未夢
 
 `characters-columns.csv`
 ```csv
-key,prdicate
+key,predicate
 名前,name
 かな,name_kana
 声優,cv
@@ -139,6 +139,14 @@ key,prdicate
 - `https://example.com/rdfs/characters/manaka_laala` の `https://example.com/preds/name_kana` が `"まなか らぁら"`
 
 みたいな意味です．
+
+カラム定義には下記のキーを指定できます．
+
+- `key`: `プライマリCSV` のどのカラムの値を参照するか
+- `predicate`: `key` を参照するときの述語
+- `dataType` (optional): `key`を参照した値のデータ型、指定がなければ文字列リテラル (例 `話数` は int としてソートに使いたいので `http://www.w3.org/2001/XMLSchema#integer`)
+- `objectUriPrefix` (optional): `key`を参照した値に前置して、リテラルではなくURI参照とする (例 `話数` に対して `$BASE_URL/rdfs/episodes/prichan_` を指定してエピソードURI参照とする)
+- `inversePredicate` (optional): `objectUriPrefix` で参照したときに逆参照するときの述語
 
 ### 例: セッティングJSONの `subjectKey`
 

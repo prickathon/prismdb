@@ -8,10 +8,10 @@
     </nav>
     <h1 class="title is-1">RDFs</h1>
     <ul>
-      <li><a href="/rdfs/characters">Character</a></li>
-      <li><a href="/rdfs/episodes">Episode</a></li>
-      <li><a href="/rdfs/songs">Song</a></li>
-      <li><a href="/rdfs/lives">Live</a></li>
+      <li><a href="/rdfs/character">Character</a></li>
+      <li><a href="/rdfs/episode">Episode</a></li>
+      <li><a href="/rdfs/song">Song</a></li>
+      <li><a href="/rdfs/live">Live</a></li>
       <li><a href="/rdfs/series">Series</a></li>
     </ul>
   </div>

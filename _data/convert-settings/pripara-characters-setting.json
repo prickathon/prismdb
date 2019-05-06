@@ -1,5 +1,5 @@
 {
-    "subjectBaseUrl": "$BASE_URL/rdfs/characters/",
+    "subjectBaseUrl": "$BASE_URL/rdfs/character/",
     "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
     "dataCsvPath": "../_data/pripara-characters.csv",
     "columnsCsvPath": "../_data/convert-settings/pripara-characters-columns.csv",

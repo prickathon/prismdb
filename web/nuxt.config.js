@@ -50,7 +50,7 @@ export default {
 
   proxy: {
     '/sparql': 'http://sparql:8890/sparql',
-    '/api': 'http://restapi:4567'
+    '/api': 'http://restapi:4567/api'
   },
 
   /*

@@ -1,5 +1,5 @@
 {
-    "subjectBaseUrl": "$BASE_URL/rdfs/lives/",
+    "subjectBaseUrl": "$BASE_URL/rdfs/live/",
     "subjectKey": {"keys": ["episode", "song"], "pattern": "pripara_$0_$1"},
     "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
     "dataCsvPath": "../_data/pripara-lives.csv",

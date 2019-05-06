@@ -39,7 +39,9 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://buefy.github.io/#/documentation
     'nuxt-buefy',
-    '@nuxtjs/proxy'
+    [ '@nuxtjs/proxy', {
+      pathRewrite: {'^/api' : 'http://restapi:4567'}
+    }]
   ],
   /*
    ** Axios module configuration
@@ -50,7 +52,7 @@ export default {
 
   proxy: {
     '/sparql': 'http://sparql:8890/sparql',
-    '/api': 'http://restapi:4567/api'
+    '/api': 'http://restapi:4567'
   },
 
   /*

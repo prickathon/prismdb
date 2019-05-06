@@ -22,3 +22,13 @@ services:
     command: bash -c "npm i && npm run dev"
     depends_on:
       - sparql
+  rest:
+    image: node:11.9.0
+    working_dir: "/var/www/app"
+    ports:
+      - "4567:4567"
+    volumes:
+      - ./rest:/var/www/app
+    command: bash -c "npm i && npm run start"
+    depends_on:
+      - sparql

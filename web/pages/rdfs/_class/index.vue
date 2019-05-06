@@ -22,7 +22,8 @@ export default {
   components: { SparqlResponseTable },
   async asyncData({ $axios, params, error }) {
     const schemeBaseUrl = `https://prismdb.takanakahiko.me/prism-schema.ttl#` // これは環境変数でいいかも
-    const className = params.class.charAt(0).toUpperCase() + params.class.slice(1, 0) // 先頭を大文字にする
+    const className =
+      params.class.charAt(0).toUpperCase() + params.class.slice(1, 0) // 先頭を大文字にする
     const classUri = `${schemeBaseUrl}${className}`
     const typePredUri = `http://www.w3.org/1999/02/22-rdf-syntax-ns#type`
     const query = `SELECT ?URI

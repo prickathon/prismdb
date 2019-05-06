@@ -50,11 +50,7 @@ const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, set
         object = literal(objectValue)
     }
 
-    store.addQuad(
-        subject,
-        predicate,
-        object
-    );
+    store.addQuad(subject, predicate, object);
 
 }
 
@@ -93,7 +89,7 @@ const getSettings = async (filePath: string): Promise<Setting> => {
 
 const subjectKey = (row: Object, setting: Setting) => {
     if (setting.subjectKey) {
-        var s = setting.subjectKey.pattern
+        let s = setting.subjectKey.pattern
         setting.subjectKey.keys.forEach((key, index) => {
             s = s.replace("$" + index, row[key])
         })

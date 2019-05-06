@@ -14,11 +14,11 @@
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link" href="/rdfs/">RDF</a>
               <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item" href="/rdfs/characters/">Characters</a>
-                <a class="navbar-item" href="/rdfs/episodes/">Episodes</a>
-                <a class="navbar-item" href="/rdfs/songs/">Songs</a>
-                <a class="navbar-item" href="/rdfs/lives/">Lives</a>
-                <a class="navbar-item" href="/rdfs/series/">Series</a>
+                <a class="navbar-item" href="/rdfs/character/">Characters</a>
+                <a class="navbar-item" href="/rdfs/episode/">Episodes</a>
+                <a class="navbar-item" href="/rdfs/song/">Songs</a>
+                <a class="navbar-item" href="/rdfs/live/">Lives</a>
+                <a class="navbar-item" href="/rdfs/serie/">Series</a>
               </div>
             </div>
           </div>

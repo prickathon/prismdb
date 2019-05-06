@@ -24,16 +24,30 @@ export default class {
         const resp = await this.q(query)
         const keys = resp.results.bindings.map(b => b["uri"].value.replace(classBaseUri, "") )
         return keys
-    }
-    static async getProperties(key: string, classBaseUri: string){
+    } 
+    static async getProperties(key: string, classBaseUri: string, arrayParameters?: {[_:string]:string} ){
         const subject = `${classBaseUri}${key}`
         const query = `SELECT ?pred ?obj WHERE { <${subject}> ?pred ?obj }`
         const resp = await this.q(query)
         const ret:object = {}
+        if(arrayParameters){
+            Object.keys(arrayParameters).forEach( predicateName => {
+                const parameterName = arrayParameters[predicateName]
+                ret[parameterName] = []
+            })
+        }
         resp.results.bindings.forEach(b => {
             const pred = b["pred"].value
-            const propertyName = pred.replace("https://prismdb.takanakahiko.me/prism-schema.ttl#", "")
-            ret[propertyName] = b["obj"].value
+            if(!pred.includes("https://prismdb.takanakahiko.me/prism-schema.ttl")) return
+            const predicateName = pred.replace("https://prismdb.takanakahiko.me/prism-schema.ttl#", "")
+            const objectBaseUriPatturn = new RegExp('https://prismdb.takanakahiko.me/rdfs/.+?/');
+            const value = b["obj"].value.replace(objectBaseUriPatturn,"")
+            if(arrayParameters && (predicateName in arrayParameters)){
+                const parameterName = arrayParameters[predicateName]
+                ret[parameterName].push(value)
+            }else{
+                ret[predicateName] = value
+            }
         })
         return ret
     }

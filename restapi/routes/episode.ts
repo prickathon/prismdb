@@ -5,6 +5,9 @@ const router = Router();
 
 const className = `Episode`
 const classBaseUri = "https://prismdb.takanakahiko.me/rdfs/episode/"
+const arrayParameters = {
+    'livePerformed': 'lives'
+}
 
 router.get("/", async (req, res) => {
     const keys = await Sparql.getKeys(className, classBaseUri)
@@ -15,7 +18,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:key", async (req, res) => {
     const key = req.params.key
-    const properties = await Sparql.getProperties(key, classBaseUri)
+    const properties = await Sparql.getProperties(key, classBaseUri, arrayParameters)
     res.json(properties)
 })
 

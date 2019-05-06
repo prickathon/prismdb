@@ -7,6 +7,7 @@ const { namedNode, literal, defaultGraph, quad } = DataFactory;
 
 interface Setting {
     subjectBaseUrl: string
+    subjectKey: {keys: string[], pattern: string}
     PredicateBaseUrl: string
     dataCsvPath: string
     columnsCsvPath: string
@@ -18,24 +19,39 @@ interface Setting {
 interface ColumnSetting {
     key: string,
     predicate: string,
-    dataType: string
+    dataType: string,
+    objectUriPrefix: string
+    inversePredicate: string
 }
 
 const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, setting: Setting) => {
     let objectValue = row[columnSetting.key]
     if (row[columnSetting.key].length == 0) return
-    let object:N3.Literal
-    if(columnSetting.dataType.length){
+
+    const subject = namedNode(setting.subjectBaseUrl + subjectKey(row, setting))
+    const predicate = namedNode(setting.PredicateBaseUrl + columnSetting.predicate)
+    let object:N3.Quad_Object
+
+    if (columnSetting.objectUriPrefix && columnSetting.objectUriPrefix.length) {
+        object = namedNode(replaceBaseurl(columnSetting.objectUriPrefix) + objectValue)
+    
+        // namedNodeが目的語のときだけ逆参照も可能
+        if (columnSetting.inversePredicate && columnSetting.inversePredicate.length) {
+            store.addQuad(
+                object,
+                namedNode(setting.PredicateBaseUrl + columnSetting.inversePredicate),
+                subject
+            );
+        }
+    } else if (columnSetting.dataType.length) {
         const dataTypeNode = namedNode(columnSetting.dataType)
         object = literal(objectValue, dataTypeNode)
-    }else{
+    } else {
         object = literal(objectValue)
     }
-    store.addQuad(
-        namedNode(setting.subjectBaseUrl + row["key"]), //主語
-        namedNode(setting.PredicateBaseUrl + columnSetting.predicate), //述語
-        object //目的語
-    );
+
+    store.addQuad(subject, predicate, object);
+
 }
 
 const getCsvData = async (filePath: string): Promise<Object[]> => {
@@ -71,6 +87,18 @@ const getSettings = async (filePath: string): Promise<Setting> => {
     return setting
 }
 
+const subjectKey = (row: Object, setting: Setting) => {
+    if (setting.subjectKey) {
+        let s = setting.subjectKey.pattern
+        setting.subjectKey.keys.forEach((key, index) => {
+            s = s.replace("$" + index, row[key])
+        })
+        return s
+    } else {
+        return row["key"]
+    }
+}
+
 export default class {
     private store
 
@@ -83,9 +111,10 @@ export default class {
         const datas = await getDatas(setting.dataCsvPath)
         const columnSettings = await getColumns(setting.columnsCsvPath)
         for (const row of datas) {
+            const key = subjectKey(row, setting)
             if (setting.rdfType) {
                 this.store.addQuad(
-                    setting.subjectBaseUrl + row["key"],
+                    setting.subjectBaseUrl + key,
                     namedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
                     namedNode(setting.rdfType)
                 );
@@ -94,10 +123,9 @@ export default class {
                 addQuad(this.store, row, columnSetting, setting)
             })
             if (setting.relateToMany) {
-                const fromKey = row["key"]
-                const subject = setting.subjectBaseUrl + fromKey
+                const subject = setting.subjectBaseUrl + key
                 for (const s of setting.relateToMany) {
-                    const toSetting = await getSettings(s.convertSettingPath.replace("$KEY", row["key"]))
+                    const toSetting = await getSettings(s.convertSettingPath.replace("$KEY", key))
                     const toDatas = await getDatas(toSetting.dataCsvPath)
                     toDatas.forEach(toRow => {
                         const object = toSetting.subjectBaseUrl + toRow["key"]

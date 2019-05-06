@@ -1,0 +1,6 @@
+key,predicate,dataType,objectUriPrefix,inversePredicate
+episode,liveOfEpisode,,$BASE_URL/rdfs/episodes/prichan_,livePerformed
+song,songPerformed,,$BASE_URL/rdfs/songs/,performedInLive
+team,performer,,,
+start,start,http://www.w3.org/2001/XMLSchema#float,,
+end,end,http://www.w3.org/2001/XMLSchema#float,,

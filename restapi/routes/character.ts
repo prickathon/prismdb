@@ -1,21 +1,25 @@
 import { Router } from "express";
 import Sparql from "../middleware/sparqle"
+import { sortInstanceList, filterInstanceList } from '../middleware/util'
 
 const router = Router();
 
 const className = `Character`
-const classBaseUri = "https://prismdb.takanakahiko.me/rdfs/character/"
+const arrayParameters = {}
+const sortBy = [ "episodeOfSeries", "話数" ]
 
 router.get("/", async (req, res) => {
-    const keys = await Sparql.getKeys(className, classBaseUri)
+    const results = await Sparql.getInstanceList(className, arrayParameters)
+    const filterdResult= filterInstanceList(results, req.query)
+    const sortedResults = sortInstanceList(filterdResult, sortBy)
     res.json({
-        keys
+        results: sortedResults
     })
 })
 
 router.get("/:key", async (req, res) => {
     const key = req.params.key
-    const properties = await Sparql.getProperties(key, classBaseUri)
+    const properties = await Sparql.getInstance(className, key, arrayParameters)
     res.json(properties)
 })
 

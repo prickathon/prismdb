@@ -1,6 +1,6 @@
 import { Router } from "express";
 import Sparql from "../middleware/sparqle"
-import { sortInstanceList } from '../middleware/util'
+import { sortInstanceList, filterInstanceList } from '../middleware/util'
 
 const router = Router();
 
@@ -12,7 +12,8 @@ const sortBy = [ "episodeOfSeries", "話数" ]
 
 router.get("/", async (req, res) => {
     const results = await Sparql.getInstanceList(className, arrayParameters)
-    const sortedResults = sortInstanceList(results, sortBy)
+    const filterdResult= filterInstanceList(results, req.query)
+    const sortedResults = sortInstanceList(filterdResult, sortBy)
     res.json({
         results: sortedResults
     })

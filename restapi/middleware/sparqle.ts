@@ -49,7 +49,7 @@ const bindings2object = (
 const uri2schema = (uri:string) => uri.replace(/https:\/\/prismdb\.takanakahiko\.me\/prism-schema\.ttl#.+?/, "")
 const schema2uri = (schema:string) => "https://prismdb.takanakahiko.me/prism-schema.ttl#" + schema
 const uri2key = (uri:string) => uri.replace(/https:\/\/prismdb\.takanakahiko\.me\/rdfs\/.+?\//, "")
-const classBaseUri = (className:string) => "https://prismdb.takanakahiko.me/rdfs/" + className.toLowerCase()
+const classBaseUri = (className:string) => `https://prismdb.takanakahiko.me/rdfs/${className.toLowerCase()}/`
 
 export default class {
     static async getKeys(className: string) {

@@ -71,7 +71,7 @@ export default class {
         return uniqueSubjectUris.map(subjectUri => {
             const targetBindings = resp.results.bindings.filter(b => b["sub"].value == subjectUri)
             const instance = bindings2object(targetBindings, arrayParameters)
-            instance["_key"] = subjectUri.replace(classBaseUri(className), "")
+            instance["_key"] = uri2key(subjectUri)
             return instance
         });
     }

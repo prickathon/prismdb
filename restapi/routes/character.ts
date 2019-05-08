@@ -19,7 +19,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:key", async (req, res) => {
     const key = req.params.key
-    const properties = await Sparql.getInstance(key, className, arrayParameters)
+    const properties = await Sparql.getInstance(className, key, arrayParameters)
     res.json(properties)
 })
 

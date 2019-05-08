@@ -12,7 +12,7 @@ export const filterInstanceList = (instanceList: object[], params:{[_:string]:st
     let ret:object[] = [...instanceList] //deep copy
     console.log(params)
     Object.keys(params).forEach( key => {
-        ret = ret.filter( instance => instance[key] === params[key] )
+        ret = ret.filter( instance => instance[key].toString() === params[key] )
     })
     return ret
 }

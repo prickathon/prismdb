@@ -1,20 +1,22 @@
 <template>
-  <div>
-    <nav class="breadcrumb" aria-label="breadcrumbs">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/rdfs/">RDFs</a></li>
-        <li>
-          <a :href="`/rdfs/${className}/`">{{ className }}</a>
-        </li>
-        <li class="is-active">
-          <a href="#">{{ key }}</a>
-        </li>
-      </ul>
-    </nav>
-    <h1 class="title is-1">{{ key }}</h1>
-    <sparql-response-table :response="response" />
-  </div>
+  <section class="main-content section">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/rdfs/">RDFs</a></li>
+          <li>
+            <a :href="`/rdfs/${className}/`">{{ className }}</a>
+          </li>
+          <li class="is-active">
+            <a href="#">{{ key }}</a>
+          </li>
+        </ul>
+      </nav>
+      <h1 class="title is-1">{{ key }}</h1>
+      <sparql-response-table :response="response" />
+    </div>
+  </section>
 </template>
 
 <script>

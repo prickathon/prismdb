@@ -31,11 +31,15 @@
       </div>
     </nav>
 
-    <section class="main-content section">
-      <div class="container">
-        <nuxt />
+    <nuxt />
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <a href="/privacy-policy">Privacy Policy</a>
+        </p>
       </div>
-    </section>
+    </footer>
   </div>
 </template>
 

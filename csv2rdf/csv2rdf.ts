@@ -19,9 +19,9 @@ interface Setting {
 interface ColumnSetting {
     key: string,
     predicate: string,
-    dataType: string,
-    objectUriPrefix: string
-    inversePredicate: string
+    dataType?: string,
+    objectUriPrefix?: string
+    inversePredicate?: string
 }
 
 const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, setting: Setting) => {
@@ -31,19 +31,18 @@ const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, set
     const subject = namedNode(setting.subjectBaseUrl + subjectKey(row, setting))
     const predicate = namedNode(setting.PredicateBaseUrl + columnSetting.predicate)
     let object:N3.Quad_Object
-
-    if (columnSetting.objectUriPrefix && columnSetting.objectUriPrefix.length) {
+    if (columnSetting.objectUriPrefix) {
         object = namedNode(replaceBaseurl(columnSetting.objectUriPrefix) + objectValue)
     
         // namedNodeが目的語のときだけ逆参照も可能
-        if (columnSetting.inversePredicate && columnSetting.inversePredicate.length) {
+        if (columnSetting.inversePredicate) {
             store.addQuad(
                 object,
                 namedNode(setting.PredicateBaseUrl + columnSetting.inversePredicate),
                 subject
             );
         }
-    } else if (columnSetting.dataType.length) {
+    } else if (columnSetting.dataType) {
         const dataTypeNode = namedNode(columnSetting.dataType)
         object = literal(objectValue, dataTypeNode)
     } else {
@@ -66,7 +65,13 @@ const getDatas = async (path: string): Promise<object[]> => {
 }
 
 const getColumns = async (path: string): Promise<ColumnSetting[]> => {
-    return await getCsvData(path) as ColumnSetting[]
+    const columnSettings = await getCsvData(path) as ColumnSetting[]
+    return columnSettings.map(columnSetting => {
+        Object.keys(columnSetting).forEach(key => {
+            if(columnSetting[key].length) delete columnSetting[key]
+        })
+        return columnSetting
+    })
 }
 
 const replaceBaseurl = (str:string) => str.replace("$BASE_URL", process.env.BASE_URL)

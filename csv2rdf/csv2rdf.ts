@@ -133,18 +133,14 @@ export default class {
                 for (const s of setting.relateToMany) {
                     const toSetting = await getSettings(s.convertSettingPath.replace("$KEY", key))
                     const toDatas = await getDatas(toSetting.dataCsvPath)
+                    const subjectNode = namedNode(subject)
+                    const predicateNode = namedNode(s.predicate)
+                    const inversePredicateNode = namedNode(s.inversePredicate)
                     toDatas.forEach(toRow => {
                         const object = toSetting.subjectBaseUrl + toRow["key"]
-                        this.store.addQuad(
-                            namedNode(subject),
-                            namedNode(s.predicate),
-                            namedNode(object)
-                        );
-                        this.store.addQuad(
-                            namedNode(object),
-                            namedNode(s.inversePredicate),
-                            namedNode(subject)
-                        );
+                        const objectNode = namedNode(object)
+                        this.store.addQuad(subjectNode, predicateNode, objectNode)
+                        this.store.addQuad(objectNode, inversePredicateNode, subjectNode)
                     })
                 }
             }

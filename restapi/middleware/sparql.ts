@@ -16,6 +16,13 @@ interface QueryResult {
     }
 }
 
+const schemaUri = `https://prismdb.takanakahiko.me/prism-schema.ttl#`
+const typePredUri = `http://www.w3.org/1999/02/22-rdf-syntax-ns#type`
+const uri2schema = (uri:string) => uri.replace(/https:\/\/prismdb\.takanakahiko\.me\/prism-schema\.ttl#.+?/, "")
+const schema2uri = (schema:string) => `${schemaUri}${schema}`
+const uri2key = (uri:string) => uri.replace(/https:\/\/prismdb\.takanakahiko\.me\/rdfs\/.+?\//, "")
+const classBaseUri = (className:string) => `https://prismdb.takanakahiko.me/rdfs/${className.toLowerCase()}/`
+
 const bindings2object = (
     bindings: Binding[],
     arrayParameters: { [_: string]: string } = {}
@@ -27,10 +34,9 @@ const bindings2object = (
     })
     bindings.forEach(b => {
         const pred = b["pred"].value
-        if (!pred.includes("https://prismdb.takanakahiko.me/prism-schema.ttl")) return
-        const predicateName = pred.replace("https://prismdb.takanakahiko.me/prism-schema.ttl#", "")
-        const objectBaseUriPatturn = new RegExp('https://prismdb.takanakahiko.me/rdfs/.+?/');
-        let value = b["obj"].value.replace(objectBaseUriPatturn, "") as any
+        if (!pred.includes(schemaUri)) return
+        const predicateName = pred.replace(schemaUri, "")
+        let value = uri2key(b["obj"].value) as any
         switch (b["obj"].datatype) {
             case "http://www.w3.org/2001/XMLSchema#integer":
                 value = parseInt(value)
@@ -46,23 +52,15 @@ const bindings2object = (
     return ret
 }
 
-const uri2schema = (uri:string) => uri.replace(/https:\/\/prismdb\.takanakahiko\.me\/prism-schema\.ttl#.+?/, "")
-const schema2uri = (schema:string) => "https://prismdb.takanakahiko.me/prism-schema.ttl#" + schema
-const uri2key = (uri:string) => uri.replace(/https:\/\/prismdb\.takanakahiko\.me\/rdfs\/.+?\//, "")
-const classBaseUri = (className:string) => `https://prismdb.takanakahiko.me/rdfs/${className.toLowerCase()}/`
-
 export default class {
     static async getKeys(className: string) {
-        const typePredUri = `http://www.w3.org/1999/02/22-rdf-syntax-ns#type`
-        const classUrl = `https://prismdb.takanakahiko.me/prism-schema.ttl#${className}`
-        const query = `SELECT ?sub WHERE { ?sub <${typePredUri}> <${classUrl}> }`
+        const query = `SELECT ?sub WHERE { ?sub <${typePredUri}> <${schema2uri(className)}> }`
         const resp = await this.q(query)
         const subjectUris = resp.results.bindings.map(b => b["sub"].value)
         const ret = subjectUris.map(uri2key)
         return ret
     }
     static async getInstanceList(className: string, arrayParameters?: { [_: string]: string }) {
-        const typePredUri = `http://www.w3.org/1999/02/22-rdf-syntax-ns#type`
         const classUrl = schema2uri(className)
         const query = `SELECT ?sub ?pred ?obj WHERE { ?sub <${typePredUri}> <${classUrl}>; ?pred ?obj. }`
         const resp = await this.q(query)

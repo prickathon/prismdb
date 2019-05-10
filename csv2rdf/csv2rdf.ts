@@ -19,9 +19,9 @@ interface Setting {
 interface ColumnSetting {
     key: string,
     predicate: string,
-    dataType: string,
-    objectUriPrefix: string
-    inversePredicate: string
+    dataType?: string,
+    objectUriPrefix?: string
+    inversePredicate?: string
 }
 
 const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, setting: Setting) => {
@@ -31,19 +31,18 @@ const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, set
     const subject = namedNode(setting.subjectBaseUrl + subjectKey(row, setting))
     const predicate = namedNode(setting.PredicateBaseUrl + columnSetting.predicate)
     let object:N3.Quad_Object
-
-    if (columnSetting.objectUriPrefix && columnSetting.objectUriPrefix.length) {
+    if (columnSetting.objectUriPrefix) {
         object = namedNode(replaceBaseurl(columnSetting.objectUriPrefix) + objectValue)
     
         // namedNodeが目的語のときだけ逆参照も可能
-        if (columnSetting.inversePredicate && columnSetting.inversePredicate.length) {
+        if (columnSetting.inversePredicate) {
             store.addQuad(
                 object,
                 namedNode(setting.PredicateBaseUrl + columnSetting.inversePredicate),
                 subject
             );
         }
-    } else if (columnSetting.dataType.length) {
+    } else if (columnSetting.dataType) {
         const dataTypeNode = namedNode(columnSetting.dataType)
         object = literal(objectValue, dataTypeNode)
     } else {
@@ -66,7 +65,13 @@ const getDatas = async (path: string): Promise<object[]> => {
 }
 
 const getColumns = async (path: string): Promise<ColumnSetting[]> => {
-    return await getCsvData(path) as ColumnSetting[]
+    const columnSettings = await getCsvData(path) as ColumnSetting[]
+    return columnSettings.map(columnSetting => {
+        Object.keys(columnSetting).forEach(key => {
+            if(!columnSetting[key].length) delete columnSetting[key]
+        })
+        return columnSetting
+    })
 }
 
 const replaceBaseurl = (str:string) => str.replace("$BASE_URL", process.env.BASE_URL)
@@ -112,9 +117,10 @@ export default class {
         const columnSettings = await getColumns(setting.columnsCsvPath)
         for (const row of datas) {
             const key = subjectKey(row, setting)
+            const subjectNode = namedNode(setting.subjectBaseUrl + key)
             if (setting.rdfType) {
                 this.store.addQuad(
-                    setting.subjectBaseUrl + key,
+                    subjectNode,
                     namedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
                     namedNode(setting.rdfType)
                 );
@@ -123,22 +129,16 @@ export default class {
                 addQuad(this.store, row, columnSetting, setting)
             })
             if (setting.relateToMany) {
-                const subject = setting.subjectBaseUrl + key
                 for (const s of setting.relateToMany) {
                     const toSetting = await getSettings(s.convertSettingPath.replace("$KEY", key))
                     const toDatas = await getDatas(toSetting.dataCsvPath)
+                    const predicateNode = namedNode(s.predicate)
+                    const inversePredicateNode = namedNode(s.inversePredicate)
                     toDatas.forEach(toRow => {
                         const object = toSetting.subjectBaseUrl + toRow["key"]
-                        this.store.addQuad(
-                            namedNode(subject),
-                            namedNode(s.predicate),
-                            namedNode(object)
-                        );
-                        this.store.addQuad(
-                            namedNode(object),
-                            namedNode(s.inversePredicate),
-                            namedNode(subject)
-                        );
+                        const objectNode = namedNode(object)
+                        this.store.addQuad(subjectNode, predicateNode, objectNode)
+                        this.store.addQuad(objectNode, inversePredicateNode, subjectNode)
                     })
                 }
             }

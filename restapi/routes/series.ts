@@ -1,5 +1,5 @@
 import { Router } from "express";
-import Sparql from "../middleware/sparqle"
+import Sparql from "../middleware/sparql"
 import { sortInstanceList, filterInstanceList } from '../middleware/util'
 
 const router = Router();

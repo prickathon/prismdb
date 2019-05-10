@@ -118,9 +118,10 @@ export default class {
         const columnSettings = await getColumns(setting.columnsCsvPath)
         for (const row of datas) {
             const key = subjectKey(row, setting)
+            const subjectNode = namedNode(setting.subjectBaseUrl + key)
             if (setting.rdfType) {
                 this.store.addQuad(
-                    setting.subjectBaseUrl + key,
+                    subjectNode,
                     namedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
                     namedNode(setting.rdfType)
                 );
@@ -129,11 +130,9 @@ export default class {
                 addQuad(this.store, row, columnSetting, setting)
             })
             if (setting.relateToMany) {
-                const subject = setting.subjectBaseUrl + key
                 for (const s of setting.relateToMany) {
                     const toSetting = await getSettings(s.convertSettingPath.replace("$KEY", key))
                     const toDatas = await getDatas(toSetting.dataCsvPath)
-                    const subjectNode = namedNode(subject)
                     const predicateNode = namedNode(s.predicate)
                     const inversePredicateNode = namedNode(s.inversePredicate)
                     toDatas.forEach(toRow => {

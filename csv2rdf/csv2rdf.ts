@@ -66,7 +66,6 @@ const getDatas = async (path: string): Promise<object[]> => {
 
 const getColumns = async (path: string): Promise<ColumnSetting[]> => {
     const columnSettings = await getCsvData(path) as ColumnSetting[]
-    console.log(columnSettings)
     return columnSettings.map(columnSetting => {
         Object.keys(columnSetting).forEach(key => {
             if(!columnSetting[key].length) delete columnSetting[key]

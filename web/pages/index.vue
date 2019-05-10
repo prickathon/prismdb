@@ -17,7 +17,7 @@
         <p>PrismDBはデータをLOD (Linked Open Data)として公開しています．</p>
         <h4 class="title is-4">SPARQL</h4>
         <p>
-          <a href="/rdfs">
+          <a href="/sparql">
             WebやアプリからSPARQLで検索・利用可能なエンドポイント
           </a>
         </p>

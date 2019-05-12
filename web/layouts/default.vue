@@ -6,9 +6,15 @@
           <a class="navbar-item" href="/">
             <img src="~assets/prickathon-logo.png" alt="Buefy" height="28" />
           </a>
-          <div class="navbar-burger"><span /><span /><span /></div>
+          <div
+            class="navbar-burger"
+            :class="{ 'is-active': menuActive }"
+            @click="menuToggle()"
+          >
+            <span /><span /><span />
+          </div>
         </div>
-        <div class="navbar-menu">
+        <div class="navbar-menu" :class="{ 'is-active': menuActive }">
           <div class="navbar-start">
             <a class="navbar-item" href="/">Home</a>
             <div class="navbar-item has-dropdown is-hoverable">
@@ -47,18 +53,17 @@
 export default {
   data() {
     return {
-      items: [
-        {
-          title: 'Home',
-          icon: 'home',
-          to: { name: 'index' }
-        },
-        {
-          title: 'Inspire',
-          icon: 'lightbulb',
-          to: { name: 'inspire' }
-        }
-      ]
+      menuActive: false
+    }
+  },
+  watch: {
+    $route() {
+      this.menuActive = false
+    }
+  },
+  methods: {
+    menuToggle() {
+      this.menuActive = !this.menuActive
     }
   }
 }

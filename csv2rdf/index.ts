@@ -11,6 +11,7 @@ import * as rimraf from 'rimraf'
   // schema.ttl を作成
   const schema = new Csv2rdf()
   await schema.load('../_data/schema/classes-setting.json')
+  await schema.load('../_data/schema/properties-setting.json')
   await schema.export('../virtuoso/data/toLoad/prism-schema.ttl')
 
   // webでホストする schema.ttl も更新

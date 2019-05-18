@@ -1,5 +1,12 @@
 version: 2
 jobs:
+  csv2rdf:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: docker-compose up
+          command: docker-compose -f ./docker-compose.csv2rdf.yml up
   deploy:
     docker:
       - image: cdssnc/aws-cli
@@ -14,7 +21,10 @@ workflows:
   version: 2
   build_deploy:
     jobs:
+      - csv2rdf
       - deploy:
+          requires:
+            - csv2rdf
           filters:
             branches:
               only: master

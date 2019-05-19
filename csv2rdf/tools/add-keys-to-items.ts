@@ -21,10 +21,7 @@ const convert = async (path:string) => {
   const header = csvData.shift()  //ヘッダを削除
   const converted = csvData.map(row => {
     const item_id = itemId2key(row[0])
-    const outfit_id = itemId2key(row[9])
-    const newRow = [...row]
-    newRow.unshift(item_id)
-    newRow[10] = outfit_id
+    const newRow = [item_id, ...row]
     return newRow
   })
   const newHeader = [ 'key', ...header]

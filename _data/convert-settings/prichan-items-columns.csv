@@ -1,0 +1,13 @@
+key,predicate,dataType,objectUriPrefix,inversePredicate
+item_id,item_id,,,
+rarity,rarity,,,
+name,name,,,
+category,category,,,
+image_num,image_num,,,
+color,color,,,
+brand,brand,,,
+type,type,,,
+like,like,http://www.w3.org/2001/XMLSchema#integer,,
+outfit_id,outfit_id,,,
+series_name,series_name,,,
+collection_term,collection_term,,,

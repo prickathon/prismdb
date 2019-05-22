@@ -14,6 +14,7 @@
         <li><a href="/rdfs/song">Song</a></li>
         <li><a href="/rdfs/live">Live</a></li>
         <li><a href="/rdfs/series">Series</a></li>
+        <li><a href="/rdfs/item">Item</a></li>
       </ul>
     </div>
   </section>

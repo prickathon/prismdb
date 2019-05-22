@@ -32,8 +32,9 @@ const convert = async (path:string) => {
 }
 
 (async () => {
-  await convert('../_data/prichan-items-BR.csv')
-  await convert('../_data/prichan-items-J1.csv')
-  await convert('../_data/prichan-items-J2.csv')
-  await convert('../_data/prichan-items-PB.csv')
+  // await convert('../_data/prichan-items-BR.csv')
+  // await convert('../_data/prichan-items-J1.csv')
+  // await convert('../_data/prichan-items-J2.csv')
+  // await convert('../_data/prichan-items-PB.csv')
+  await convert('../_data/prichan-items-PCH6.csv')
 })()

@@ -1,5 +1,5 @@
 {
-    "subjectBaseUrl": "$BASE_URL/rdfs/item",
+    "subjectBaseUrl": "$BASE_URL/rdfs/item/",
     "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
     "dataCsvPath": "../_data/prichan-items-PB.csv",
     "columnsCsvPath": "../_data/convert-settings/prichan-items-columns.csv",

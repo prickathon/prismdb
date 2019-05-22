@@ -1,0 +1,7 @@
+{
+    "subjectBaseUrl": "$BASE_URL/rdfs/item",
+    "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
+    "dataCsvPath": "../_data/prichan-items-PCH6.csv",
+    "columnsCsvPath": "../_data/convert-settings/prichan-items-columns.csv",
+    "rdfType": "$BASE_URL/prism-schema.ttl#Item"
+}

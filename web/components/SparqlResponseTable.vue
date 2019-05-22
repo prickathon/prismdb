@@ -39,3 +39,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+a,
+span {
+  word-break: break-all;
+}
+</style>

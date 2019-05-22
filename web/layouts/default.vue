@@ -25,6 +25,7 @@
                 <a class="navbar-item" href="/rdfs/song/">Songs</a>
                 <a class="navbar-item" href="/rdfs/live/">Lives</a>
                 <a class="navbar-item" href="/rdfs/series/">Series</a>
+                <a class="navbar-item" href="/rdfs/item/">Items</a>
               </div>
             </div>
           </div>

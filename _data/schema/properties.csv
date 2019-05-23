@@ -26,3 +26,12 @@ performer,演者,演者
 songPerformed,ライブ内の曲,ライブ内の曲
 タイトル,タイトル,タイトル
 hasEpisode,シリーズ内のエピソード,シリーズ内のエピソード
+item_id,アイテムID,アイテムID
+rarity,レアリティ,レアリティ
+category,カテゴリー,カテゴリー
+image_num,image_num,image_num
+color,色,色
+like,いいね,いいね
+outfit_id,outfit_id,outfit_id
+series_name,シリーズ名,シリーズ名
+collection_term,期間,期間

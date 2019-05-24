@@ -9,7 +9,7 @@ interface Setting {
     subjectBaseUrl: string
     subjectKey: {keys: string[], pattern: string}
     PredicateBaseUrl: string
-    dataCsvPath: string
+    dataCsvPath: string | string[]
     columnsCsvPath: string
     rdfType: string
     relateToMany: {predicate: string, inversePredicate: string, convertSettingPath: string}[]
@@ -60,8 +60,13 @@ const getCsvData = async (filePath: string): Promise<Object[]> => {
     return csvData as Object[]
 }
 
-const getDatas = async (path: string): Promise<object[]> => {
-    return await getCsvData(path) as object[]
+const getDatas = async (path: string | string[]): Promise<object[]> => {
+    if(typeof path === "string") path = [path]
+    let ret:object[] = []
+    for(let p of path){
+        ret = ret.concat(await getCsvData(p))
+    }
+    return ret
 }
 
 const getColumns = async (path: string): Promise<ColumnSetting[]> => {

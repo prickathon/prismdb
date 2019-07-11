@@ -5,6 +5,7 @@
         "../_data/prichan-items-BR.csv",
         "../_data/prichan-items-J1.csv",
         "../_data/prichan-items-J2.csv",
+        "../_data/prichan-items-J3.csv",
         "../_data/prichan-items-JP.csv",
         "../_data/prichan-items-PB.csv",
         "../_data/prichan-items-PCH1.csv",
@@ -19,7 +20,8 @@
         "../_data/prichan-items-P-S.csv",
         "../_data/prichan-items-MF.csv",
         "../_data/prichan-items-AM.csv",
-        "../_data/prichan-items-YA.csv"
+        "../_data/prichan-items-YA.csv",
+        "../_data/prichan-items-PP5.csv"
     ],
     "columnsCsvPath": "../_data/convert-settings/prichan-items-columns.csv",
     "rdfType": "$BASE_URL/prism-schema.ttl#Item"

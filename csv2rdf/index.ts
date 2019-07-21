@@ -25,7 +25,7 @@ import * as rimraf from 'rimraf'
   await csv2rdf.load('../_data/episode/pripara-episodes-setting.json')
   await csv2rdf.load('../_data/episode/ipp-episodes-setting.json')
   await csv2rdf.load('../_data/episode/prichan-episodes-setting.json')
-  await csv2rdf.load('../_data/convert-settings/series-setting.json')
+  await csv2rdf.load('../_data/series/series-setting.json')
   await csv2rdf.load('../_data/convert-settings/songs-setting.json')
   await csv2rdf.load('../_data/convert-settings/pripara-lives-setting.json')
   await csv2rdf.load('../_data/convert-settings/prichan-lives-setting.json')

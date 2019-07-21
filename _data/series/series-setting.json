@@ -1,12 +1,12 @@
 {
     "subjectBaseUrl": "$BASE_URL/rdfs/series/",
     "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
-    "dataCsvPath": "../_data/series.csv",
-    "columnsCsvPath": "../_data/convert-settings/series-columns.csv",
+    "dataCsvPath": "../_data/series/series.csv",
+    "columnsCsvPath": "../_data/series/series-columns.csv",
     "rdfType": "$BASE_URL/prism-schema.ttl#Series",
     "relateToMany": [{
         "predicate": "$BASE_URL/prism-schema.ttl#hasEpisode",
         "inversePredicate": "$BASE_URL/prism-schema.ttl#episodeOfSeries",
-        "convertSettingPath": "../_data/convert-settings/$KEY-episodes-setting.json"
+        "convertSettingPath": "../_data/episode/$KEY-episodes-setting.json"
     }]
 }

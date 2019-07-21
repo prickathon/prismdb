@@ -7,6 +7,6 @@
     "relateToMany": [{
         "predicate": "$BASE_URL/prism-schema.ttl#hasEpisode",
         "inversePredicate": "$BASE_URL/prism-schema.ttl#episodeOfSeries",
-        "convertSettingPath": "../_data/convert-settings/$KEY-episodes-setting.json"
+        "convertSettingPath": "../_data/episode/$KEY-episodes-setting.json"
     }]
 }

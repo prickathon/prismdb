@@ -1,0 +1,12 @@
+{
+    "subjectBaseUrl": "$BASE_URL/rdfs/live/",
+    "subjectKey": {"keys": ["episode", "song"], "pattern": "$0_$1"},
+    "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
+    "dataCsvPath": [
+        "../_data/live/rl-lives.csv",
+        "../_data/live/dmf-lives.csv",
+        "../_data/live/rl-lives.csv"
+    ],
+    "columnsCsvPath": "../_data/live/prr-lives-columns.csv",
+    "rdfType": "$BASE_URL/prism-schema.ttl#Live"
+}

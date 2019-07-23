@@ -1,0 +1,7 @@
+{
+    "subjectBaseUrl": "$BASE_URL/rdfs/",
+    "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
+    "dataCsvPath": "../_data/episode/ad-episodes.csv",
+    "columnsCsvPath": "../_data/episode/prr-episodes-columns.csv",
+    "rdfType": "$BASE_URL/prism-schema.ttl#Episode"
+}

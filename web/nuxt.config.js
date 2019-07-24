@@ -24,12 +24,22 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    // lib css
+    'codemirror/lib/codemirror.css',
+    // merge css
+    'codemirror/addon/merge/merge.css',
+    // theme css
+    'codemirror/theme/base16-dark.css'
+  ],
 
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    { src: '~plugins/nuxt-codemirror-plugin.js', ssr: false }
+  ],
+  // some nuxt config...
 
   /*
    ** Nuxt.js modules

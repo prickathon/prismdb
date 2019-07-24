@@ -15,12 +15,16 @@
       <div class="content container">
         <h3 class="title is-3">Linked Open Data</h3>
         <p>PrismDBはデータをLOD (Linked Open Data)として公開しています．</p>
-        <h4 class="title is-4">SPARQL</h4>
+        <h4 class="title is-4">SPARQLエンドポイント</h4>
         <p>
           <a href="/sparql">
             WebやアプリからSPARQLで検索・利用可能なエンドポイント
           </a>
         </p>
+        <h4 class="title is-4">SPARQLクエリ例</h4>
+        <gist
+          gist-url="https://gist.github.com/takanakahiko/934f30c51e95a2bad3df666c4cd08be4"
+        />
         <h4 class="title is-4">各種RDF</h4>
         <p>
           <a href="/rdfs">
@@ -42,3 +46,10 @@
     </section>
   </div>
 </template>
+
+<script>
+import Gist from '~/components/Gist'
+export default {
+  components: { Gist }
+}
+</script>

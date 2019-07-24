@@ -24,15 +24,18 @@
 import axios from 'axios'
 export default {
   props: {
-    gistUrl: String
+    gistUrl: {
+      type: String,
+      required: true
+    }
   },
   data() {
     return {
       open: false,
-      code: '',
-      title: '',
+      code: ' ',
+      title: ' ',
       cmOptions: {
-        mode: '',
+        mode: ' ',
         theme: 'base16-dark',
         lineNumbers: true,
         readOnly: true,

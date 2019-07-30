@@ -8,5 +8,6 @@
         "../_data/live/rl-lives.csv"
     ],
     "columnsCsvPath": "../_data/live/prr-lives-columns.csv",
-    "rdfType": "$BASE_URL/prism-schema.ttl#Live"
+    "rdfType": "$BASE_URL/prism-schema.ttl#Live",
+    "label": {"keys": ["episode", "song"], "pattern": "$0_$1"}
 }

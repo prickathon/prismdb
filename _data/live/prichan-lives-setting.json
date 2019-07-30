@@ -4,5 +4,6 @@
     "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
     "dataCsvPath": "../_data/live/prichan-lives.csv",
     "columnsCsvPath": "../_data/live/prichan-lives-columns.csv",
-    "rdfType": "$BASE_URL/prism-schema.ttl#Live"
+    "rdfType": "$BASE_URL/prism-schema.ttl#Live",
+    "label": {"keys": ["episode", "song"], "pattern": "prichan_$0_$1"}
 }

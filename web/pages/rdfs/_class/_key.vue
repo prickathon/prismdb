@@ -27,7 +27,7 @@ export default {
     label: function() {
       let ret = ''
       this.response.results.bindings.forEach(binding => {
-        const labelUri = 'https://www.w3.org/2000/01/rdf-schema#label'
+        const labelUri = 'http://www.w3.org/2000/01/rdf-schema#label'
         if (binding.Property.value === labelUri) ret = binding.Value.value
       })
       return ret

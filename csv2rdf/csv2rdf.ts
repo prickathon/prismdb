@@ -145,7 +145,7 @@ export default class {
             if (setting.label) {
                 this.store.addQuad(
                     subjectNode,
-                    namedNode("https://www.w3.org/2000/01/rdf-schema#label"),
+                    namedNode("http://www.w3.org/2000/01/rdf-schema#label"),
                     literal(getLebel(row, setting))
                 );
             }

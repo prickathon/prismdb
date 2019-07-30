@@ -3,5 +3,6 @@
     "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
     "dataCsvPath": "../_data/character/prichan-characters.csv",
     "columnsCsvPath": "../_data/character/prichan-characters-columns.csv",
-    "rdfType": "$BASE_URL/prism-schema.ttl#Character"
+    "rdfType": "$BASE_URL/prism-schema.ttl#Character",
+    "label": {"keys": ["name"], "pattern": "$0"}
 }

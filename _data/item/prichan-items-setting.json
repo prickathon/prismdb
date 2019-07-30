@@ -27,5 +27,6 @@
         "../_data/item/prichan-items-PP5.csv"
     ],
     "columnsCsvPath": "../_data/item/prichan-items-columns.csv",
-    "rdfType": "$BASE_URL/prism-schema.ttl#Item"
+    "rdfType": "$BASE_URL/prism-schema.ttl#Item",
+    "label": {"keys": ["name"], "pattern": "$0"}
 }

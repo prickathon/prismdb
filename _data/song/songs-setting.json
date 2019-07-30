@@ -3,5 +3,6 @@
     "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
     "dataCsvPath": "../_data/song/songs.csv",
     "columnsCsvPath": "../_data/song/songs-columns.csv",
-    "rdfType": "$BASE_URL/prism-schema.ttl#Song"
+    "rdfType": "$BASE_URL/prism-schema.ttl#Song",
+    "label": {"keys": ["name"], "pattern": "$0"}
 }

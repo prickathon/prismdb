@@ -3,5 +3,6 @@
     "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
     "dataCsvPath": "../_data/episode/dmf-episodes.csv",
     "columnsCsvPath": "../_data/episode/prr-episodes-columns.csv",
-    "rdfType": "$BASE_URL/prism-schema.ttl#Episode"
+    "rdfType": "$BASE_URL/prism-schema.ttl#Episode",
+    "label": {"keys": ["話数"], "pattern": "ディアマイフューチャー$0話"}
 }

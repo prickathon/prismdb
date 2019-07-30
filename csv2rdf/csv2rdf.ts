@@ -5,14 +5,20 @@ import * as N3 from 'n3'
 const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
 
+interface KeyAndPattern {
+    keys: string[],
+    pattern: string
+}
+
 interface Setting {
     subjectBaseUrl: string
-    subjectKey: {keys: string[], pattern: string}
+    subjectKey: KeyAndPattern
     PredicateBaseUrl: string
     dataCsvPath: string | string[]
     columnsCsvPath: string
     rdfType: string
     relateToMany: {predicate: string, inversePredicate: string, convertSettingPath: string}[]
+    label: KeyAndPattern
 }
 
 
@@ -97,16 +103,22 @@ const getSettings = async (filePath: string): Promise<Setting> => {
     return setting
 }
 
+
+
+const getPatternResult = (keyAndPattern:KeyAndPattern, row: Object) => {
+    let s = keyAndPattern.pattern
+    keyAndPattern.keys.forEach((key, index) => {
+        s = s.replace("$" + index, row[key])
+    })
+    return s
+}
+
 const subjectKey = (row: Object, setting: Setting) => {
-    if (setting.subjectKey) {
-        let s = setting.subjectKey.pattern
-        setting.subjectKey.keys.forEach((key, index) => {
-            s = s.replace("$" + index, row[key])
-        })
-        return s
-    } else {
-        return row["key"]
-    }
+    return setting.subjectKey ? getPatternResult(setting.subjectKey, row) : row["key"]
+}
+
+const getLebel = (row: Object, setting: Setting) => {
+    return getPatternResult(setting.label, row)
 }
 
 export default class {
@@ -128,6 +140,13 @@ export default class {
                     subjectNode,
                     namedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
                     namedNode(setting.rdfType)
+                );
+            }
+            if (setting.label) {
+                this.store.addQuad(
+                    subjectNode,
+                    namedNode("https://www.w3.org/2000/01/rdf-schema#label"),
+                    literal(getLebel(row, setting))
                 );
             }
             columnSettings.forEach(columnSetting => {

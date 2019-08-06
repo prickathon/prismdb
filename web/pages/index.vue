@@ -25,6 +25,9 @@
         <gist
           gist-url="https://gist.github.com/takanakahiko/934f30c51e95a2bad3df666c4cd08be4"
         />
+        <gist
+          gist-url="https://gist.github.com/takanakahiko/2d88b5636b1b530234f0cdb86acbde00"
+        />
         <h4 class="title is-4">各種RDF</h4>
         <p>
           <a href="/rdfs">

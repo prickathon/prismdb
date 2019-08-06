@@ -70,6 +70,7 @@ const getDatas = async (path: string | string[]): Promise<object[]> => {
     if(typeof path === "string") path = [path]
     let ret:object[] = []
     for(let p of path){
+        console.log(`    converting ${p} ...`)
         ret = ret.concat(await getCsvData(p))
     }
     return ret
@@ -129,6 +130,7 @@ export default class {
     }
 
     async load(settingPath: string):Promise<void> {
+        console.log(`loading ${settingPath} ...`)
         const setting = await getSettings(settingPath)
         const datas = await getDatas(setting.dataCsvPath)
         const columnSettings = await getColumns(setting.columnsCsvPath)

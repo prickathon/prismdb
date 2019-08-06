@@ -15,7 +15,7 @@
 # csv(_data/)をrdf(virtuoso/)に変換する処理
 $ docker-compose -f docker-compose.csv2rdf.yml up
 
-# ローカルでサーバが立ち上がります(http://localhost)
+# ローカルでサーバが立ち上がります(http://localhost:3000)
 $ docker-compose -f docker-compose.dev.yml up
 ```
 

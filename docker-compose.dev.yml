@@ -13,9 +13,9 @@ services:
     working_dir: "/var/www/app"
     environment:
       - HOST=0.0.0.0
-      - PORT=80
+      - PORT=3000
     ports:
-      - "80:80"
+      - "3000:3000"
     volumes:
       - ./web:/var/www/app
     command: bash -c "npm i && npm run dev"

@@ -8,11 +8,16 @@
     "start": "ts-node index.ts"
   },
   "devDependencies": {
+    "@types/cheerio": "^0.22.13",
     "@types/n3": "^1.0.7",
     "async-csv": "^2.0.0",
     "n3": "^1.1.1",
     "rimraf": "^2.6.3",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "cheerio": "^1.0.0-rc.3"
   }
 }

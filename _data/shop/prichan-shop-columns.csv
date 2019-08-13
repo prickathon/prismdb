@@ -1,0 +1,4 @@
+key,predicate,dataType,objectUriPrefix,inversePredicate
+prefecture,prefecture,,,
+name,name,,,
+address,address,,,

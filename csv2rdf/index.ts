@@ -34,5 +34,6 @@ import * as rimraf from 'rimraf'
   await csv2rdf.load('../_data/live/prichan-lives-setting.json')
   await csv2rdf.load('../_data/live/prr-lives-setting.json')
   await csv2rdf.load('../_data/item/prichan-items-setting.json')
+  await csv2rdf.load('../_data/shop/prichan-shop-setting.json')
   await csv2rdf.export('../virtuoso/data/toLoad/output.ttl')
 })()

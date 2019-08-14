@@ -24,7 +24,8 @@
         "../_data/item/prichan-items-MF.csv",
         "../_data/item/prichan-items-AM.csv",
         "../_data/item/prichan-items-YA.csv",
-        "../_data/item/prichan-items-PP5.csv"
+        "../_data/item/prichan-items-PP5.csv",
+        "../_data/item/prichan-items-MC.csv"
     ],
     "columnsCsvPath": "../_data/item/prichan-items-columns.csv",
     "rdfType": "$BASE_URL/prism-schema.ttl#Item",

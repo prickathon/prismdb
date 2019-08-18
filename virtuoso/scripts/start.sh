@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /data
+cd /data_
 exec virtuoso-t +wait +foreground

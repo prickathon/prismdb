@@ -25,7 +25,6 @@ export default {
    ** Global CSS
    */
   css: [
-    // lib css
     'codemirror/lib/codemirror.css',
     // merge css
     'codemirror/addon/merge/merge.css',
@@ -36,9 +35,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-    { src: '~plugins/nuxt-codemirror-plugin.js', ssr: false }
-  ],
+  plugins: [{ src: '~plugins/nuxt-codemirror-plugin.js', ssr: false }],
   // some nuxt config...
 
   /*
@@ -49,9 +46,7 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://buefy.github.io/#/documentation
     'nuxt-buefy',
-    [ '@nuxtjs/proxy', {
-      pathRewrite: {'^/api' : 'http://restapi:4567'}
-    }]
+    '@nuxtjs/proxy'
   ],
   /*
    ** Axios module configuration
@@ -62,7 +57,10 @@ export default {
 
   proxy: {
     '/sparql': 'http://sparql:8890/sparql',
-    '/api': 'http://restapi:4567'
+    '/api': {
+      target: 'http://restapi:4567',
+      pathRewrite: { '^/api': '/' }
+    }
   },
 
   /*
@@ -80,8 +78,8 @@ export default {
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/,
-          options : {
-            fix : true
+          options: {
+            fix: true
           }
         })
       }

@@ -1,34 +1,27 @@
 version: '3'
 services:
   sparql:
-    image: tenforce/virtuoso:1.3.1-virtuoso7.2.2
-    volumes:
-      - ./virtuoso/scripts:/scripts
-      - ./virtuoso/data:/data
+    build: ./virtuoso
     ports:
       - "8890:8890"
-    command: /bin/bash -c "/scripts/virtuoso.sh"
   nuxt:
-    image: node:11.9.0
-    working_dir: "/var/www/app"
+    build: ./web
     environment:
       - HOST=0.0.0.0
       - PORT=80
     ports:
       - "80:80"
-    volumes:
-      - ./web:/var/www/app
-    command: bash -c "npm i && npm run build && npm run start"
     depends_on:
       - sparql
       - restapi
   restapi:
-    image: node:11.9.0
-    working_dir: "/var/www/app"
+    build: ./restapi
     ports:
       - "4567:4567"
-    volumes:
-      - ./restapi:/var/www/app
-    command: bash -c "npm i && npm run start"
     depends_on:
       - sparql
+
+networks:
+  external_network:
+  internal_network:
+    internal: true

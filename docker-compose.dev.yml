@@ -4,10 +4,10 @@ services:
     image: tenforce/virtuoso:1.3.1-virtuoso7.2.2
     volumes:
       - ./virtuoso/scripts:/scripts
-      - ./virtuoso/data:/data
+      - ./virtuoso/data:/data_
     ports:
       - "8890:8890"
-    command: /bin/bash -c "/scripts/virtuoso.sh"
+    command: /bin/bash -c "/scripts/setup.sh && /scripts/start.sh"
   nuxt:
     image: node:11.9.0
     working_dir: "/var/www/app"

@@ -3,6 +3,7 @@
     "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
     "dataCsvPath":[
         "../_data/item/prichan-items-BR.csv",
+        "../_data/item/prichan-items-JR.csv",
         "../_data/item/prichan-items-J1.csv",
         "../_data/item/prichan-items-J2.csv",
         "../_data/item/prichan-items-J3.csv",

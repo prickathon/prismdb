@@ -5,7 +5,7 @@ jobs:
       - image: node:11.9
     steps:
       - checkout
-     - run:
+      - run:
           working_directory: api
           name: install dependencies
           command: npm ci

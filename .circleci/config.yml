@@ -5,12 +5,12 @@ jobs:
       - image: node:11.9
     steps:
       - checkout
-      - run:
-          command: cd web
-      - run:
+     - run:
+          working_directory: api
           name: install dependencies
           command: npm ci
       - run:
+          working_directory: api
           name: convert
           command: BASE_URL=https://prismdb.takanakahiko.me npm run start
   deploy:

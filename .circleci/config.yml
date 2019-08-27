@@ -1,12 +1,18 @@
 version: 2
 jobs:
   csv2rdf:
-    machine: true
+    docker:
+      - image: node:11.9
     steps:
       - checkout
       - run:
-          name: docker-compose up
-          command: docker-compose -f ./docker-compose.csv2rdf.yml up
+          command: cd web
+      - run:
+          name: install dependencies
+          command: npm ci
+      - run:
+          name: convert
+          command: BASE_URL=https://prismdb.takanakahiko.me npm run start
   deploy:
     docker:
       - image: cdssnc/aws-cli

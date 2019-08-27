@@ -6,11 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
-          working_directory: api
+          working_directory: web
           name: install dependencies
           command: npm ci
       - run:
-          working_directory: api
+          working_directory: web
           name: convert
           command: BASE_URL=https://prismdb.takanakahiko.me npm run start
   deploy:

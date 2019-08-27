@@ -6,11 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
-          working_directory: web
+          working_directory: csv2rdf
           name: install dependencies
           command: npm ci
       - run:
-          working_directory: web
+          working_directory: csv2rdf
           name: convert
           command: BASE_URL=https://prismdb.takanakahiko.me npm run start
   deploy:

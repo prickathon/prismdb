@@ -78,12 +78,17 @@ fi
 # Enable Federated
 if [ ! -f ".enable_federated" ];
 then
-  touch /enable-federated-query.sql
-  echo "grant select on \"DB.DBA.SPARQL_SINV_2\" to \"SPARQL\";" >> /enable-federated-query.sql
-  echo "grant execute on \"DB.DBA.SPARQL_SINV_IMP\" to \"SPARQL\";" >> /enable-federated-query.sql
-  virtuoso-t +wait && isql-v -U dba -P dba < /enable-federated-query.sql
+  virtuoso-t +wait && isql-v -U dba -P dba < /scripts/enable-federated-query.sql
   kill "$(ps aux | grep '[v]irtuoso-t' | awk '{print $2}')"
   echo "`date +%Y-%m-%dT%H:%M:%S%:z`" >  .enable_federated
+fi
+
+# Enable CORS
+if [ ! -f ".enable_cors" ];
+then
+  virtuoso-t +wait && isql-v -U dba -P dba < /scripts/cors-query.sql
+  kill "$(ps aux | grep '[v]irtuoso-t' | awk '{print $2}')"
+  echo "`date +%Y-%m-%dT%H:%M:%S%:z`" >  .enable_cors
 fi
 
 crudini --set virtuoso.ini HTTPServer ServerPort ${VIRT_HTTPServer_ServerPort:-$original_port}

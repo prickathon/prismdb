@@ -8,7 +8,6 @@ jobs:
     - uses: actions/checkout@master
     - working-directory: csv2rdf
       run: | 
-        cd csv2rdf
         npm ci
         npm start
 

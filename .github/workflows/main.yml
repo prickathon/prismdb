@@ -1,5 +1,3 @@
-name: Push CI
-
 on: [pull_request]
 
 jobs:

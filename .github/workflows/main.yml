@@ -1,0 +1,14 @@
+on: [pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: npm install, start
+      uses: docker://node:latest
+      run: | 
+        cd csv2rdf
+        npm ci
+        npm start
+

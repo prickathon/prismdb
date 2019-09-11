@@ -3,17 +3,10 @@ on: [pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-<<<<<<< HEAD
     container: node:latest
     steps:
     - uses: actions/checkout@master
     - working-directory: csv2rdf
-=======
-    steps:
-    - uses: actions/checkout@master
-    - name: npm install, start
-      uses: docker://node:latest
->>>>>>> upstream/master
       run: | 
         cd csv2rdf
         npm ci

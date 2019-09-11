@@ -1,14 +1,16 @@
-on: push
-name: Install, Build
+name: Push CI
+
+on: [push]
+
 jobs:
-  install:
-    name: Install
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Install
+    - name: npm install, start
       uses: docker://node:latest
-      run: cd csv2rdf && npm ci
-    - name: Build
-      uses: docker://node:latest
-      run: cd csv2rdf && npm run start
+      run: | 
+        cd csv2rdf
+        npm ci
+        npm start
+

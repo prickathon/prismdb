@@ -1,9 +1,9 @@
-key,item_id,rarity,name,category,image_num,color,brand,type,like,outfit_id,series_name,term_start,term_end
-cd_001,CD-001,R,ダンシングマーチブルートップス,トップス,28027,青,ガールズエール,ポップ,550,ダンシングマーチブルー,GAME PriPara Music Collection vol.6,,
-cd_002,CD-002,R,ダンシングマーチブルースカート,ボトムス,28028,青,ガールズエール,ポップ,650,ダンシングマーチブルー,GAME PriPara Music Collection vol.6,,
-cd_003,CD-003,R,ダンシングマーチブルーシューズ,シューズ,28029,青,ガールズエール,ポップ,600,ダンシングマーチブルー,GAME PriPara Music Collection vol.6,,
-cd_004,CD-004,R,ダンシングマーチブルーヘアアクセ,ヘアアクセ,28030,青,ガールズエール,ポップ,550,ダンシングマーチブルー,GAME PriPara Music Collection vol.6,,
-cd_005,CD-005,R,プリプリしつじバイオレットワンピ,ワンピース,28200,紫,ブランドなし,,1000,プリプリしつじバイオレット,GAME PriPara Music Collection vol.7,,
-cd_006,CD-006,R,プリプリしつじバイオレットシューズ,シューズ,28201,紫,ブランドなし,,550,プリプリしつじバイオレット,GAME PriPara Music Collection vol.7,,
-cd_007,CD-007,R,プリプリしつじバイオレットヘアアクセ,ヘアアクセ,28202,紫,ブランドなし,,550,プリプリしつじバイオレット,GAME PriPara Music Collection vol.7,,
-cd_008,CD-008,R,WITHガールズシューズ,シューズ,28189,ピンク,ブランドなし,,550,WITHガールズ,GAME PriPara Music Collection vol.7,,
+key,item_id,rarity,name,category,image_num,color,brand,type,like,outfit_id,volume,series_name,term_start,term_end
+cd_001,CD-001,R,ダンシングマーチブルートップス,トップス,28027,青,ガールズエール,ポップ,550,ダンシングマーチブルー,,GAME PriPara Music Collection vol.6,,
+cd_002,CD-002,R,ダンシングマーチブルースカート,ボトムス,28028,青,ガールズエール,ポップ,650,ダンシングマーチブルー,,GAME PriPara Music Collection vol.6,,
+cd_003,CD-003,R,ダンシングマーチブルーシューズ,シューズ,28029,青,ガールズエール,ポップ,600,ダンシングマーチブルー,,GAME PriPara Music Collection vol.6,,
+cd_004,CD-004,R,ダンシングマーチブルーヘアアクセ,ヘアアクセ,28030,青,ガールズエール,ポップ,550,ダンシングマーチブルー,,GAME PriPara Music Collection vol.6,,
+cd_005,CD-005,R,プリプリしつじバイオレットワンピ,ワンピース,28200,紫,ブランドなし,,1000,プリプリしつじバイオレット,,GAME PriPara Music Collection vol.7,,
+cd_006,CD-006,R,プリプリしつじバイオレットシューズ,シューズ,28201,紫,ブランドなし,,550,プリプリしつじバイオレット,,GAME PriPara Music Collection vol.7,,
+cd_007,CD-007,R,プリプリしつじバイオレットヘアアクセ,ヘアアクセ,28202,紫,ブランドなし,,550,プリプリしつじバイオレット,,GAME PriPara Music Collection vol.7,,
+cd_008,CD-008,R,WITHガールズシューズ,シューズ,28189,ピンク,ブランドなし,,550,WITHガールズ,,GAME PriPara Music Collection vol.7,,

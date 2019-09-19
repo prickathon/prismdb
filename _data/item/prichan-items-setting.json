@@ -7,6 +7,7 @@
         "../_data/item/prichan-items-J1.csv",
         "../_data/item/prichan-items-J2.csv",
         "../_data/item/prichan-items-J3.csv",
+        "../_data/item/prichan-items-J4.csv",
         "../_data/item/prichan-items-JP.csv",
         "../_data/item/prichan-items-PB.csv",
         "../_data/item/prichan-items-DF.csv",
@@ -26,7 +27,8 @@
         "../_data/item/prichan-items-AM.csv",
         "../_data/item/prichan-items-YA.csv",
         "../_data/item/prichan-items-PP5.csv",
-        "../_data/item/prichan-items-MC.csv"
+        "../_data/item/prichan-items-MC.csv",
+        "../_data/item/prichan-items-NC.csv"
     ],
     "columnsCsvPath": "../_data/item/prichan-items-columns.csv",
     "rdfType": "$BASE_URL/prism-schema.ttl#Item",

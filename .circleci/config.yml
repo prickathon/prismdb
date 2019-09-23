@@ -1,18 +1,5 @@
 version: 2
 jobs:
-  csv2rdf:
-    docker:
-      - image: node:11.9
-    steps:
-      - checkout
-      - run:
-          working_directory: csv2rdf
-          name: install dependencies
-          command: npm ci
-      - run:
-          working_directory: csv2rdf
-          name: convert
-          command: BASE_URL=https://prismdb.takanakahiko.me npm run start
   deploy:
     docker:
       - image: cdssnc/aws-cli
@@ -27,7 +14,6 @@ workflows:
   version: 2
   build_deploy:
     jobs:
-      - csv2rdf
       - deploy:
           requires:
             - csv2rdf

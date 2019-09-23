@@ -15,8 +15,6 @@ workflows:
   build_deploy:
     jobs:
       - deploy:
-          requires:
-            - csv2rdf
           filters:
             branches:
               only: master

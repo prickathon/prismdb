@@ -36,3 +36,10 @@ outfit_id,outfit_id,outfit_id
 series_name,シリーズ名,シリーズ名
 collection_term,期間,期間
 address,住所,住所
+prefecture,都道府県,都道府県
+term_start,開始日,開始日
+term_end,終了日,終了日
+favorite_food,好きな食べ物,好きな食べ物
+volume,volume,volume
+あにてれ,あにてれ,あにてれ
+performedInLive,performedInLive,performedInLive

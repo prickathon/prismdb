@@ -1,6 +1,6 @@
 key,predicate,dataType
 話数,話数,http://www.w3.org/2001/XMLSchema#integer
-サブタイトル,サブタイトル,
+サブタイト,サブタイトル,
 脚本,脚本,
 絵コンテ,絵コンテ,
 ストーリーボード,ストーリーボード,

@@ -12,7 +12,6 @@ const fetchShop = async (prefName: string) => {
     const name = $(e).find('dt').text()
     const address = $(e).find('dd').text()
     return {
-      key: `${prefName}_${i}`,
       prefecture,
       name,
       address
@@ -31,7 +30,7 @@ const gegtPrefNames = async () => {
 
 const addCSV = async (prefName: string) => {
   const shops = await fetchShop(prefName)
-  const header = ['key', 'prefecture', 'name', 'address']
+  const header = ['prefecture', 'name', 'address']
   const csvData = shops.map(v => header.map(k => v[k]))
   csvData.unshift(header)
   const ret = await csv.stringify(csvData)

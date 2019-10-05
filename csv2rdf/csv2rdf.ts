@@ -35,7 +35,7 @@ const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, set
     if (row[columnSetting.key].length == 0) return
 
     const subject = namedNode(setting.subjectBaseUrl + subjectKey(row, setting))
-    const predicate = namedNode(setting.PredicateBaseUrl + columnSetting.predicate)
+    const predicate = namedNode(setting.PredicateBaseUrl + columnSetting.predicate.replace(" ", ""))
     let object:N3.Quad_Object
     if (columnSetting.objectUriPrefix) {
         object = namedNode(replaceBaseurl(columnSetting.objectUriPrefix) + objectValue)

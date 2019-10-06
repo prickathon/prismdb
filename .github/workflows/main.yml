@@ -8,6 +8,7 @@ jobs:
     - uses: actions/checkout@master
     - working-directory: csv2rdf
       run: | 
+        BASE_URL=https://prismdb.takanakahiko.me
         npm ci
         npm start
     - uses: actions/setup-java@v1

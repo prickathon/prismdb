@@ -116,7 +116,7 @@ const getPatternResult = (keyAndPattern:KeyAndPattern, row: Object) => {
 
 const subjectKey = (row: Object, setting: Setting) => {
     const val = setting.subjectKey ? getPatternResult(setting.subjectKey, row) : row["key"] as string
-    return encodeURI(val)
+    return val.normalize("NFKC")
 }
 
 const getLebel = (row: Object, setting: Setting) => {

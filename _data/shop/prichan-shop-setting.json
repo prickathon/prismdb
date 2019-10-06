@@ -1,5 +1,6 @@
 {
     "subjectBaseUrl": "$BASE_URL/rdfs/shop/",
+    "subjectKey": {"keys": ["name"], "pattern": "$0"},
     "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
     "dataCsvPath":[
         "../_data/shop/hokkaido.csv",

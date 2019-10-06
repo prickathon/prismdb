@@ -34,7 +34,7 @@ const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, set
     let objectValue = row[columnSetting.key]
     if (row[columnSetting.key].length == 0) return
 
-    const subject = namedNode(setting.subjectBaseUrl + subjectKey(row, setting).replace(" ", "").replace("　", ""))
+    const subject = namedNode(setting.subjectBaseUrl + subjectKey(row, setting))
     const predicate = namedNode(setting.PredicateBaseUrl + columnSetting.predicate)
     let object:N3.Quad_Object
     if (columnSetting.objectUriPrefix) {
@@ -115,7 +115,8 @@ const getPatternResult = (keyAndPattern:KeyAndPattern, row: Object) => {
 }
 
 const subjectKey = (row: Object, setting: Setting) => {
-    return setting.subjectKey ? getPatternResult(setting.subjectKey, row) : row["key"] as string
+    const val = setting.subjectKey ? getPatternResult(setting.subjectKey, row) : row["key"] as string
+    return val.replace(" ", "").replace("　", "")
 }
 
 const getLebel = (row: Object, setting: Setting) => {

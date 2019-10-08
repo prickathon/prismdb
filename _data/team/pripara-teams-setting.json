@@ -1,0 +1,8 @@
+{
+    "subjectBaseUrl": "$BASE_URL/rdfs/team/",
+    "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
+    "dataCsvPath": "../_data/team/pripara-teams.csv",
+    "columnsCsvPath": "../_data/team/pripara-teams-columns.csv",
+    "rdfType": "$BASE_URL/prism-schema.ttl#Team",
+    "label": {"keys": ["name"], "pattern": "$0"}
+}

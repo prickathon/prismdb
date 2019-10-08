@@ -6,10 +6,10 @@
   "private": true,
   "scripts": {
     "generateTtl": "ts-node scripts/index.ts",
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
+    "dev": "nuxt-ts",
+    "build": "nuxt-ts build",
+    "start": "nuxt-ts start",
+    "generate": "nuxt-ts generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore . --fix",
     "precommit": "npm run lint"
   },

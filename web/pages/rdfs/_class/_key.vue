@@ -69,7 +69,7 @@ export default Vue.extend({
   computed: {
     label (): string {
       let ret = ''
-      response.results.bindings.forEach((binding) => {
+      this.response.results.bindings.forEach((binding) => {
         const labelUri = 'http://www.w3.org/2000/01/rdf-schema#label'
         if (binding.Property.value === labelUri) { ret = binding.Value.value }
       })

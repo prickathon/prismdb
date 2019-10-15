@@ -2,7 +2,9 @@
   <b-collapse :open.sync="open" class="card">
     <template v-slot:trigger="props">
       <div class="card-header" role="button">
-        <p class="card-header-title">{{ title }}</p>
+        <p class="card-header-title">
+          {{ title }}
+        </p>
         <a class="card-header-icon">
           <b-icon :icon="props.open ? 'menu-down' : 'menu-up'" />
         </a>
@@ -20,16 +22,17 @@
   </b-collapse>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 import axios from 'axios'
-export default {
+export default Vue.extend({
   props: {
     gistUrl: {
       type: String,
       required: true
     }
   },
-  data() {
+  data () {
     return {
       open: false,
       code: ' ',
@@ -44,17 +47,17 @@ export default {
     }
   },
   computed: {
-    editorLink: function() {
+    editorLink () {
       const encodedCode = encodeURIComponent(this.code)
       return `https://prismdb.takanakahiko.me/sparql?qtxt=${encodedCode}`
     }
   },
   watch: {
-    open: function(val) {
+    open () {
       this.code += ' '
     }
   },
-  async mounted() {
+  async mounted () {
     const m = this.gistUrl.match(
       /https:\/\/gist\.github\.com\/.+?\/([0-9a-z]+)(#.+)?/
     )
@@ -65,7 +68,7 @@ export default {
     this.cmOptions.mode = file.type
     this.title = response.data.description
   }
-}
+})
 </script>
 
 <style scoped>

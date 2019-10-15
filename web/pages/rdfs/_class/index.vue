@@ -12,17 +12,20 @@
           </li>
         </ul>
       </nav>
-      <h1 class="title is-1">{{ $route.params.class }}</h1>
+      <h1 class="title is-1">
+        {{ $route.params.class }}
+      </h1>
       <sparql-response-table :response="response" />
     </div>
   </section>
 </template>
 
-<script>
-import SparqlResponseTable from '~/components/SparqlResponseTable'
-export default {
+<script lang="ts">
+import Vue from 'vue'
+import SparqlResponseTable from '~/components/SparqlResponseTable.vue'
+export default Vue.extend({
   components: { SparqlResponseTable },
-  async asyncData({ $axios, params, error }) {
+  async asyncData ({ $axios, params, error }) {
     const schemeBaseUrl = `https://prismdb.takanakahiko.me/prism-schema.ttl#` // これは環境変数でいいかも
     const className =
       params.class.charAt(0).toUpperCase() + params.class.slice(1) // 先頭を大文字にする
@@ -52,5 +55,5 @@ export default {
       error({ statusCode: 404, message: 'Data not found' })
     }
   }
-}
+})
 </script>

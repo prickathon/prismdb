@@ -4,10 +4,14 @@
       <nav class="breadcrumb" aria-label="breadcrumbs">
         <ul>
           <li><a href="/">Home</a></li>
-          <li class="is-active"><a href="/rdfs/">RDFs</a></li>
+          <li class="is-active">
+            <a href="/rdfs/">RDFs</a>
+          </li>
         </ul>
       </nav>
-      <h1 class="title is-1">RDFs</h1>
+      <h1 class="title is-1">
+        RDFs
+      </h1>
       <ul>
         <li><a href="/rdfs/character">Character</a></li>
         <li><a href="/rdfs/episode">Episode</a></li>

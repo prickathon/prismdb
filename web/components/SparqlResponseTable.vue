@@ -29,11 +29,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue, { PropType } from 'vue'
+import { SparqleResponse } from '~/types/SparqleResponse.d.ts'
 export default Vue.extend({
   props: {
     response: {
-      type: Object,
+      type: Object as PropType<SparqleResponse>,
       required: true
     }
   }

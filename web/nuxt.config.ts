@@ -54,7 +54,7 @@ export default {
   },
 
   proxy: {
-    '/sparql': 'https://prismdb.takanakahiko.me/sparql',
+    '/sparql': 'http://sparql:8890/sparql',
     '/api': {
       target: 'http://restapi:4567',
       pathRewrite: { '^/api': '/' }

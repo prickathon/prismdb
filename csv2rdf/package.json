@@ -5,7 +5,9 @@
   "author": "takanakahiko",
   "private": true,
   "scripts": {
-    "start": "ts-node index.ts"
+    "start": "ts-node index.ts",
+    "shops-pripara": "ts-node tools/update-shops-pripara.ts",
+    "shops-prichan": "ts-node tools/update-shops-prichan.ts"
   },
   "devDependencies": {
     "@types/cheerio": "^0.22.13",

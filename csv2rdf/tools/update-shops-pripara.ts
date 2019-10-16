@@ -31,7 +31,7 @@ const getPrefNames = async () => {
 const addCSV = async (prefName: string) => {
   const shops = await fetchShop(prefName)
   const header = ['series', 'prefecture', 'name', 'address']
-  const csvData = shops.map(v => header.map(k => v[k]))
+  const csvData = shops.map(v => header.map(k => v[k].trim() ))
   csvData.unshift(header)
   const ret = await csv.stringify(csvData)
   fs.writeFileSync(`../_data/shop/pripara_${prefName}.csv`, ret);

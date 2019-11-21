@@ -4,7 +4,7 @@ jobs:
   base:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.head_ref }}
+      - run: echo '${{ github.base_ref }}'
   build:
     runs-on: ubuntu-latest
     container: node:latest

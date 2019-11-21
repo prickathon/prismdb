@@ -1,0 +1,19 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: node:latest
+    steps:
+    - uses: actions/checkout@master
+    - working-directory: csv2rdf
+      run: | 
+        npm ci
+        BASE_URL=https://prismdb.takanakahiko.me npm start
+    - uses: actions/upload-artifact@master
+      with:
+        name: output.ttl
+        path: virtuoso/data/toLoad/output.ttl

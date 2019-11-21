@@ -2,6 +2,7 @@ on: [pull_request]
 
 jobs:
   base:
+    runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.head_ref }}
   build:

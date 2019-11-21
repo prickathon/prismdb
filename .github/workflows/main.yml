@@ -17,3 +17,7 @@ jobs:
         RDFLINT_VERSION=0.0.9
         wget -q https://jitpack.io/com/github/imas/rdflint/$RDFLINT_VERSION/rdflint-$RDFLINT_VERSION-all.jar
         java -jar rdflint-$RDFLINT_VERSION-all.jar -config .circleci/rdflint-config.yml -targetdir virtuoso/data/toLoad
+    - uses: actions/upload-artifact@master
+      with:
+        name: output.ttl
+        path: virtuoso/data/toLoad/output.ttl

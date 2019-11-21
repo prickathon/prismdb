@@ -4,7 +4,7 @@ jobs:
   base:
     runs-on: ubuntu-latest
     steps:
-      - run: echo '${{ github.base_ref }}'
+      - run: echo '${{ github.event.pull_request.base.sha }}'
   build:
     runs-on: ubuntu-latest
     container: node:latest

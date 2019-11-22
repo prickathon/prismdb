@@ -1,0 +1,34 @@
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: node:latest
+    steps:
+      - uses: actions/checkout@master
+      - working-directory: csv2rdf
+        run: | 
+          npm ci
+          BASE_URL=https://prismdb.takanakahiko.me npm start
+      - uses: actions/upload-artifact@master
+        with:
+          name: output.ttl
+          path: virtuoso/data/toLoad/output.ttl
+  upload-s3:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: output.ttl
+      - run: ls output.ttl
+      - uses: actions/aws/cli@master
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        with:
+          args: s3 cp output.ttl/output.ttl ${{ secrets.S3_UPLOAD_PATH }}${{ github.sha }}.ttl --acl public-read
+

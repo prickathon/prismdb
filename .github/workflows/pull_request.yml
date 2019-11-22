@@ -44,6 +44,7 @@ jobs:
           path: base.ttl
   check:
     needs: [build, download-s3]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@master
         with:

@@ -24,10 +24,11 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: output.ttl
+      - run: ls output.ttl
       - uses: actions/aws/cli@master
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         with:
-          args: s3 cp output.ttl ${{ secrets.S3_UPLOAD_PATH }}${{ github.sha }}.ttl --acl public-read
+          args: s3 cp output.ttl/output.ttl ${{ secrets.S3_UPLOAD_PATH }}${{ github.sha }}.ttl --acl public-read
 

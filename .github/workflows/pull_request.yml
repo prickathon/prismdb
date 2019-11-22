@@ -13,11 +13,22 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '1.8.0'
+      - uses: actions/upload-artifact@master
+        with:
+          name: rdfs
+          path: virtuoso/data/toLoad/
+  lint:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: rdfs
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '1.8.0'
       - run: |
           RDFLINT_VERSION=0.0.9
           wget -q https://jitpack.io/com/github/imas/rdflint/$RDFLINT_VERSION/rdflint-$RDFLINT_VERSION-all.jar
-          java -jar rdflint-$RDFLINT_VERSION-all.jar -config .circleci/rdflint-config.yml -targetdir virtuoso/data/toLoad
-      - uses: actions/upload-artifact@master
-        with:
-          name: output.ttl
-          path: virtuoso/data/toLoad/output.ttl
+          java -jar rdflint-$RDFLINT_VERSION-all.jar -config .circleci/rdflint-config.yml -targetdir rdfs
+

@@ -35,9 +35,8 @@ jobs:
   download-s3:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/aws/cli@master
-        with:
-          args: s3 cp s3://prismdb-build-results/${{ github.event.pull_request.base.sha }}.ttl base.ttl
+      - run: curl -OL https://prismdb-build-results.s3-ap-northeast-1.amazonaws.com/${{ github.event.pull_request.base.sha }}.ttl base.ttl
+      - run: mv ${{ github.event.pull_request.base.sha }}.ttl base.ttl
       - uses: actions/upload-artifact@master
         with:
           name: base

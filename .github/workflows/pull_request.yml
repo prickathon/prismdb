@@ -32,4 +32,23 @@ jobs:
           RDFLINT_VERSION=0.0.9
           wget -q https://jitpack.io/com/github/imas/rdflint/$RDFLINT_VERSION/rdflint-$RDFLINT_VERSION-all.jar
           java -jar rdflint-$RDFLINT_VERSION-all.jar -config .circleci/rdflint-config.yml -targetdir rdfs
-
+  download-s3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/aws/cli@master
+        with:
+          args: s3 cp s3://prismdb-build-results/${{ github.event.pull_request.base.sha }}.ttl base.ttl
+      - uses: actions/upload-artifact@master
+        with:
+          name: base
+          path: base.ttl
+  check:
+    needs: [build, download-s3]
+    steps:
+      - uses: actions/download-artifact@master
+        with:
+          name: rdfs
+      - uses: actions/download-artifact@master
+        with:
+          name: base
+      - run: diff rdfs/output.ttl base/base.ttl

@@ -52,3 +52,11 @@ jobs:
         with:
           name: base
       - run: diff rdfs/output.ttl base/base.ttl
+      - run: ./scripts/GetDiffs.sh
+      - uses: actions/github-script@0.3.0
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const fs = require('fs')
+            const text = fs.readFileSync("./comment.txt")
+            github.issues.createComment({...context.issue, body: text})

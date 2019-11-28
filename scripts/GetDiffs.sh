@@ -9,4 +9,4 @@ comment="\`\`\`diff
 $diff
 \`\`\`"
 
-echo $comment > ./comment.txt
+echo $comment > ./diff.md

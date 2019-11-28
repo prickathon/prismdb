@@ -59,4 +59,5 @@ jobs:
           script: |
             const fs = require('fs')
             const text = fs.readFileSync("./comment.txt")
+            console.log(context.issue)
             github.issues.createComment({...context.issue, body: text})

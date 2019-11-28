@@ -51,7 +51,6 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: base
-      - run: diff rdfs/output.ttl base/base.ttl
       - run: ./scripts/GetDiffs.sh
       - uses: actions/github-script@0.3.0
         with:

@@ -60,4 +60,4 @@ jobs:
             const fs = require('fs')
             const text = fs.readFileSync("./comment.txt")
             const issue = { owner: context.issue.owner, repo: context.issue.repo, issue_number: context.issue.number }
-            github.issues.createComment({...issue, body: text})
+            github.issues.createComment({...issue, body: 'test'})

@@ -45,6 +45,7 @@ jobs:
     needs: [build, download-s3]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
       - uses: actions/download-artifact@master
         with:
           name: rdfs

@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     container: node:latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v1
       - working-directory: csv2rdf
         run: | 
           npm ci
@@ -21,7 +21,7 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v1
       - uses: actions/download-artifact@master
         with:
           name: rdfs
@@ -45,7 +45,7 @@ jobs:
     needs: [build, download-s3]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v1
       - uses: actions/download-artifact@master
         with:
           name: rdfs

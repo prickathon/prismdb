@@ -1,3 +1,7 @@
 #!/bin/sh
 docker-compose -p prismdb -f /var/app/docker-compose.yml down
-docker system prune -af --volumes
+
+docker rm -f $(docker ps -aq)
+docker rmi -f $(docker images -q)
+docker volume rm -f $(docker volume ls -q)
+

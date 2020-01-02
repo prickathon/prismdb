@@ -23,6 +23,7 @@ start,開始,開始
 end,終了,終了
 liveOfEpisode,エピソード内のライブ,エピソード内のライブ
 performer,演者,演者
+performerIn,演者をしたライブ,演者をしたライブ
 songPerformed,ライブ内の曲,ライブ内の曲
 タイトル,タイトル,タイトル
 hasEpisode,シリーズ内のエピソード,シリーズ内のエピソード

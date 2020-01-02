@@ -21,6 +21,7 @@
               <a class="navbar-link" href="/rdfs/">RDF</a>
               <div class="navbar-dropdown is-boxed">
                 <a class="navbar-item" href="/rdfs/character/">Characters</a>
+                <a class="navbar-item" href="/rdfs/team/">Teams</a>
                 <a class="navbar-item" href="/rdfs/episode/">Episodes</a>
                 <a class="navbar-item" href="/rdfs/song/">Songs</a>
                 <a class="navbar-item" href="/rdfs/live/">Lives</a>

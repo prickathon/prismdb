@@ -31,7 +31,7 @@
           SPARQLクエリ例
         </h4>
         <gist
-          gist-url="https://gist.github.com/takanakahiko/934f30c51e95a2bad3df666c4cd08be4"
+          gist-url="https://gist.github.com/banjun/9d7766e88f58b6cf719aa23aaab208fb"
         />
         <gist
           gist-url="https://gist.github.com/takanakahiko/2d88b5636b1b530234f0cdb86acbde00"

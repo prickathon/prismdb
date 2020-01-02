@@ -11,7 +11,12 @@
           :href="
             props.row[col].value.replace('https://prismdb.takanakahiko.me', '')
           "
-        >{{ props.row[col].value }}</a>
+        >{{ props.row[col].value
+          .replace('https://prismdb.takanakahiko.me/prism-schema.ttl#', 'prism:')
+          .replace('http://www.w3.org/1999/02/22-rdf-syntax-ns#', 'rdf:')
+          .replace('http://www.w3.org/2000/01/rdf-schema#', 'rdfs:')
+          .replace('https://prismdb.takanakahiko.me', '')
+        }}</a>
         <span v-else>{{ props.row[col].value }}</span>
       </b-table-column>
     </template>

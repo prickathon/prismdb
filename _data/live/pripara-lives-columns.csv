@@ -1,4 +1,5 @@
 key,predicate,dataType,objectUriPrefix,inversePredicate
 episode,liveOfEpisode,,$BASE_URL/rdfs/episode/pripara_,livePerformed
 song,songPerformed,,$BASE_URL/rdfs/song/,performedInLive
-team,performer,,,
+team,performer,,$BASE_URL/rdfs/team/,performerIn
+character,performer,,$BASE_URL/rdfs/character/,performerIn

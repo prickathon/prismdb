@@ -1,8 +1,8 @@
-episode,song,team,start,end
-1,ready_action,mirai_and_emo,1009,1136
-5,one_two_sweets,mirai,1142.8,1236.2
-6,suki_suki_sensor,emo,1073.8,1174.7
-52,tokimeki_heart_jewel,mirai,1130,1252
-56,shiawasei_kawaii_sanka,maria,1131,1256
-57,shiawasei_kawaii_sanka,maria,1066.7,1190.7
-58,yumeiro_energy,rinka,1047,1189.8
+episode,song,team,character,start,end
+1,ready_action,mirai_and_emo,,1009,1136
+5,one_two_sweets,,mirai,1142.8,1236.2
+6,suki_suki_sensor,,emo,1073.8,1174.7
+52,tokimeki_heart_jewel,,mirai,1130,1252
+56,shiawasei_kawaii_sanka,,maria,1131,1256
+57,shiawasei_kawaii_sanka,,maria,1066.7,1190.7
+58,yumeiro_energy,,rinka,1047,1189.8

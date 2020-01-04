@@ -14,6 +14,7 @@
       </h1>
       <ul>
         <li><a href="/rdfs/character">Character</a></li>
+        <li><a href="/rdfs/team">Team</a></li>
         <li><a href="/rdfs/episode">Episode</a></li>
         <li><a href="/rdfs/song">Song</a></li>
         <li><a href="/rdfs/live">Live</a></li>

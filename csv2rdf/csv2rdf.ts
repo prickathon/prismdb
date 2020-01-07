@@ -28,35 +28,38 @@ interface ColumnSetting {
     dataType?: string,
     objectUriPrefix?: string
     inversePredicate?: string
+    objectsSeparator?: string
 }
 
 const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, setting: Setting) => {
-    let objectValue = row[columnSetting.key]
-    if (row[columnSetting.key].length == 0) return
+    let cell = row[columnSetting.key]
+    let separator = columnSetting.objectsSeparator
+    let objectValues = (separator ? cell.split(separator) : [cell]).map(v => v.trim()).filter(v => v)
 
-    const subject = namedNode(setting.subjectBaseUrl + subjectKey(row, setting))
-    const predicate = namedNode(setting.PredicateBaseUrl + columnSetting.predicate)
-    let object:N3.Quad_Object
-    if (columnSetting.objectUriPrefix) {
-        object = namedNode(replaceBaseurl(columnSetting.objectUriPrefix) + objectValue)
-    
-        // namedNodeが目的語のときだけ逆参照も可能
-        if (columnSetting.inversePredicate) {
-            store.addQuad(
-                object,
-                namedNode(setting.PredicateBaseUrl + columnSetting.inversePredicate),
-                subject
-            );
+    for (let objectValue of objectValues) {
+        const subject = namedNode(setting.subjectBaseUrl + subjectKey(row, setting))
+        const predicate = namedNode(setting.PredicateBaseUrl + columnSetting.predicate)
+        let object:N3.Quad_Object
+        if (columnSetting.objectUriPrefix) {
+            object = namedNode(replaceBaseurl(columnSetting.objectUriPrefix) + objectValue)
+        
+            // namedNodeが目的語のときだけ逆参照も可能
+            if (columnSetting.inversePredicate) {
+                store.addQuad(
+                    object,
+                    namedNode(setting.PredicateBaseUrl + columnSetting.inversePredicate),
+                    subject
+                );
+            }
+        } else if (columnSetting.dataType) {
+            const dataTypeNode = namedNode(columnSetting.dataType)
+            object = literal(objectValue, dataTypeNode)
+        } else {
+            object = literal(objectValue)
         }
-    } else if (columnSetting.dataType) {
-        const dataTypeNode = namedNode(columnSetting.dataType)
-        object = literal(objectValue, dataTypeNode)
-    } else {
-        object = literal(objectValue)
+
+        store.addQuad(subject, predicate, object);
     }
-
-    store.addQuad(subject, predicate, object);
-
 }
 
 const getCsvData = async (filePath: string): Promise<Object[]> => {

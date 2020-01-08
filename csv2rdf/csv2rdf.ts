@@ -32,9 +32,9 @@ interface ColumnSetting {
 }
 
 const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, setting: Setting) => {
-    let cell = row[columnSetting.key]
-    let separator = columnSetting.objectsSeparator
-    let objectValues = (separator ? cell.split(separator) : [cell]).map(v => v.trim()).filter(v => v)
+    const cell = row[columnSetting.key]
+    const separator = columnSetting.objectsSeparator
+    const objectValues = (separator ? cell.split(separator) : [cell]).map(v => v.trim()).filter(v => v)
 
     for (let objectValue of objectValues) {
         const subject = namedNode(setting.subjectBaseUrl + subjectKey(row, setting))

@@ -1,3 +1,4 @@
-key,predicate,dataType
-name,name,
-name_kana,name_kana,
+key,predicate,dataType,objectUriPrefix,inversePredicate,objectsSeparator
+name,name,,,,
+name_kana,name_kana,,,,
+members,member,,$BASE_URL/rdfs/character/,memberOf,&

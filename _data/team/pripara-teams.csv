@@ -1,34 +1,34 @@
-key,name,name_kana
-solami_smile,SoLaMi♡SMILE,そらみすまいる
-dressing_pafe,DressingPafé,どれっしんぐぱふぇ
-aromageddon,アロマゲドン,あろまげどん
-pripara_police,プリパラポリス,ぷりぱらぽりす
-garumageddon,ガァルマゲドン,がぁるまげどん
-triangle,TRiANGLE,とらいあんぐる
-tricolore,Tricolore,とりころーる
-non_sugar,NonSugar,のんしゅがー
-ucchari_big_bangs,UCCHARI BIG-BANGS,うっちゃりびっぐばんず
-solami_dressing,SoLaMiDressing,そらみどれっしんぐ
-solami_dressing_and_falulu,SoLaMiDressing&Falulu,
-laala_and_mirei,らぁら&みれぃ,
-solamageddon_mi,そらマゲドン・み,そらまげどんみ
-dressing_flower,ドレッシングふらわー,どれっしんぐふらわー
-cosmic_omelet_rice_da_vinci,コズミックオムライスダ・ヴィンチ,こずみっくおむらいすだびんち
-serepara_kagekidan,セレパラ歌劇団,せれぱらかげきだん
-dorothy_and_leona,ドロシー&レオナ,
-friend_all,ふれんど～る,ふれんどーる
-huwari_and_hibiki,ふわり&ひびき,
-pripara_dream_all_stars,プリパラドリーム☆オールスターズ,ぷりぱらどりーむおーるすたーず
-friend_all_and_serepara_kagekidan,ふれんど～る&セレパラ歌劇団,
-laala_and_non,らぁら&のん,
-falulu_and_hibiki,ファルル&ひびき,
-laala_and_gaaruru,らぁら&ガァルル,
-laala_with_triangle,らぁら with トライアングル,
-laala_with_junon,らぁら with じゅのん,
-laala_with_pinon,らぁら with ぴのん,
-laala_with_kanon,らぁら with かのん,
-chanko_with_sophie_sinneitai,ちゃん子 with そふぃ親衛隊,
-jewlie_and_janice,ジュリィ&ジャニス,
-solami_smile_and_jewlie_and_janice,SoLaMi SMILE&ジュリィ&ジャニス,
-dressing_pafe_and_non_sugar_and_tricolore_and_garumageddon_and_ucchari_big_bangs,DressingPafé & NonSugar & Tricolore & ガァルマゲドン & UCCHARI BIG-BANGS,
-solami_smile_and_dressing_pafe_and_non_sugar_and_tricolore_and_garumageddon_and_ucchari_big_bangs,SoLaMi SMILE & DressingPafé & NonSugar & Tricolore & ガァルマゲドン & UCCHARI BIG-BANGS,
+key,name,name_kana,members
+solami_smile,SoLaMi♡SMILE,そらみすまいる,manaka_laala & minami_mirei & hojo_sophie
+dressing_pafe,DressingPafé,どれっしんぐぱふぇ,todo_shion & dorothy_west & leona_west
+aromageddon,アロマゲドン,あろまげどん,kurosu_aroma & shiratama_mikan
+pripara_police,プリパラポリス,ぷりぱらぽりす,manaka_laala & dorothy_west & shiratama_mikan
+garumageddon,ガァルマゲドン,がぁるまげどん,kurosu_aroma & shiratama_mikan & gaaruru
+triangle,TRiANGLE,とらいあんぐる,junon & pinon & kanon
+tricolore,Tricolore,とりころーる,shikyoin_hibiki & falulu & midorikaze_fuwari
+non_sugar,NonSugar,のんしゅがー,manaka_non & tsukikawa_chiri & taiyo_pepper
+ucchari_big_bangs,UCCHARI BIG-BANGS,うっちゃりびっぐばんず,hojo_cosmo & kiki_ajimi & nabesima_chanko
+solami_dressing,SoLaMiDressing,そらみどれっしんぐ,manaka_laala & minami_mirei & hojo_sophie & todo_shion & dorothy_west & leona_west
+solami_dressing_and_falulu,SoLaMiDressing&Falulu,,manaka_laala & minami_mirei & hojo_sophie & todo_shion & dorothy_west & leona_west & falulu
+laala_and_mirei,らぁら&みれぃ,,manaka_laala & minami_mirei
+solamageddon_mi,そらマゲドン・み,そらまげどんみ,
+dressing_flower,ドレッシングふらわー,どれっしんぐふらわー,
+cosmic_omelet_rice_da_vinci,コズミックオムライスダ・ヴィンチ,こずみっくおむらいすだびんち,
+serepara_kagekidan,セレパラ歌劇団,せれぱらかげきだん,
+dorothy_and_leona,ドロシー&レオナ,,
+friend_all,ふれんど～る,ふれんどーる,
+huwari_and_hibiki,ふわり&ひびき,,
+pripara_dream_all_stars,プリパラドリーム☆オールスターズ,ぷりぱらどりーむおーるすたーず,
+friend_all_and_serepara_kagekidan,ふれんど～る&セレパラ歌劇団,,
+laala_and_non,らぁら&のん,,
+falulu_and_hibiki,ファルル&ひびき,,
+laala_and_gaaruru,らぁら&ガァルル,,
+laala_with_triangle,らぁら with トライアングル,,
+laala_with_junon,らぁら with じゅのん,,
+laala_with_pinon,らぁら with ぴのん,,
+laala_with_kanon,らぁら with かのん,,
+chanko_with_sophie_sinneitai,ちゃん子 with そふぃ親衛隊,,
+jewlie_and_janice,ジュリィ&ジャニス,,
+solami_smile_and_jewlie_and_janice,SoLaMi SMILE&ジュリィ&ジャニス,,
+dressing_pafe_and_non_sugar_and_tricolore_and_garumageddon_and_ucchari_big_bangs,DressingPafé & NonSugar & Tricolore & ガァルマゲドン & UCCHARI BIG-BANGS,,
+solami_smile_and_dressing_pafe_and_non_sugar_and_tricolore_and_garumageddon_and_ucchari_big_bangs,SoLaMi SMILE & DressingPafé & NonSugar & Tricolore & ガァルマゲドン & UCCHARI BIG-BANGS,,

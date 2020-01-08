@@ -1,7 +1,0 @@
-{
-    "subjectBaseUrl": "$BASE_URL/rdfs/team/",
-    "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
-    "dataCsvPath": "../_data/team/pripara-team-member.csv",
-    "columnsCsvPath": "../_data/team/pripara-team-member-columns.csv",
-    "rdfType": "$BASE_URL/prism-schema.ttl#Team"
-}

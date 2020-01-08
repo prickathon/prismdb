@@ -6,7 +6,7 @@ category,category,,,
 image_num,image_num,,,
 color,color,,,
 brand_name,brand_name,,,
-brand,brand,,$BASE_URL/rdfs/brand/,
+brand,item_of,,$BASE_URL/rdfs/brand/,brand_item
 type,type,,,
 like,like,http://www.w3.org/2001/XMLSchema#integer,,
 outfit_id,outfit_id,,,

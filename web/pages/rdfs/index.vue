@@ -20,6 +20,7 @@
         <li><a href="/rdfs/live">Live</a></li>
         <li><a href="/rdfs/series">Series</a></li>
         <li><a href="/rdfs/item">Item</a></li>
+        <li><a href="/rdfs/brand">Brand</a></li>
         <li><a href="/rdfs/shop">Shops</a></li>
       </ul>
     </div>

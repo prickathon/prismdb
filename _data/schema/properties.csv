@@ -1,7 +1,10 @@
 key,label,comment
 birthday,誕生日,誕生日
 blood_type,血液型,血液型
-brand,ブランド,ブランド
+favorite_brand,好きなブランド,好きなブランド
+brand_name,アイテムのブランド名,item_ofのnameのこと
+brand_item,ブランドのアイテム,
+item_of,アイテムのブランド,
 charm,チャーム,チャーム
 cv,声優,声優
 name,名前,名前
@@ -47,3 +50,4 @@ performedInLive,performedInLive,performedInLive
 member,メンバー,メンバー
 memberOf,チームのメンバー,チームのメンバー
 series,シリーズ,シリーズ
+name_katakana,名前(カタカナ),名前(カタカナ)

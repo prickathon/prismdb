@@ -1,0 +1,8 @@
+{
+    "subjectBaseUrl": "$BASE_URL/rdfs/brand/",
+    "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
+    "dataCsvPath": "../_data/brand/brands.csv",
+    "columnsCsvPath": "../_data/brand/brands-columns.csv",
+    "rdfType": "$BASE_URL/prism-schema.ttl#Brand",
+    "label": {"keys": ["name"], "pattern": "$0"}
+}

@@ -1,4 +1,4 @@
-key,item_id,rarity,name,category,image_num,color,brand_name,brand,type,like,outfit_id,volume,series_name,term_start,term_end
-df_01,DF-01,PR,ミルキーレインボーだいあシューズ,シューズ,,白,ミルキーレインボー,milky_rainbow,ポップ,750,ミルキーレインボーだいあ,,だいあフェス～シューズスペシャル～,,
-df_02,DF-02,PR,ミルキーレインボーだいあヘアアクセ,ヘアアクセ,,白,ミルキーレインボー,milky_rainbow,ポップ,750,ミルキーレインボーだいあ,,だいあフェス～ヘアアクセスペシャル～,,
-df_03,DF-03,PR,ミルキーレインボーだいあワンピ,ワンピース,,白,ミルキーレインボー,milky_rainbow,ポップ,1500,ミルキーレインボーだいあ,,だいあフェス～ワンピスペシャル～,,
+key,item_id,rarity,name,category,image_num,color,brand,type,like,outfit_id,volume,series_name,term_start,term_end
+df_01,DF-01,PR,ミルキーレインボーだいあシューズ,シューズ,,白,milky_rainbow,ポップ,750,ミルキーレインボーだいあ,,だいあフェス～シューズスペシャル～,,
+df_02,DF-02,PR,ミルキーレインボーだいあヘアアクセ,ヘアアクセ,,白,milky_rainbow,ポップ,750,ミルキーレインボーだいあ,,だいあフェス～ヘアアクセスペシャル～,,
+df_03,DF-03,PR,ミルキーレインボーだいあワンピ,ワンピース,,白,milky_rainbow,ポップ,1500,ミルキーレインボーだいあ,,だいあフェス～ワンピスペシャル～,,

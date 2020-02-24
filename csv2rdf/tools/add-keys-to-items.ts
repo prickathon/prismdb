@@ -3,7 +3,7 @@ import * as path from "path"
 import * as csv from "async-csv";
 
 // item_id,rarity,name,category,image_num,color,brand,type,like,outfit_id,series_name,collection_term
-// J1-01,HR,しらゆきひめワンピ,ワンピース,71007,青,スイートハニー,ラブリー,2000,J1-02,みらいコレクション,4月4日（木）～5月22日（水）
+// J1-01,HR,しらゆきひめワンピ,ワンピース,71007,青,sweet_honey,ラブリー,2000,J1-02,みらいコレクション,4月4日（木）～5月22日（水）
 
 const getCsvData = async (filePath: string): Promise<string[][]> => {
   const fullPath = path.join(process.cwd(), filePath)

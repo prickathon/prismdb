@@ -44,7 +44,7 @@ jobs:
   download-master-artifacts:
     runs-on: ubuntu-latest
     steps:
-      - run: curl -v -L -H "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -o test.zip "https://api.github.com/repos/prickathon/prismdb/actions/artifacts/2092935/zip"
+      - run: curl -v -L -o test.zip -H "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/prickathon/prismdb/actions/artifacts/2092935/zip"
       - run: unzip test.zip
       - run: ls
       - run: ls test

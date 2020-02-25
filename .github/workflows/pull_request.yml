@@ -41,6 +41,11 @@ jobs:
         with:
           name: base
           path: base.ttl
+  download-master-artifacts:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -v -L -u ${{ secrets.GITHUB_TOKEN }} -o test.zip "https://api.github.com/repos/prickathon/prismdb/actions/artifacts/2092935/zip"
+      - run: ls
   check:
     needs: [build, download-s3]
     runs-on: ubuntu-latest

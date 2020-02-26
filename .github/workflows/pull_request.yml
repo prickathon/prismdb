@@ -50,8 +50,10 @@ jobs:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
             const huga = 'hugo';
-            return huga
-      - run: echo ${{ steps.hoge.result }}
+            console.log(`::set-output name=huga::${huga}`);
+            return huga;
+      - run: echo ${{ steps.hoge.outputs.huga }}
+      - run: echo ${{ steps.hoge.outputs.result }}
   download-master-artifacts:
     runs-on: ubuntu-latest
     steps:

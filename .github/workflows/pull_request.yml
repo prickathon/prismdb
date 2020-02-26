@@ -49,8 +49,9 @@ jobs:
           id: hoge
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const huga = 'hugo'
-            console.log(`##[set-output name=huga;]${huga}`)
+            const huga = 'hugo';
+            console.log(`test`);
+            console.log(`::set-output name=huga::${huga}`);
       - run: echo ${{ steps.hoge.huga }}
   download-master-artifacts:
     runs-on: ubuntu-latest

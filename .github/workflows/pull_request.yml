@@ -51,7 +51,7 @@ jobs:
           script: |
             const huga = 'hugo'
             console.log(`##[set-output name=huga;]${huga}`)
-      - run: echo ${{ steps.hoge.huga.huga }}
+      - run: echo ${{ steps.hoge.huga }}
   download-master-artifacts:
     runs-on: ubuntu-latest
     steps:

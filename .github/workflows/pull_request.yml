@@ -41,6 +41,17 @@ jobs:
         with:
           name: base
           path: base.ttl
+  test: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@0.6.0
+        with:
+          id: hoge
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const huga = 'hugo'
+            console.log(`##[set-output name=huga;]${huga}`)
+      - run: echo ${{ steps.hoge.huga.huga }}
   download-master-artifacts:
     runs-on: ubuntu-latest
     steps:

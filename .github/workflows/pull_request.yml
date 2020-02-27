@@ -49,13 +49,13 @@ jobs:
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const runsRet = await octokit.actions.listRepoWorkflowRuns({
+            const runsRet = await github.actions.listRepoWorkflowRuns({
               owner: context.repo.owner,
               repo: context.repo.repo,
               branch: 'master'
             });
             const run_id = runsRet.workflow_runs[0].id
-            const artifactsRet = await octokit.actions.listWorkflowRunArtifacts({
+            const artifactsRet = await github.actions.listWorkflowRunArtifacts({
               owner: context.repo.owner,
               repo: context.repo.repo,
               run_id

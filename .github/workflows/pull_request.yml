@@ -45,15 +45,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@0.6.0
-        id: hoge
+        id: get_archive_download_url
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
-            const huga = 'hugo';
-            console.log(`::set-output name=huga::${huga}`);
-            return huga;
-      - run: echo ${{ steps.hoge.outputs.huga }}
-      - run: echo ${{ steps.hoge.outputs.result }}
+            const runsRet = await octokit.actions.listRepoWorkflowRuns({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              branch: 'master'
+            });
+            const run_id = runsRet.workflow_runs[0].id
+            const artifactsRet = await octokit.actions.listWorkflowRunArtifacts({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id
+            });
+            return artifactsRet.artifacts[0].archive_download_url;
+      - run: |
+          curl -v -L -o test.zip -H "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" ${{ steps.archive_download_url.outputs.result }}
+      - run: unzip test.zip
+      - run: ls
   download-master-artifacts:
     runs-on: ubuntu-latest
     steps:

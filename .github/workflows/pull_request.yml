@@ -22,34 +22,10 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: rdfs
+      - run: ls rdfs
       - uses: actions/setup-java@v1
         with:
           java-version: 11
       - uses: imas/setup-rdflint@v1
       - run: rdflint -config .circleci/rdflint-config.yml -targetdir rdfs
-  download-s3:
-    runs-on: ubuntu-latest
-    steps:
-      - run: curl -OL https://prismdb-build-results.s3-ap-northeast-1.amazonaws.com/${{ github.event.pull_request.base.sha }}.ttl
-      - run: mv ${{ github.event.pull_request.base.sha }}.ttl base.ttl
-      - uses: actions/upload-artifact@master
-        with:
-          name: base
-          path: base.ttl
-  check:
-    needs: [build, download-s3]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@master
-        with:
-          name: rdfs
-      - uses: actions/download-artifact@master
-        with:
-          name: base
-      - run: ./scripts/GetDiffs.sh
-      - uses: actions/upload-artifact@master
-        with:
-          name: diff
-          path: ./diff.md
 

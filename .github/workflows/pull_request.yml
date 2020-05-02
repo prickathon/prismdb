@@ -10,9 +10,6 @@ jobs:
         run: | 
           npm ci
           BASE_URL=https://prismdb.takanakahiko.me npm start
-      - uses: actions/setup-java@v1
-        with:
-          java-version: '1.8.0'
       - uses: actions/upload-artifact@master
         with:
           name: rdfs
@@ -27,7 +24,7 @@ jobs:
           name: rdfs
       - uses: actions/setup-java@v1
         with:
-          java-version: '1.8.0'
+          java-version: 11
       - uses: imas/setup-rdflint@v1
       - run: rdflint -config .circleci/rdflint-config.yml -targetdir rdfs
   download-s3:

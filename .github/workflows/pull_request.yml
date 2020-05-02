@@ -19,12 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifact@master
+      - uses: actions/download-artifact@v2
         with:
           name: rdfs
           path: rdfs
-      - run: ls
-      - run: ls rdfs
       - uses: actions/setup-java@v1
         with:
           java-version: 11

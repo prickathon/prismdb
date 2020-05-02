@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     container: node:latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - working-directory: csv2rdf
         run: | 
           npm ci

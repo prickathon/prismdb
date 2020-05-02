@@ -22,6 +22,8 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: rdfs
+          path: rdfs
+      - run: ls
       - run: ls rdfs
       - uses: actions/setup-java@v1
         with:

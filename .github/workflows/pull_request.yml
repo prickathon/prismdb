@@ -5,14 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     container: node:latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - working-directory: csv2rdf
         run: | 
           npm ci
           BASE_URL=https://prismdb.takanakahiko.me npm start
-      - uses: actions/setup-java@v1
-        with:
-          java-version: '1.8.0'
       - uses: actions/upload-artifact@master
         with:
           name: rdfs
@@ -21,38 +18,14 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/download-artifact@master
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
         with:
           name: rdfs
+          path: rdfs
       - uses: actions/setup-java@v1
         with:
-          java-version: '1.8.0'
+          java-version: 11
       - uses: imas/setup-rdflint@v1
       - run: rdflint -config .circleci/rdflint-config.yml -targetdir rdfs
-  download-s3:
-    runs-on: ubuntu-latest
-    steps:
-      - run: curl -OL https://prismdb-build-results.s3-ap-northeast-1.amazonaws.com/${{ github.event.pull_request.base.sha }}.ttl
-      - run: mv ${{ github.event.pull_request.base.sha }}.ttl base.ttl
-      - uses: actions/upload-artifact@master
-        with:
-          name: base
-          path: base.ttl
-  check:
-    needs: [build, download-s3]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/download-artifact@master
-        with:
-          name: rdfs
-      - uses: actions/download-artifact@master
-        with:
-          name: base
-      - run: ./scripts/GetDiffs.sh
-      - uses: actions/upload-artifact@master
-        with:
-          name: diff
-          path: ./diff.md
 

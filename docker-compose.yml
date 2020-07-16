@@ -1,27 +1,20 @@
-version: '3'
+version: "3.7"
 services:
-  sparql:
-    build: ./virtuoso
+  virtuoso:
+    environment: 
+      PORT: 1234
     ports:
-      - "8890:8890"
-  nuxt:
-    build: ./web
-    environment:
-      - HOST=0.0.0.0
-      - PORT=80
+      - "3001:1234"
+    build:
+      context: ./virtuoso
+      args:
+        DBA_PASSWORD: abcd
+  web:
+    environment: 
+      PORT: 1234
     ports:
-      - "80:80"
-    depends_on:
-      - sparql
-      - restapi
-  restapi:
-    build: ./restapi
-    ports:
-      - "4567:4567"
-    depends_on:
-      - sparql
-
-networks:
-  external_network:
-  internal_network:
-    internal: true
+      - "3000:1234"
+    build:
+      context: ./web
+      args:
+        SPARQL_ENDPOINT_URL: http://virtuoso:1234/sparql

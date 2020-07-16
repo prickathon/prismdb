@@ -80,7 +80,7 @@ export default class {
         return bindings2object(resp.results.bindings, arrayParameters)
     }
     static async q(query: string) {
-        const response = await axios.get('http://sparql:8890/sparql', {
+        const response = await axios.get(process.env.SPARQL_ENDPOINT_URL, {
             params: { query },
             headers: { 'Content-Type': 'application/sparql-query+json' }
         })

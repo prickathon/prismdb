@@ -1,13 +1,13 @@
-FROM tenforce/virtuoso:1.3.1-virtuoso7.2.2
+FROM askomics/virtuoso:7.2.5.1
 
-RUN unlink /data
-RUN ln -s /var/lib/virtuoso/db /data_
+ARG DBA_PASSWORD
+ENV DBA_PASSWORD=${DBA_PASSWORD}
 
 ADD ./scripts /scripts
-ADD ./data /data_
+ADD ./data /data
 
 RUN /scripts/setup.sh
 
-WORKDIR /data_
+ENV PORT 8080
 
 CMD /scripts/start.sh

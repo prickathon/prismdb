@@ -1,3 +1,2 @@
-#!/bin/bash
-cd /data_
-exec virtuoso-t +wait +foreground
+crudini --set /data/virtuoso.ini HTTPServer ServerPort ${PORT}
+virtuoso-t +wait +foreground

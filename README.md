@@ -16,7 +16,8 @@
 $ docker-compose -f docker-compose.csv2rdf.yml up
 
 # ローカルでサーバが立ち上がります(http://localhost:3000)
-$ docker-compose -f docker-compose.dev.yml up
+$ docker-compose build
+$ docker-compose up
 ```
 
 ## 中身
@@ -30,16 +31,14 @@ $ docker-compose -f docker-compose.dev.yml up
 
 ### csv2rdf
 
-- `_data` : RDFを生成するためのファイルがあります
+- `_data/` : RDFを生成するためのファイルがあります
 - `csv2rdf/` : csv(`_data/`)をrdf(`virtuoso/`)に変換する処理があります
 
 ### デプロイ
 
-CircleCI -> AWS Code Deploy -> EC2
+GitHub Actions -> GCP Cloud Run
 
-- `.circleci` : CircleCI の設定があります(code deploy が起動します)
-- `.appspec` : code deploy の設定があります( `scripts/start.sh` が起動します)
-- `scripts/` : デプロイ時にEC"上で動作する処理が定義されています
+- `.github/workflows/` : GitHub Actions の設定があります
 
 ## コントリビューション
 

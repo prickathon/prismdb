@@ -54,9 +54,9 @@ export default {
   },
 
   proxy: {
-    '/sparql': 'http://sparql:8890/sparql',
+    '/sparql': process.env.SPARQL_ENDPOINT_URL,
     '/api': {
-      target: 'http://restapi:4567',
+      target: process.env.RESTAPI_URL,
       pathRewrite: { '^/api': '/' }
     }
   },

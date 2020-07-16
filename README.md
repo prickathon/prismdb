@@ -31,14 +31,14 @@ $ docker-compose up
 
 ### csv2rdf
 
-- `_data` : RDFを生成するためのファイルがあります
+- `_data/` : RDFを生成するためのファイルがあります
 - `csv2rdf/` : csv(`_data/`)をrdf(`virtuoso/`)に変換する処理があります
 
 ### デプロイ
 
 GitHub Actions -> GCP Cloud Run
 
-- `.github/workflows` : GitHub Actions の設定があります
+- `.github/workflows/` : GitHub Actions の設定があります
 
 ## コントリビューション
 

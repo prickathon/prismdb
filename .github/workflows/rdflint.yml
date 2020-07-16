@@ -1,19 +1,6 @@
 on: [pull_request]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    container: node:latest
-    steps:
-      - uses: actions/checkout@v2
-      - working-directory: csv2rdf
-        run: | 
-          npm ci
-          BASE_URL=https://prismdb.takanakahiko.me npm start
-      - uses: actions/upload-artifact@master
-        with:
-          name: rdfs
-          path: virtuoso/data/toLoad/
   rdflint:
     runs-on: ubuntu-latest
     steps:
@@ -22,4 +9,8 @@ jobs:
         with:
           java-version: 11
       - uses: imas/setup-rdflint@v1
+      - working-directory: csv2rdf
+        run: | 
+          npm ci
+          BASE_URL=https://prismdb.takanakahiko.me npm start
       - run: rdflint -config virtuoso/rdflint-config.yml -targetdir virtuoso/data/toLoad

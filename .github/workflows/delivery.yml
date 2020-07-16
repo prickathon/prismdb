@@ -20,8 +20,6 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
 
-      - run: echo ::set-env name=IMAGE::'asia.gcr.io/${{env.GCP_PROJECT}}/${{ matrix.SERVICE_NAME }}:${{ github.sha }}'
-
       - name: GCP Authenticate
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
         with:
@@ -43,6 +41,9 @@ jobs:
         run: | 
           npm ci
           BASE_URL=https://prismdb.takanakahiko.me npm start
+
+      - name: Set the docker image name
+        run: echo ::set-env name=IMAGE::'asia.gcr.io/${{env.GCP_PROJECT}}/${{ matrix.SERVICE_NAME }}:${{ github.sha }}'
 
       - name: Build a docker image
         run: docker build ${{ matrix.SERVICE_NAME }} -t $IMAGE $BUILD_ARGS

@@ -31,10 +31,10 @@ export default Vue.extend({
   components: { SparqlResponseTable },
   head () {
     return {
-      title: `${this.label} - PrismDB`,
+      title: `${(this as any).label} - PrismDB`,
       meta: [
         // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        { hid: 'description', name: 'description', content: `prismdb の「${this.label}」のページです` }
+        { hid: 'description', name: 'description', content: `prismdb の「${(this as any).label}」のページです` }
       ]
     }
   },

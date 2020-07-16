@@ -61,6 +61,7 @@ export default Vue.extend({
     const m = this.gistUrl.match(
       /https:\/\/gist\.github\.com\/.+?\/([0-9a-z]+)(#.+)?/
     )
+    if(!m) return
     const apiUrl = `https://api.github.com/gists/${m[1]}`
     const response = await axios.get(apiUrl)
     const file = response.data.files[Object.keys(response.data.files)[0]]

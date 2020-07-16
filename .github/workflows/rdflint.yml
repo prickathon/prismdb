@@ -1,3 +1,5 @@
+name: rdflint
+
 on: [pull_request]
 
 jobs:

@@ -1,4 +1,4 @@
-name: Delivery Containers
+name: Build Containers
 
 on: [pull_request]
 

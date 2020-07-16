@@ -1,11 +1,17 @@
-FROM node:11.9
+FROM node:12.16.1
 
-WORKDIR /var/www/app
+ARG SPARQL_ENDPOINT_URL
+ENV SPARQL_ENDPOINT_URL=${SPARQL_ENDPOINT_URL}
 
-ADD ./package.json ./package-lock.json /var/www/app/
-RUN npm ci
+RUN mkdir -p /app
+COPY . /app
+WORKDIR /app
 
-ADD . /var/www/app
+RUN npm i
 RUN npm run build
 
-CMD npm start
+ENV NODE_ENV=production
+ENV HOST 0.0.0.0
+ENV PORT 8080
+
+CMD ["npm", "start"]

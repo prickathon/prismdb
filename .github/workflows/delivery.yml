@@ -31,7 +31,7 @@ jobs:
         run: gcloud auth configure-docker --quiet
 
       - if: matrix.SERVICE_NAME == 'web'
-        run: echo ::set-env name=BUILD_ARGS::'--build-arg SPARQL_ENDPOINT_URL=${{ secrets.SPARQL_ENDPOINT_URL }} RESTAPI_URL=${{ secrets.RESTAPI_URL }}'
+        run: echo ::set-env name=BUILD_ARGS::'--build-arg SPARQL_ENDPOINT_URL=${{ secrets.SPARQL_ENDPOINT_URL }} --build-arg RESTAPI_URL=${{ secrets.RESTAPI_URL }}'
 
       - if: matrix.SERVICE_NAME == 'virtuoso'
         run: echo ::set-env name=BUILD_ARGS::'--build-arg DBA_PASSWORD=${{ secrets.DBA_PASSWORD }}'

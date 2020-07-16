@@ -16,8 +16,7 @@ jobs:
       matrix:
         SERVICE_NAME: [web, virtuoso]
 
-    env:
-      IMAGE: asia.gcr.io/${{env.GCP_PROJECT}}/${{ matrix.SERVICE_NAME }}:${{ github.sha }}
+    run: echo ::set-env name=IMAGE::'asia.gcr.io/${{env.GCP_PROJECT}}/${{ matrix.SERVICE_NAME }}:${{ github.sha }}'
 
     steps:
       - name: Checkout the repository

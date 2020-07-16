@@ -7,4 +7,6 @@ RUN npm ci
 
 ADD . /var/www/app
 
+ENV PORT 8080
+
 CMD npm start

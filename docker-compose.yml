@@ -18,7 +18,10 @@ services:
       context: ./web
       args:
         SPARQL_ENDPOINT_URL: http://virtuoso:1234/sparql
+        RESTAPI_URL: http://restapi:4567/
   restapi:
+    environment: 
+      PORT: 4567
     ports:
       - "4567:4567"
     build:

@@ -1,0 +1,43 @@
+name: Delivery Containers
+
+on: [pull_request]
+
+env:
+  SPARQL_ENDPOINT_URL: https://prismdb.takanakahiko.me/sparql
+  RESTAPI_URL: https://prismdb.takanakahiko.me/api
+  DBA_PASSWORD: hogehuga
+
+jobs:
+
+  delivery:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        SERVICE_NAME: [web, virtuoso, restapi]
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Configure docker to use the gcloud cli
+        run: gcloud auth configure-docker --quiet
+
+      - if: matrix.SERVICE_NAME == 'web'
+        run: echo ::set-env name=BUILD_ARGS::'--build-arg SPARQL_ENDPOINT_URL=${{ env.SPARQL_ENDPOINT_URL }} --build-arg RESTAPI_URL=${{ env.RESTAPI_URL }}'
+      
+      - if: matrix.SERVICE_NAME == 'virtuoso'
+        run: echo ::set-env name=BUILD_ARGS::'--build-arg DBA_PASSWORD=${{ env.DBA_PASSWORD }}'
+
+      - if: matrix.SERVICE_NAME == 'restapi'
+        run: echo ::set-env name=BUILD_ARGS::'--build-arg SPARQL_ENDPOINT_URL=${{ env.SPARQL_ENDPOINT_URL }}'
+
+      - if: matrix.SERVICE_NAME == 'virtuoso' || matrix.SERVICE_NAME == 'web'
+        working-directory: csv2rdf
+        run: | 
+          npm ci
+          BASE_URL=https://prismdb.takanakahiko.me npm start
+
+      - name: Build a docker image
+        run: docker build ${{ matrix.SERVICE_NAME }} $BUILD_ARGS

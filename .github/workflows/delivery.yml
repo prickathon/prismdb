@@ -17,7 +17,7 @@ jobs:
         SERVICE_NAME: [web, virtuoso]
 
     env:
-      IMAGE: asia.gcr.io/${{ secrets.GCP_PROJECT }}/${{ matrix.SERVICE_NAME }}:${{ github.sha }}
+      IMAGE: asia.gcr.io/${GCP_PROJECT}/${{ matrix.SERVICE_NAME }}:${{ github.sha }}
 
     steps:
       - name: Checkout the repository

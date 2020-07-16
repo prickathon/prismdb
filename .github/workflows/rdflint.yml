@@ -22,4 +22,4 @@ jobs:
         with:
           java-version: 11
       - uses: imas/setup-rdflint@v1
-      - run: rdflint -config sparql-endpoint/rdflint-config.yml -targetdir sparql-endpoint/data/toLoad
+      - run: rdflint -config virtuoso/rdflint-config.yml -targetdir sparql-endpoint/data/toLoad

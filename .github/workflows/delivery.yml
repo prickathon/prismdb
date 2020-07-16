@@ -33,7 +33,7 @@ jobs:
 
     strategy:
       matrix:
-        SERVICE_NAME: [web, sparql-endpoint]
+        SERVICE_NAME: [web, virtuoso]
 
     env:
       IMAGE: asia.gcr.io/${{ secrets.GCP_PROJECT }}/${{ matrix.SERVICE_NAME }}:${{ github.sha }}
@@ -55,8 +55,14 @@ jobs:
       - if: matrix.SERVICE_NAME == 'web'
         run: echo ::set-env name=BUILD_ARGS::'--build-arg SPARQL_ENDPOINT_URL=${{ secrets.SPARQL_ENDPOINT_URL }}'
 
-      - if: matrix.SERVICE_NAME == 'sparql-endpoint'
+      - if: matrix.SERVICE_NAME == 'virtuoso'
         run: echo ::set-env name=BUILD_ARGS::'--build-arg DBA_PASSWORD=${{ secrets.DBA_PASSWORD }}'
+      
+      - if: matrix.SERVICE_NAME == 'virtuoso'
+        working-directory: csv2rdf
+        run: | 
+          npm ci
+          BASE_URL=https://prismdb.takanakahiko.me npm start
 
       - name: Build a docker image
         run: docker build ${{ matrix.SERVICE_NAME }} -t $IMAGE $BUILD_ARGS

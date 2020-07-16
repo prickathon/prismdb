@@ -35,15 +35,15 @@ jobs:
       
       - if: matrix.SERVICE_NAME == 'virtuoso'
         run: echo ::set-env name=BUILD_ARGS::'--build-arg DBA_PASSWORD=${{ secrets.DBA_PASSWORD }}'
-      
-      - if: matrix.SERVICE_NAME == 'virtuoso'
+
+      - if: matrix.SERVICE_NAME == 'restapi'
+        run: echo ::set-env name=BUILD_ARGS::'--build-arg SPARQL_ENDPOINT_URL=${{ secrets.SPARQL_ENDPOINT_URL }}'
+
+      - if: matrix.SERVICE_NAME == 'virtuoso' || matrix.SERVICE_NAME == 'web'
         working-directory: csv2rdf
         run: | 
           npm ci
           BASE_URL=https://prismdb.takanakahiko.me npm start
-
-      - if: matrix.SERVICE_NAME == 'restapi'
-        run: echo ::set-env name=BUILD_ARGS::'--build-arg SPARQL_ENDPOINT_URL=${{ secrets.SPARQL_ENDPOINT_URL }}'
         
       - name: Set the docker image name
         run: echo ::set-env name=IMAGE::'asia.gcr.io/${{env.GCP_PROJECT}}/${{ matrix.SERVICE_NAME }}:${{ github.sha }}'

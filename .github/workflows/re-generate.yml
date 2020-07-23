@@ -18,4 +18,6 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         author: takanakahiko <takanakahiko@gmail.com>
-        title: 'Update the Shops'
+        title: 'お店情報のアップデート'
+        body: |
+          お店情報の自動アップデートです！ #274

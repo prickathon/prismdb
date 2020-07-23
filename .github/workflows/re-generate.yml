@@ -1,0 +1,19 @@
+name: re-generate
+
+on: [pull_request]
+
+jobs:
+  re-generate:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - working-directory: csv2rdf
+        run: | 
+          npm ci
+          $(npm bin)/ts-node tools/update-shops-prichan.ts
+          $(npm bin)/ts-node tools/update-shops-pripara.ts
+    - uses: peter-evans/create-pull-request@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        author: takanakahiko <takanakahiko@gmail.com>
+        title: 'Update the Shops'

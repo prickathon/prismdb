@@ -1,14 +1,14 @@
 name: re-generate
 
-on: [pull_request]
+on:
+  schedule:
+    - cron: '0 */12 * * *'
 
 jobs:
   re-generate:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.head_ref }}
     - working-directory: csv2rdf
       run: |
         npm ci

@@ -51,9 +51,9 @@
         <h3 class="title is-3">
           REST API
         </h3>
-        <p>PrismDBはデータをREST APIとして公開しています．</p>
+        <p>PrismDBはデータをREST APIとしても公開しています．</p>
         <p>
-          <a href="https://github.com/prickathon/prismdb/tree/master/restapi">
+          <a href="https://github.com/prickathon/prismdb/tree/master/web/api">
             REST API に関するドキュメント
           </a>
         </p>

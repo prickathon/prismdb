@@ -1,33 +1,10 @@
 # prismdb-restapi
 
-> prismdbのREST APIを提供するExpressのアプリケーションです
+> prismdb の REST API を提供するExpressのアプリケーションです
 
-## Environment
+## Usage 
 
-- docker
-- docker-compose
-
-または
-
-- node(新しめのやつ)
-- npm(新しめのやつ)
-
-## Usage
-
-```bash
-# ローカルでサーバが立ち上がります(http://localhost/api)
-$ docker-compose -f ../docker-compose.dev.yml up
-```
-
-または
-
-```bash
-# 依存パッケージのインストール
-$ npm i
-
-# ローカルでサーバが立ち上がります(http://localhost:4567)
-$ npm run start
-```
+1階層上の nuxt のアプリケーションの起動時に /api で起動します。
 
 ## エンドポイント
 

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { KeyValue } from './util'
 
 interface Binding {
     [key: string]: {
@@ -27,7 +28,7 @@ const bindings2object = (
     bindings: Binding[],
     arrayParameters: { [_: string]: string } = {}
 ) => {
-    const ret: object = {}
+    const ret: KeyValue = {}
     Object.keys(arrayParameters).forEach(predicateName => {
         const parameterName = arrayParameters[predicateName]
         ret[parameterName] = []
@@ -80,7 +81,7 @@ export default class {
         return bindings2object(resp.results.bindings, arrayParameters)
     }
     static async q(query: string) {
-        const response = await axios.get(process.env.SPARQL_ENDPOINT_URL, {
+        const response = await axios.get(process.env.SPARQL_ENDPOINT_URL!, {
             params: { query },
             headers: { 'Content-Type': 'application/sparql-query+json' }
         })

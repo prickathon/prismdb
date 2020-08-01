@@ -1,4 +1,6 @@
-export const sortInstanceList = (instanceList: object[], keysForSort: string[]) => {
+export type KeyValue = { [key: string]: any; }
+
+export const sortInstanceList = (instanceList: KeyValue[], keysForSort: string[]) => {
     return instanceList.sort( (a, b) => {
         for(const key of keysForSort){
             if (a[key] < b[key]) return -1;
@@ -8,8 +10,8 @@ export const sortInstanceList = (instanceList: object[], keysForSort: string[]) 
     });
 }
 
-export const filterInstanceList = (instanceList: object[], params:{[_:string]:string} = {}) => {
-    let ret:object[] = [...instanceList] //deep copy
+export const filterInstanceList = (instanceList: KeyValue[], params:KeyValue = {}) => {
+    let ret:KeyValue[] = [...instanceList] //deep copy
     console.log(params)
     Object.keys(params).forEach( key => {
         ret = ret.filter( instance => instance[key].toString() === params[key] )

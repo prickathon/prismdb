@@ -17,11 +17,17 @@ jobs:
 
     strategy:
       matrix:
-        SERVICE_NAME: [web, virtuoso, restapi]
+        SERVICE_NAME: [web, virtuoso]
 
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v2
+
+      - name: prepara rdfs
+        working-directory: csv2rdf
+        run: | 
+          npm ci
+          BASE_URL=https://prismdb.takanakahiko.me npm start
 
       - name: GCP Authenticate
         uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
@@ -34,20 +40,11 @@ jobs:
         run: gcloud auth configure-docker --quiet
 
       - if: matrix.SERVICE_NAME == 'web'
-        run: echo ::set-env name=BUILD_ARGS::'--build-arg SPARQL_ENDPOINT_URL=${{ secrets.SPARQL_ENDPOINT_URL }} --build-arg RESTAPI_URL=${{ secrets.RESTAPI_URL }}'
+        run: echo ::set-env name=BUILD_ARGS::'--build-arg SPARQL_ENDPOINT_URL=${{ secrets.SPARQL_ENDPOINT_URL }}'
       
       - if: matrix.SERVICE_NAME == 'virtuoso'
         run: echo ::set-env name=BUILD_ARGS::'--build-arg DBA_PASSWORD=${{ secrets.DBA_PASSWORD }}'
 
-      - if: matrix.SERVICE_NAME == 'restapi'
-        run: echo ::set-env name=BUILD_ARGS::'--build-arg SPARQL_ENDPOINT_URL=${{ secrets.SPARQL_ENDPOINT_URL }}'
-
-      - if: matrix.SERVICE_NAME == 'virtuoso' || matrix.SERVICE_NAME == 'web'
-        working-directory: csv2rdf
-        run: | 
-          npm ci
-          BASE_URL=https://prismdb.takanakahiko.me npm start
-        
       - name: Set the docker image name
         run: echo ::set-env name=IMAGE::'asia.gcr.io/${{env.GCP_PROJECT}}/${{ matrix.SERVICE_NAME }}:${{ github.sha }}'
 

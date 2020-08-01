@@ -4,11 +4,11 @@ import { sortInstanceList, filterInstanceList } from '../middleware/util'
 
 const router = Router();
 
-const className = `Series`
+const className = `Song`
 const arrayParameters = {
-    'hasEpisode': 'episodes'
+    'performedInLive': 'lives'
 }
-const sortBy = []
+const sortBy:string[] = []
 
 router.get("/", async (req, res) => {
     const results = await Sparql.getInstanceList(className, arrayParameters)

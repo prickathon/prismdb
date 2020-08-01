@@ -15,8 +15,7 @@ $ npm i
 
 # 環境変数の設定
 $ export SPARQL_ENDPOINT_URL=https://prismdb.takanakahiko.me/sparql
-$ export RESTAPI_URL=https://prismdb.takanakahiko.me/api
 
-# ローカルでサーバが立ち上がります(http://localhost)
+# ローカルでサーバが立ち上がります(http://localhost:3000)
 $ npm run dev
 ```

@@ -4,7 +4,6 @@ on: [pull_request]
 
 env:
   SPARQL_ENDPOINT_URL: https://prismdb.takanakahiko.me/sparql
-  RESTAPI_URL: https://prismdb.takanakahiko.me/api
   DBA_PASSWORD: hogehuga
 
 jobs:
@@ -31,7 +30,7 @@ jobs:
         run: gcloud auth configure-docker --quiet
 
       - if: matrix.SERVICE_NAME == 'web'
-        run: echo ::set-env name=BUILD_ARGS::'--build-arg SPARQL_ENDPOINT_URL=${{ env.SPARQL_ENDPOINT_URL }} --build-arg RESTAPI_URL=${{ env.RESTAPI_URL }}'
+        run: echo ::set-env name=BUILD_ARGS::'--build-arg SPARQL_ENDPOINT_URL=${{ env.SPARQL_ENDPOINT_URL }}'
       
       - if: matrix.SERVICE_NAME == 'virtuoso'
         run: echo ::set-env name=BUILD_ARGS::'--build-arg DBA_PASSWORD=${{ env.DBA_PASSWORD }}'

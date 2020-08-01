@@ -54,11 +54,7 @@ export default {
   },
 
   proxy: {
-    '/sparql': process.env.SPARQL_ENDPOINT_URL,
-    '/api': {
-      target: process.env.RESTAPI_URL,
-      pathRewrite: { '^/api': '/' }
-    }
+    '/sparql': process.env.SPARQL_ENDPOINT_URL
   },
 
   typescript: {
@@ -71,5 +67,8 @@ export default {
    */
   build: {
   },
-  buildModules: ['@nuxt/typescript-build']
+  buildModules: ['@nuxt/typescript-build'],
+  serverMiddleware: [
+    { path: '/api', handler: '~/api/index.ts' }
+  ]
 }

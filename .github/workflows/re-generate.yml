@@ -22,6 +22,7 @@ jobs:
     - uses: peter-evans/create-pull-request@v3
       with:
         token: ${{ steps.generate-token.outputs.token }}
+        committer: GitHub <noreply@github.com>
         title: 'お店情報のアップデート'
         body: |
           お店情報の自動アップデートです！ #274

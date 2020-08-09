@@ -26,3 +26,5 @@ jobs:
         title: 'お店情報のアップデート'
         body: |
           お店情報の自動アップデートです！ #274
+        labels: |
+          automerge

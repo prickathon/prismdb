@@ -20,16 +20,17 @@ on:
 jobs:
   automerge:
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - uses: tibdex/github-app-token@v1
         id: generate-token
         with:
           app_id: ${{ secrets.GH_APPS_ID }}
           private_key: ${{ secrets.GH_APPS_PRIVATE_KEY }}
+        continue-on-error: true
       - name: automerge
         uses: "pascalgn/automerge-action@f81beb99aef41bb55ad072857d43073fba833a98"
         env:
           GITHUB_TOKEN: "${{ steps.generate-token.outputs.token }}"
           MERGE_LABELS: "automerge"
           MERGE_REMOVE_LABELS: "automerge"
+        continue-on-error: true

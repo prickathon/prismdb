@@ -20,6 +20,7 @@ on:
 jobs:
   automerge:
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: tibdex/github-app-token@v1
         id: generate-token

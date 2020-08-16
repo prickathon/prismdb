@@ -1,0 +1,8 @@
+key,predicate,dataType,objectsSeparator
+話数,話数,http://www.w3.org/2001/XMLSchema#integer,
+サブタイトル,サブタイトル,,
+脚本,脚本,,、
+絵コンテ,絵コンテ,,、
+演出,演出,,、
+作画監督,作画監督,,、
+総作画監督,総作画監督,,、

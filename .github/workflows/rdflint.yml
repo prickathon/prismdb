@@ -16,3 +16,12 @@ jobs:
           npm ci
           BASE_URL=https://prismdb.takanakahiko.me npm start
       - run: rdflint -config virtuoso/rdflint-config.yml -targetdir virtuoso/data/toLoad
+      - name: Slack Notification
+        uses: lazy-actions/slatify@master
+        if: always()
+        continue-on-error: true
+        with:
+          job_name: '*rdflint*'
+          type: ${{ job.status }}
+          url: ${{ secrets.SLACK_WEBHOOK }}
+          token: ${{ secrets.GITHUB_TOKEN }}

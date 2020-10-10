@@ -28,3 +28,12 @@ jobs:
           お店情報の自動アップデートです！ #274
         labels: |
           automerge
+    - name: Slack Notification
+      uses: lazy-actions/slatify@master
+      if: "! success()" # cronで実行されるので失敗時のみ通知する
+      continue-on-error: true
+      with:
+        job_name: '*re-generate*'
+        type: ${{ job.status }}
+        url: ${{ secrets.SLACK_WEBHOOK }}
+        token: ${{ secrets.GITHUB_TOKEN }}

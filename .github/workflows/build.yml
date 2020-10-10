@@ -30,10 +30,10 @@ jobs:
         run: gcloud auth configure-docker --quiet
 
       - if: matrix.SERVICE_NAME == 'web'
-        run: echo "BUILD_ARGS='--build-arg SPARQL_ENDPOINT_URL=${{ env.SPARQL_ENDPOINT_URL }}'" >> $GITHUB_ENV
+        run: echo ::set-env name=BUILD_ARGS::'--build-arg SPARQL_ENDPOINT_URL=${{ env.SPARQL_ENDPOINT_URL }}'
       
       - if: matrix.SERVICE_NAME == 'virtuoso'
-        run: echo "BUILD_ARGS='--build-arg DBA_PASSWORD=${{ env.DBA_PASSWORD }}'" >> $GITHUB_ENV
+        run: echo ::set-env name=BUILD_ARGS::'--build-arg DBA_PASSWORD=${{ env.DBA_PASSWORD }}'
 
       - name: Build a docker image
         run: docker build ${{ matrix.SERVICE_NAME }} $BUILD_ARGS

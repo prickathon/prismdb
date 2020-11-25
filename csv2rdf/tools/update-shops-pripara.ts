@@ -30,6 +30,7 @@ const getPrefNames = async () => {
 
 const addCSV = async (prefName: string) => {
   const shops = await fetchShop(prefName)
+  shops.sort((a, b) => a.name.localeCompare(b.name))
   const header = ['series', 'prefecture', 'name', 'address']
   const csvData = shops.map(v => header.map(k => v[k].trim() ))
   csvData.unshift(header)

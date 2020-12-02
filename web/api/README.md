@@ -8,20 +8,25 @@
 
 ## エンドポイント
 
-/api/character : キャラクターのkey一覧
-/api/character/${key} : キャラクターのプロパティ一覧
+character
+- /api/character : キャラクターのkey一覧
+- /api/character/${key} : キャラクターのプロパティ一覧
 
-/api/episode : エピソードのkey一覧
-/api/episode/${key} : エピソードのプロパティ一覧
+episode
+- /api/episode : エピソードのkey一覧
+- /api/episode/${key} : エピソードのプロパティ一覧
 
-/api/song : 曲のkey一覧
-/api/song/${key} : 曲のプロパティ一覧
+song
+- /api/song : 曲のkey一覧
+- /api/song/${key} : 曲のプロパティ一覧
 
-/api/live : ライブのkey一覧
-/api/live/${key} : ライブのプロパティ一覧
+live
+- /api/live : ライブのkey一覧
+- /api/live/${key} : ライブのプロパティ一覧
 
-/api/series : シリーズのkey一覧
-/api/series/${key} : シリーズのプロパティ一覧
+series
+- /api/series : シリーズのkey一覧
+- /api/series/${key} : シリーズのプロパティ一覧
 
 メモ : key一覧には以下機能付ける予定です．
 

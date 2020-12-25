@@ -1,4 +1,4 @@
-FROM askomics/virtuoso:7.2.5.1
+FROM tenforce/virtuoso:virtuoso7.2.5
 
 ARG DBA_PASSWORD
 ENV DBA_PASSWORD=${DBA_PASSWORD}
@@ -6,8 +6,6 @@ ENV DBA_PASSWORD=${DBA_PASSWORD}
 ADD ./scripts /scripts
 ADD ./data /data
 
-RUN /scripts/setup.sh
+ENV VIRT_HTTPServer_ServerPort 1234
 
-ENV PORT 8080
-
-CMD /scripts/start.sh
+CMD ["/bin/bash", "/virtuoso.sh"]

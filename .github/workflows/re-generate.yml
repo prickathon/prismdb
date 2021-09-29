@@ -10,6 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - working-directory: csv2rdf
+      name: update shops
       run: |
         npm ci
         $(npm bin)/ts-node tools/update-shops-prichan.ts

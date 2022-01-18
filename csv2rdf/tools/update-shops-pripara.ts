@@ -16,6 +16,8 @@ const fetchShop = async (prefName: string) => {
       name,
       address
     }
+  }).filter((shop) => {
+    return shop.name.length > 0 && shop.address.length > 0;
   })
   return ret
 }

@@ -34,8 +34,6 @@ const main = async () => {
   await csv2rdf.load('../_data/live/prichan-lives-setting.json')
   await csv2rdf.load('../_data/live/prr-lives-setting.json')
   await csv2rdf.load('../_data/item/prichan-items-setting.json')
-  await csv2rdf.load('../_data/shop/prichan-shop-setting.json')
-  await csv2rdf.load('../_data/shop/pripara-shop-setting.json')
   await csv2rdf.load('../_data/shop/primagi-shop-setting.json')
   await csv2rdf.load('../_data/team/pripara-teams-setting.json')
   await csv2rdf.load('../_data/team/prichan-teams-setting.json')

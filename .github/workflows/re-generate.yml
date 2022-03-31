@@ -13,8 +13,6 @@ jobs:
       name: update shops
       run: |
         npm ci
-        $(npm bin)/ts-node tools/update-shops-prichan.ts
-        $(npm bin)/ts-node tools/update-shops-pripara.ts
         $(npm bin)/ts-node tools/update-shops-primagi.ts
     - uses: tibdex/github-app-token@v1
       id: generate-token

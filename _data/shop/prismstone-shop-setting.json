@@ -1,0 +1,11 @@
+{
+    "subjectBaseUrl": "$BASE_URL/rdfs/shop/",
+    "subjectKey": {"keys": ["name"], "pattern": "$0"},
+    "PredicateBaseUrl": "$BASE_URL/prism-schema.ttl#",
+    "dataCsvPath":[
+        "../_data/shop/prismstone.csv"
+    ],
+    "columnsCsvPath": "../_data/shop/prismstone-shop-columns.csv",
+    "rdfType": "$BASE_URL/prism-schema.ttl#Shop",
+    "label": {"keys": ["name"], "pattern": "$0"}
+}

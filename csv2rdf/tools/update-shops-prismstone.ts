@@ -10,12 +10,11 @@ const fetchShop = async () => {
     const name = $(e).find('h2 strong').text()
     const fullAddress = $(e).find('.shop_txt p').first().text()
 
-    // 1行目は郵便番号なので2行目以降を住所として取り出す
+    // 複数行の住所を1行にまとめつつ郵便番号を削る
     const fullAddressLines = fullAddress.split("\n")
-    fullAddressLines.shift()
     const address = fullAddressLines.map((line) => {
       return line.trim()
-    }).join(" ")
+    }).join(" ").replace(/〒?[-\d]+/, "").trim()
 
     const prefecture = getPrefecture(address)
 

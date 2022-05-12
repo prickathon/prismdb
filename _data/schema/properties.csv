@@ -51,3 +51,5 @@ member,メンバー,メンバー
 memberOf,チームのメンバー,チームのメンバー
 series,シリーズ,シリーズ
 name_katakana,名前(カタカナ),名前(カタカナ)
+latitude,緯度,緯度
+longitude,経度,経度

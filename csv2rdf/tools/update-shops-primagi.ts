@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as csv from "async-csv";
 import * as cheerio from 'cheerio'
+import * as https from 'https'
 import axios from 'axios'
 
 const fetchShop = async (prefId: string, prefName: string) => {
@@ -24,7 +25,8 @@ const fetchShop = async (prefId: string, prefName: string) => {
 }
 
 const getPrefs = async () => {
-  const { data } = await axios.get('https://primagi.jp/shop/')
+  const httpsAgent = new https.Agent({ rejectUnauthorized: false })
+  const { data } = await axios.get('https://primagi.jp/shop/', { httpsAgent })
   const $ = cheerio.load(data)
   return $('.prefectures .prefectures_item a').toArray().map((e) => {
     return {

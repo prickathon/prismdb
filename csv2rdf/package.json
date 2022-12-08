@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "axios": "^0.21.2",
-    "cheerio": "^1.0.0-rc.3"
+    "cheerio": "^1.0.0-rc.12"
   }
 }

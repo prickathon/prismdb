@@ -53,7 +53,7 @@
         </h3>
         <p>PrismDBはデータをREST APIとしても公開しています．</p>
         <p>
-          <a href="https://github.com/prickathon/prismdb/tree/master/web/api">
+          <a href="https://github.com/prickathon/prismdb/tree/main/web/api">
             REST API に関するドキュメント
           </a>
         </p>

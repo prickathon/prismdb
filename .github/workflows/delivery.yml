@@ -28,14 +28,14 @@ jobs:
         run: | 
           npm ci
           BASE_URL=https://prismdb.takanakahiko.me npm start
-      
+
       - name: GCP Authenticate
-        uses: 'google-github-actions/auth@v1'
+        uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
-      - name: GCP Authenticate
-        uses: 'google-github-actions/setup-gcloud@v1'
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v1
 
       - name: Configure docker to use the gcloud cli
         run: gcloud auth configure-docker --quiet

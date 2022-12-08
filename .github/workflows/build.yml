@@ -37,13 +37,3 @@ jobs:
 
       - name: Build a docker image
         run: docker build ${{ matrix.SERVICE_NAME }} $BUILD_ARGS
-
-      - name: Slack Notification
-        uses: lazy-actions/slatify@master
-        if: always()
-        continue-on-error: true
-        with:
-          job_name:  ${{ format('*delivery* ({0})', matrix.SERVICE_NAME) }}
-          type: ${{ job.status }}
-          url: ${{ secrets.SLACK_WEBHOOK }}
-          token: ${{ secrets.GITHUB_TOKEN }}

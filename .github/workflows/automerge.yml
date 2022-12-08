@@ -34,12 +34,3 @@ jobs:
           MERGE_LABELS: "automerge"
           MERGE_REMOVE_LABELS: "automerge"
         continue-on-error: true
-      - name: Slack Notification
-        uses: lazy-actions/slatify@master
-        if: always()
-        continue-on-error: true
-        with:
-          job_name: '*automerge*'
-          type: ${{ job.status }}
-          url: ${{ secrets.SLACK_WEBHOOK }}
-          token: ${{ secrets.GITHUB_TOKEN }}

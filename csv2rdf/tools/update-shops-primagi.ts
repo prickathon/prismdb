@@ -16,6 +16,7 @@ const fetchShop = async (prefId: string, prefName: string) => {
       name: value["Name"],
       latitude: value["Latitude"],
       longitude: value["Longitude"],
+      group: value["ShopGroup"],
       address: address,
     }
   }).filter((shop) => {
@@ -39,7 +40,7 @@ const getPrefs = async () => {
 const addCSV = async (prefId: string, prefName: string) => {
   const shops = await fetchShop(prefId, prefName)
   shops.sort((a, b) => a.name.localeCompare(b.name, 'ja'))
-  const header = ['series', 'prefecture', 'name', 'address', 'latitude', 'longitude']
+  const header = ['series', 'prefecture', 'name', 'address', 'latitude', 'longitude', 'group']
   const csvData = shops.map(v => header.map(k => v[k].trim() ))
   csvData.unshift(header)
   const ret = await csv.stringify(csvData)

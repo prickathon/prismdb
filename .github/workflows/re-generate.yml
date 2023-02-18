@@ -10,6 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        # FIXME: 最新にするとtools/update-shops-prismstone.tsのaxios.getで下記のようなエラーになるので16で止めている
+        #        Error: write EPROTO C067081E767F0000:error:0A000152:SSL routines:final_renegotiate:unsafe legacy renegotiation disabled:../deps/openssl/openssl/ssl/statem/extensions.c:922:
+        node-version: 16
+
+        cache: npm
+        cache-dependency-path: csv2rdf/package-lock.json
     - working-directory: csv2rdf
       name: update shops
       run: |

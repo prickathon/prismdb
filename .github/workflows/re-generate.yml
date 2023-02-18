@@ -3,6 +3,7 @@ name: re-generate
 on:
   schedule:
     - cron: '0 */12 * * *'
+  push:
 
 jobs:
   re-generate:
@@ -20,6 +21,7 @@ jobs:
       with:
         app_id: ${{ secrets.GH_APPS_ID }}
         private_key: ${{ secrets.GH_APPS_PRIVATE_KEY }}
+      if: github.event_name == 'schedule'
     - uses: peter-evans/create-pull-request@v3
       with:
         token: ${{ steps.generate-token.outputs.token }}
@@ -29,6 +31,7 @@ jobs:
           お店情報の自動アップデートです！ #274
         labels: |
           automerge
+      if: github.event_name == 'schedule'
     - name: Slack Notification
       uses: lazy-actions/slatify@master
       if: "! success()" # cronで実行されるので失敗時のみ通知する

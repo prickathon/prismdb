@@ -14,8 +14,8 @@ jobs:
       name: update shops
       run: |
         npm ci
-        $(npm bin)/ts-node tools/update-shops-primagi.ts
-        $(npm bin)/ts-node tools/update-shops-prismstone.ts
+        npx ts-node tools/update-shops-primagi.ts
+        npx ts-node tools/update-shops-prismstone.ts
     - uses: tibdex/github-app-token@v1
       id: generate-token
       with:

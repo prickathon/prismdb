@@ -3,23 +3,34 @@ name: re-generate
 on:
   schedule:
     - cron: '0 */12 * * *'
+  push:
+  pull_request:
 
 jobs:
   re-generate:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        # FIXME: 最新にするとtools/update-shops-prismstone.tsのaxios.getで下記のようなエラーになるので16で止めている
+        #        Error: write EPROTO C067081E767F0000:error:0A000152:SSL routines:final_renegotiate:unsafe legacy renegotiation disabled:../deps/openssl/openssl/ssl/statem/extensions.c:922:
+        node-version: 16
+
+        cache: npm
+        cache-dependency-path: csv2rdf/package-lock.json
     - working-directory: csv2rdf
       name: update shops
       run: |
         npm ci
-        $(npm bin)/ts-node tools/update-shops-primagi.ts
-        $(npm bin)/ts-node tools/update-shops-prismstone.ts
+        npx ts-node tools/update-shops-primagi.ts
+        npx ts-node tools/update-shops-prismstone.ts
     - uses: tibdex/github-app-token@v1
       id: generate-token
       with:
         app_id: ${{ secrets.GH_APPS_ID }}
         private_key: ${{ secrets.GH_APPS_PRIVATE_KEY }}
+      if: github.event_name == 'schedule'
     - uses: peter-evans/create-pull-request@v3
       with:
         token: ${{ steps.generate-token.outputs.token }}
@@ -29,6 +40,7 @@ jobs:
           お店情報の自動アップデートです！ #274
         labels: |
           automerge
+      if: github.event_name == 'schedule'
     - name: Slack Notification
       uses: lazy-actions/slatify@master
       if: "! success()" # cronで実行されるので失敗時のみ通知する

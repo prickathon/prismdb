@@ -47,7 +47,7 @@ export default defineNuxtConfig({
    */
   build: {
   },
-  buildModules: ['@nuxt/typescript-build'],
+  buildModules: [],
   serverMiddleware: [
     { path: '/api', handler: '~/api/index.ts' }
   ],

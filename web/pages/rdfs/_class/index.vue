@@ -25,7 +25,7 @@ import Vue from 'vue'
 import SparqlResponseTable from '~/components/SparqlResponseTable.vue'
 export default Vue.extend({
   components: { SparqlResponseTable },
-  async asyncData ({ $axios, params, error }) {
+  async asyncData ({ params, error }) {
     const schemeBaseUrl = `https://prismdb.takanakahiko.me/prism-schema.ttl#` // これは環境変数でいいかも
     const className =
       params.class.charAt(0).toUpperCase() + params.class.slice(1) // 先頭を大文字にする
@@ -42,11 +42,12 @@ export default Vue.extend({
     //        <https://www.w3.org/2000/01/rdf-schema#label> ?Label .
     // }`
     try {
-      const response = await $axios.$get('/sparql', {
-        params: { query },
+      const response = await fetch(`/sparql?query=${encodeURIComponent(query)}`, {
+        method: 'GET',
         headers: { 'Content-Type': 'application/sparql-query+json' }
-      })
-      if (response.results.bindings.length) {
+      });
+      const data = await response.json();
+      if (data.results.bindings.length) {
         return { response, className }
       } else {
         error({ statusCode: 404, message: 'Data not found' + query })

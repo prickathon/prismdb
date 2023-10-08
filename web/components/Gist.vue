@@ -24,7 +24,6 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import axios from 'axios'
 export default Vue.extend({
   props: {
     gistUrl: {
@@ -63,11 +62,12 @@ export default Vue.extend({
     )
     if(!m) return
     const apiUrl = `https://api.github.com/gists/${m[1]}`
-    const response = await axios.get(apiUrl)
-    const file = response.data.files[Object.keys(response.data.files)[0]]
+    const response = await fetch(apiUrl);
+    const data = await response.json()
+    const file = data.files[Object.keys(data.files)[0]]
     this.code = file.content
     this.cmOptions.mode = file.type
-    this.title = response.data.description
+    this.title = data.description
   }
 })
 </script>

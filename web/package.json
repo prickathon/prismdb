@@ -6,16 +6,15 @@
   "private": true,
   "scripts": {
     "generateTtl": "ts-node scripts/index.ts",
-    "dev": "NODE_OPTIONS=--openssl-legacy-provider nuxt-ts",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider nuxt-ts build",
-    "start": "NODE_OPTIONS=--openssl-legacy-provider nuxt-ts start",
-    "generate": "NODE_OPTIONS=--openssl-legacy-provider nuxt-ts generate",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider nuxt dev",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider nuxt build",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider nuxt start",
+    "generate": "NODE_OPTIONS=--openssl-legacy-provider nuxt generate",
     "lint": "eslint --ext .ts,.js,.vue .",
     "precommit": "npm run lint"
   },
   "dependencies": {
     "@nuxt/typescript-runtime": "^1.0.0",
-    "@nuxtjs/axios": "^5.13.6",
     "cross-env": "^7.0.2",
     "nuxt": "^3.7.4",
     "nuxt-buefy": "^0.3.31",

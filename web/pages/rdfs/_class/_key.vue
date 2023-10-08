@@ -49,18 +49,19 @@ export default Vue.extend({
       return ret
     }
   },
-  async asyncData ({ $axios, params, error }) {
+  async asyncData ({ params, error }) {
     const rdfsBaseUrl = `https://prismdb.takanakahiko.me/rdfs/` // これは環境変数でいいかも
     const subjectUrl = `${rdfsBaseUrl}${params.class}/${params.key}`
     const query = `SELECT ?Property ?Value WHERE { <${subjectUrl}> ?Property ?Value }`
     try {
-      const response = await $axios.get<SparqleResponse>('/sparql', {
-        params: { query },
+      const response = await fetch(`/sparql?query=${encodeURIComponent(query)}`, {
+        method: 'GET',
         headers: { 'Content-Type': 'application/sparql-query+json' }
-      })
-      if (response.data.results.bindings.length) {
+      });
+      const data: SparqleResponse = await response.json();
+      if (data.results.bindings.length) {
         return {
-          response: response.data,
+          response: data,
           key: params.key,
           className: params.class
         }

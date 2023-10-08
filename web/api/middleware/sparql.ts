@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { KeyValue } from './util'
 
 interface Binding {
@@ -81,10 +80,10 @@ export default class {
         return bindings2object(resp.results.bindings, arrayParameters)
     }
     static async q(query: string) {
-        const response = await axios.get(process.env.SPARQL_ENDPOINT_URL!, {
-            params: { query },
+        const response = await fetch(`${process.env.SPARQL_ENDPOINT_URL!}?query=${encodeURIComponent(query)}`, {
+            method: 'GET',
             headers: { 'Content-Type': 'application/sparql-query+json' }
-        })
-        return response.data as QueryResult
+        });
+        return await response.json() as QueryResult;
     }
 }

@@ -36,7 +36,7 @@
     "eslint-plugin-jest": "^23.18.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-vue": "^6.2.2",
+    "eslint-plugin-vue": "^7.0.0",
     "n3": "^1.5.0",
     "nodemon": "^3.0.1",
     "prettier": "^2.0.5",

@@ -1,7 +1,7 @@
 version: '3'
 services:
   csv2rdf:
-    image: node:11.9.0
+    image: node:20.8.0
     working_dir: "/var/www/app/csv2rdf"
     environment:
       - BASE_URL=https://prismdb.takanakahiko.me

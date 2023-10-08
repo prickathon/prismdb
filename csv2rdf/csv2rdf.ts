@@ -31,7 +31,7 @@ interface ColumnSetting {
     objectsSeparator?: string
 }
 
-const addQuad = (store: N3.N3Store, row:Object, columnSetting:ColumnSetting, setting: Setting) => {
+const addQuad = (store: N3.Store, row:Object, columnSetting:ColumnSetting, setting: Setting) => {
     const cell = row[columnSetting.key]
     const separator = columnSetting.objectsSeparator
     const objectValues = (separator ? cell.split(separator) : [cell]).filter(v => v).map(v => v.trim())

@@ -33,12 +33,6 @@ export default defineNuxtConfig({
   ],
 
   /*
-   ** Plugins to load before mounting the App
-   */
-  plugins: [{ src: '~plugins/nuxt-codemirror-plugin.js', ssr: false }],
-  // some nuxt config...
-
-  /*
    ** Nuxt.js modules
    */
   modules: [

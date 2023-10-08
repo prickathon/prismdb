@@ -24,9 +24,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import SparqlResponseTable from '~/components/SparqlResponseTable.vue'
-export default Vue.extend({
+definePageMeta({
   components: { SparqlResponseTable },
   async asyncData ({ params, error }) {
     const schemeBaseUrl = `https://prismdb.takanakahiko.me/prism-schema.ttl#` // これは環境変数でいいかも

@@ -25,12 +25,11 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import SparqlResponseTable from '~/components/SparqlResponseTable.vue'
 
 import { SparqleResponse } from '~/types/SparqleResponse.d.ts'
 
-export default Vue.extend({
+definePageMeta({
   components: { SparqlResponseTable },
   async asyncData ({ params, error }) {
     const rdfsBaseUrl = `https://prismdb.takanakahiko.me/rdfs/` // これは環境変数でいいかも

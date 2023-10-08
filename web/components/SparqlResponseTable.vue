@@ -37,9 +37,8 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropType } from 'vue'
 import { SparqleResponse } from '~/types/SparqleResponse.d.ts'
-export default Vue.extend({
+definePageMeta({
   props: {
     response: {
       type: Object as PropType<SparqleResponse>,

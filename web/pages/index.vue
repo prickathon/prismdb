@@ -63,9 +63,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import Gist from '~/components/GistItem.vue'
-export default Vue.extend({
+definePageMeta({
   components: { Gist }
 })
 </script>

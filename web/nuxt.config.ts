@@ -25,11 +25,6 @@ export default defineNuxtConfig({
    ** Global CSS
    */
   css: [
-    'codemirror/lib/codemirror.css',
-    // merge css
-    'codemirror/addon/merge/merge.css',
-    // theme css
-    'codemirror/theme/base16-dark.css'
   ],
 
   /*

@@ -38,7 +38,7 @@
 
 <script lang="ts">
 import { SparqleResponse } from '~/types/SparqleResponse'
-definePageMeta({
+defineNuxtComponent({
   props: {
     response: {
       type: Object as PropType<SparqleResponse>,

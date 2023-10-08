@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts">
-definePageMeta({
+defineNuxtComponent({
   props: {
     gistUrl: {
       type: String,

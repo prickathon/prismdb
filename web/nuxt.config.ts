@@ -41,12 +41,11 @@ export default {
    */
   modules: [
     // Doc: https://buefy.github.io/#/documentation
-    'nuxt-buefy',
-    '@nuxtjs/proxy'
+    'nuxt-buefy'
   ],
 
-  proxy: {
-    '/sparql': process.env.SPARQL_ENDPOINT_URL
+  routeRules: {
+    '/sparql': { proxy: process.env.SPARQL_ENDPOINT_URL },
   },
 
   typescript: {

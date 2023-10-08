@@ -1,4 +1,6 @@
-export default {
+import { defineNuxtConfig } from 'nuxt/config'
+
+export default defineNuxtConfig({
   mode: 'universal',
 
   /*
@@ -60,4 +62,4 @@ export default {
   serverMiddleware: [
     { path: '/api', handler: '~/api/index.ts' }
   ]
-}
+})

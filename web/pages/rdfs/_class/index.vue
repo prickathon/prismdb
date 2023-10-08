@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const route = useRoute()
+</script>
+
 <template>
   <section class="main-content section">
     <div class="container">
@@ -9,14 +13,14 @@
           <li><a href="/">Home</a></li>
           <li><a href="/rdfs/">RDFs</a></li>
           <li class="is-active">
-            <a :href="`/rdfs/${$route.params.class}/`">{{
-              $route.params.class
+            <a :href="`/rdfs/${route.params.class}/`">{{
+              route.params.class
             }}</a>
           </li>
         </ul>
       </nav>
       <h1 class="title is-1">
-        {{ $route.params.class }}
+        {{ route.params.class }}
       </h1>
       <sparql-response-table :response="response" />
     </div>

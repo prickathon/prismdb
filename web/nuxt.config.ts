@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
-  mode: 'universal',
+  mode: true,
 
   /*
    ** Headers of the page
@@ -50,5 +50,9 @@ export default defineNuxtConfig({
   buildModules: ['@nuxt/typescript-build'],
   serverMiddleware: [
     { path: '/api', handler: '~/api/index.ts' }
-  ]
+  ],
+
+  vite: {
+    devBundler: 'legacy'
+  }
 })

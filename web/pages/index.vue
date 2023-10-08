@@ -30,10 +30,10 @@
         <h4 class="title is-4">
           SPARQLクエリ例
         </h4>
-        <gist
+        <gist-item
           gist-url="https://gist.github.com/banjun/9d7766e88f58b6cf719aa23aaab208fb"
         />
-        <gist
+        <gist-item
           gist-url="https://gist.github.com/takanakahiko/2d88b5636b1b530234f0cdb86acbde00"
         />
         <h4 class="title is-4">

@@ -48,10 +48,6 @@ export default defineNuxtConfig({
   build: {
   },
   buildModules: [],
-  serverMiddleware: [
-    { path: '/api', handler: '~/api/index.ts' }
-  ],
-
   vite: {
     devBundler: 'legacy'
   }

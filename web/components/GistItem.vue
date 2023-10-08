@@ -1,7 +1,13 @@
 <template>
-  <b-collapse :open.sync="open" class="card">
-    <template v-slot:trigger="props">
-      <div class="card-header" role="button">
+  <b-collapse
+    v-model:open="open"
+    class="card"
+  >
+    <template #trigger="props">
+      <div
+        class="card-header"
+        role="button"
+      >
         <p class="card-header-title">
           {{ title }}
         </p>
@@ -12,12 +18,22 @@
     </template>
     <div class="card-content">
       <div class="content">
-        <codemirror v-model="code" class="codemirror" :options="cmOptions" />
+        <codemirror
+          v-model="code"
+          class="codemirror"
+          :options="cmOptions"
+        />
       </div>
     </div>
     <footer class="card-footer">
-      <a :href="gistUrl" class="card-footer-item">Original Gist</a>
-      <a :href="editorLink" class="card-footer-item">Open</a>
+      <a
+        :href="gistUrl"
+        class="card-footer-item"
+      >Original Gist</a>
+      <a
+        :href="editorLink"
+        class="card-footer-item"
+      >Open</a>
     </footer>
   </b-collapse>
 </template>

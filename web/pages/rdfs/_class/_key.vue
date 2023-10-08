@@ -1,7 +1,10 @@
 <template>
   <section class="main-content section">
     <div class="container">
-      <nav class="breadcrumb" aria-label="breadcrumbs">
+      <nav
+        class="breadcrumb"
+        aria-label="breadcrumbs"
+      >
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/rdfs/">RDFs</a></li>
@@ -29,26 +32,6 @@ import { SparqleResponse } from '~/types/SparqleResponse.d.ts'
 
 export default Vue.extend({
   components: { SparqlResponseTable },
-  head () {
-    return {
-      title: `${(this as any).label} - PrismDB`,
-      meta: [
-        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
-        { hid: 'description', name: 'description', content: `prismdb の「${(this as any).label}」のページです` }
-      ]
-    }
-  },
-  computed: {
-    label (): string {
-      let ret = ''
-      // @ts-ignore
-      this.response.results.bindings.forEach((binding) => {
-        const labelUri = 'http://www.w3.org/2000/01/rdf-schema#label'
-        if (binding.Property.value === labelUri) { ret = binding.Value.value }
-      })
-      return ret
-    }
-  },
   async asyncData ({ params, error }) {
     const rdfsBaseUrl = `https://prismdb.takanakahiko.me/rdfs/` // これは環境変数でいいかも
     const subjectUrl = `${rdfsBaseUrl}${params.class}/${params.key}`
@@ -70,6 +53,26 @@ export default Vue.extend({
       }
     } catch (e) {
       error({ statusCode: 404, message: 'Data not found' })
+    }
+  },
+  head () {
+    return {
+      title: `${(this as any).label} - PrismDB`,
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        { hid: 'description', name: 'description', content: `prismdb の「${(this as any).label}」のページです` }
+      ]
+    }
+  },
+  computed: {
+    label (): string {
+      let ret = ''
+      // @ts-ignore
+      this.response.results.bindings.forEach((binding) => {
+        const labelUri = 'http://www.w3.org/2000/01/rdf-schema#label'
+        if (binding.Property.value === labelUri) { ret = binding.Value.value }
+      })
+      return ret
     }
   }
 })

@@ -1,6 +1,6 @@
 <template>
   <b-table :data="response.results.bindings">
-    <template slot-scope="props">
+    <template #default="props">
       <b-table-column
         v-for="(col, i) in response.head.vars"
         :key="i"
@@ -20,11 +20,14 @@
         <span v-else>{{ props.row[col].value }}</span>
       </b-table-column>
     </template>
-    <template slot="empty">
+    <template #empty>
       <section class="section">
         <div class="content has-text-grey has-text-centered">
           <p>
-            <b-icon icon="emoticon-sad" size="is-large" />
+            <b-icon
+              icon="emoticon-sad"
+              size="is-large"
+            />
           </p>
           <p>Nothing here.</p>
         </div>

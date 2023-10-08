@@ -1,7 +1,10 @@
 <template>
   <section class="main-content section">
     <div class="container">
-      <nav class="breadcrumb" aria-label="breadcrumbs">
+      <nav
+        class="breadcrumb"
+        aria-label="breadcrumbs"
+      >
         <ul>
           <li><a href="/">Home</a></li>
           <li class="is-active">

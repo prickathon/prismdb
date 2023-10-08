@@ -1,4 +1,4 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
 import character from "./character";
 import episode from "./episode";
 import song from "./song";

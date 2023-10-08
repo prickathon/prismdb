@@ -18,7 +18,6 @@ interface QueryResult {
 
 const schemaUri = `https://prismdb.takanakahiko.me/prism-schema.ttl#`
 const typePredUri = `http://www.w3.org/1999/02/22-rdf-syntax-ns#type`
-const uri2schema = (uri:string) => uri.replace(/https:\/\/prismdb\.takanakahiko\.me\/prism-schema\.ttl#.+?/, "")
 const schema2uri = (schema:string) => `${schemaUri}${schema}`
 const uri2key = (uri:string) => uri.replace(/https:\/\/prismdb\.takanakahiko\.me\/rdfs\/.+?\//, "")
 const classBaseUri = (className:string) => `https://prismdb.takanakahiko.me/rdfs/${className.toLowerCase()}/`

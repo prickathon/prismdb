@@ -17,7 +17,6 @@
     "@nuxt/typescript-runtime": "^1.0.0",
     "cross-env": "^7.0.2",
     "nuxt": "^3.7.4",
-    "nuxt-buefy": "^0.3.31",
     "vue-codemirror": "^4.0.6"
   },
   "devDependencies": {

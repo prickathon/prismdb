@@ -40,8 +40,6 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://buefy.github.io/#/documentation
-    'nuxt-buefy'
   ],
 
   routeRules: {

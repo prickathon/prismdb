@@ -6,10 +6,10 @@
   "private": true,
   "scripts": {
     "generateTtl": "ts-node scripts/index.ts",
-    "dev": "NODE_OPTIONS=--openssl-legacy-provider nuxt dev",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider nuxt build",
-    "start": "NODE_OPTIONS=--openssl-legacy-provider nuxt start",
-    "generate": "NODE_OPTIONS=--openssl-legacy-provider nuxt generate",
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
     "lint": "eslint .",
     "precommit": "npm run lint"
   },

@@ -7,4 +7,4 @@ app.use("/", routes);
 // app.listen(process.env.PORT || 4567, () => {
 //     console.log(`listening on ${process.env.PORT || 4567}`);
 // });
-module.exports = app
+export default app

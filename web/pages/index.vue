@@ -63,8 +63,6 @@
 </template>
 
 <script lang="ts">
-import Gist from '~/components/GistItem.vue'
 definePageMeta({
-  components: { Gist }
 })
 </script>

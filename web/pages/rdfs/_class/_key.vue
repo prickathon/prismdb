@@ -25,12 +25,8 @@
 </template>
 
 <script lang="ts">
-import SparqlResponseTable from '~/components/SparqlResponseTable.vue'
-
-import { SparqleResponse } from '~/types/SparqleResponse.d.ts'
-
+import { SparqleResponse } from '~/types/SparqleResponse'
 definePageMeta({
-  components: { SparqlResponseTable },
   async asyncData ({ params, error }) {
     const rdfsBaseUrl = `https://prismdb.takanakahiko.me/rdfs/` // これは環境変数でいいかも
     const subjectUrl = `${rdfsBaseUrl}${params.class}/${params.key}`

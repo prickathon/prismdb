@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import { SparqleResponse } from '~/types/SparqleResponse.d.ts'
+import { SparqleResponse } from '~/types/SparqleResponse'
 definePageMeta({
   props: {
     response: {

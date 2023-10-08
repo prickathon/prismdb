@@ -24,9 +24,7 @@
 </template>
 
 <script lang="ts">
-import SparqlResponseTable from '~/components/SparqlResponseTable.vue'
 definePageMeta({
-  components: { SparqlResponseTable },
   async asyncData ({ params, error }) {
     const schemeBaseUrl = `https://prismdb.takanakahiko.me/prism-schema.ttl#` // これは環境変数でいいかも
     const className =

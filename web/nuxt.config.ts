@@ -10,4 +10,7 @@ export default defineNuxtConfig({
   typescript: {
     // typeCheck: true,
   },
+  serverHandlers: [
+    { route: '/api/**', handler: './server/api/index.ts' }
+  ]  
 })

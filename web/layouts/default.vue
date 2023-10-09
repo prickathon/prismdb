@@ -1,3 +1,10 @@
+<script setup lang="ts">
+const route = useRoute()
+
+const menuActive = useState('menuActive', () => false)
+watch(route, () => menuActive.value = false )
+</script>
+
 <template>
   <div>
     <nav class="navbar has-shadow is-spaced">
@@ -16,7 +23,7 @@
           <div
             class="navbar-burger"
             :class="{ 'is-active': menuActive }"
-            @click="menuToggle()"
+            @click="menuActive = !menuActive"
           >
             <span /><span /><span />
           </div>
@@ -98,23 +105,3 @@
     </footer>
   </div>
 </template>
-
-<script lang="ts">
-definePageMeta({
-  data () {
-    return {
-      menuActive: false
-    }
-  },
-  watch: {
-    $route () {
-      this.menuActive = false
-    }
-  },
-  methods: {
-    menuToggle () {
-      this.menuActive = !this.menuActive
-    }
-  }
-})
-</script>

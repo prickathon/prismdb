@@ -61,8 +61,3 @@
     </section>
   </div>
 </template>
-
-<script lang="ts">
-definePageMeta({
-})
-</script>

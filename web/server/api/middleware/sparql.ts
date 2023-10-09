@@ -79,7 +79,7 @@ export default class {
         return bindings2object(resp.results.bindings, arrayParameters)
     }
     static async q(query: string) {
-        const response = await fetch(`${process.env.SPARQL_ENDPOINT_URL!}?query=${encodeURIComponent(query)}`, {
+        const response = await fetch(`${process.env.SPARQL_ENDPOINT_URL!}?query=${encodeURIComponent(query)}&format=json`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/sparql-query+json' }
         });

@@ -1,0 +1,42 @@
+// from https://github.com/buefy/buefy/blob/8f3d72b310dc5c142f46f4e26e3ab7e22f0cceec/docs/assets/scss/_variables.scss
+
+@import "bulma/sass/utilities/_all";
+
+$primary: #7957d5;
+$primary-dark: findLightColor(#7957d5);
+$primary-light: findDarkColor(#7957d5);
+$twitter: #4099FF;
+$discord: #7289DA;
+$bulma: #00D1B2;
+$vuetelemetry: #0bdca0;
+
+$colors: (
+    "white": ($white, $black),
+    "black": ($black, $white),
+    "light": ($light, $light-invert),
+    "grey": ($grey, $light-invert),
+    "dark": ($dark, $dark-invert),
+    "primary": ($primary, $white, $primary-dark, $primary-light),
+    "info": ($info, $info-invert, $info-light, $info-dark),
+    "success": ($success, $success-invert, $success-light, $success-dark),
+    "warning": ($warning, $warning-invert, $warning-light, $warning-dark),
+    "danger": ($danger, $danger-invert, $danger-light, $danger-dark),
+    "link": ($link, $link-invert, $link-light, $link-dark),
+    "twitter": ($twitter, $white, findLightColor($twitter), findDarkColor($twitter)),
+    "discord": ($discord, $white, findLightColor($discord), findDarkColor($discord)),
+    "bulma": ($bulma, $white, findLightColor($bulma), findDarkColor($bulma)),
+    "vuetelemetry": ($vuetelemetry, $white, findLightColor($vuetelemetry), findDarkColor($vuetelemetry))
+);
+
+$navbar-height: 3.25rem;
+$navbar-item-active-color: $primary;
+
+$menu-item-active-background-color: $primary;
+$menu-item-hover-background-color: $grey-lighter;
+
+$link: $primary;
+$link-invert: $primary-invert;
+$link-visited: $grey;
+$link-focus-border: $primary;
+
+@import "bulma/bulma";

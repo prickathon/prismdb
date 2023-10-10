@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '@/assets/buefy-like.scss'
   ],
   typescript: {
-    // typeCheck: true,
+    typeCheck: true
   },
   serverHandlers: [
     { route: '/api/**', handler: './server/api/index.ts' }

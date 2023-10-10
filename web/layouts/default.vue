@@ -2,7 +2,7 @@
 const route = useRoute()
 
 const menuActive = useState('menuActive', () => false)
-watch(route, () => menuActive.value = false )
+watch(route, () => { menuActive.value = false })
 </script>
 
 <template>

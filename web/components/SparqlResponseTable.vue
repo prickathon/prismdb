@@ -12,7 +12,7 @@ const props = defineProps({
   <table class="table is-fullwidth">
     <thead>
       <tr>
-        <th 
+        <th
           v-for="colName in props.response.head.vars"
           :key="colName"
         >

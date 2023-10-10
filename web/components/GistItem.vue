@@ -1,9 +1,8 @@
 <script setup lang="ts">
-// 
 const props = defineProps({
   gistUrl: {
-      type: String,
-      required: true
+    type: String,
+    required: true
   }
 })
 
@@ -11,10 +10,15 @@ const m = props.gistUrl.match(
   /https:\/\/gist\.github\.com\/.+?\/([0-9a-z]+)(#.+)?/
 ) as RegExpMatchArray
 
-const apiUrl = `https://api.github.com/gists/${m[1]}`
-const response = await fetch(apiUrl);
-const data = await response.json()
-const file = data.files[Object.keys(data.files)[0]]
+const { data, error } = await useFetch<any>(`https://api.github.com/gists/${m[1]}`)
+if (error.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Data not found' })
+}
+if (!data.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Data not found' })
+}
+
+const file = data.value.files[Object.keys(data.value.files)[0]]
 
 const code = file.content
 const cmOptions = {
@@ -23,11 +27,8 @@ const cmOptions = {
   readOnly: true,
   fullLines: true
 }
-const title = data.description
-
-// 
+const title = data.value.description
 const editorLink = `https://prismdb.takanakahiko.me/sparql?qtxt=${encodeURIComponent(code)}`
-
 </script>
 
 <template>

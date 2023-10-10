@@ -4,13 +4,13 @@ import { SparqleResponse } from '~/types/SparqleResponse'
 const route = useRoute()
 
 // from asyncData
-const rdfsBaseUrl = `https://prismdb.takanakahiko.me/rdfs/` // これは環境変数でいいかも
+const rdfsBaseUrl = 'https://prismdb.takanakahiko.me/rdfs/' // これは環境変数でいいかも
 const subjectUrl = `${rdfsBaseUrl}${route.params.class}/${route.params.key}`
 const query = `SELECT ?Property ?Value WHERE { <${subjectUrl}> ?Property ?Value }`
 
 const { data: response, error } = await useFetch<SparqleResponse>('/sparql', {
   method: 'GET',
-  params: { query, format: "json" },
+  params: { query, format: 'json' },
   headers: { 'Content-Type': 'application/sparql-query+json' }
 })
 if (error.value) {
@@ -31,7 +31,7 @@ const label = computed(() => {
 
 useSeoMeta({
   title: () => `${label.value} - PrismDB`,
-  description: () => `prismdb の「${label.value}」のページです`,
+  description: () => `prismdb の「${label.value}」のページです`
 })
 </script>
 

@@ -15,8 +15,8 @@ const main = async () => {
   await schema.export('../virtuoso/data/toLoad/prism-schema.ttl')
 
   // webでホストする schema.ttl も更新
-  if(fs.existsSync('../web/static/prism-schema.ttl')) fs.unlinkSync('../web/static/prism-schema.ttl')
-  await schema.export('../web/static/prism-schema.ttl')
+  if(fs.existsSync('../web/assets/prism-schema.ttl')) fs.unlinkSync('../web/assets/prism-schema.ttl')
+  await schema.export('../web/assets/prism-schema.ttl')
 
   // output.ttl(virtuosoにロードするデータ)を作成
   const csv2rdf = new Csv2rdf()

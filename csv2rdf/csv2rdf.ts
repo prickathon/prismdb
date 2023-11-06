@@ -181,8 +181,10 @@ export default class {
             writer.addQuads(this.store.getQuads(null, null, null, null))
             writer.end((error, result) => {
                 if(error) reject()
-                fs.writeFileSync(path, result)
-                resolve()
+                fs.writeFile(path, result, err => {
+                    if(err) reject(err)
+                    else resolve()
+                })
             })
         })
     }

@@ -38,7 +38,7 @@ jobs:
         uses: google-github-actions/setup-gcloud@v1
 
       - name: Configure docker to use the gcloud cli
-        run: gcloud auth configure-docker --quiet
+        run: gcloud auth configure-docker ${{env.GCP_REGION}}-docker.pkg.dev --quiet
 
       - if: matrix.SERVICE_NAME == 'web'
         run: echo "BUILD_ARGS=--build-arg SPARQL_ENDPOINT_URL=${{ secrets.SPARQL_ENDPOINT_URL }}" >> $GITHUB_ENV
@@ -47,7 +47,7 @@ jobs:
         run: echo "BUILD_ARGS=--build-arg DBA_PASSWORD=${{ secrets.DBA_PASSWORD }}" >> $GITHUB_ENV
 
       - name: Set the docker image name
-        run: echo "IMAGE=asia.gcr.io/${{env.GCP_PROJECT}}/${{ matrix.SERVICE_NAME }}:${{ github.sha }}" >> $GITHUB_ENV
+        run: echo "IMAGE=${{env.GCP_REGION}}-docker.pkg.dev/${{env.GCP_PROJECT}}/prismdb/${{ matrix.SERVICE_NAME }}:${{ github.sha }}" >> $GITHUB_ENV
 
       - name: Build a docker image
         run: docker build ${{ matrix.SERVICE_NAME }} -t $IMAGE $BUILD_ARGS

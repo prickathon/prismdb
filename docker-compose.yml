@@ -7,6 +7,9 @@ services:
       - "3001:1234"
     build:
       context: ./virtuoso
+      additional_contexts:
+        csv2rdf: ./csv2rdf
+        data: ./_data
       args:
         DBA_PASSWORD: abcd
   web:

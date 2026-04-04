@@ -12,7 +12,7 @@ jobs:
           java-version: 11
       - uses: imas/setup-rdflint@v1
       - working-directory: csv2rdf
-        run: | 
+        run: |
           npm ci
           BASE_URL=https://prismdb.takanakahiko.me npm start
-      - run: rdflint -config virtuoso/rdflint-config.yml -targetdir virtuoso/data/toLoad
+      - run: rdflint -config virtuoso/rdflint-config.yml -targetdir csv2rdf/output

@@ -12,27 +12,24 @@
 ## 開発
 
 ```bash
-# csv(_data/)をrdf(virtuoso/)に変換する処理
-$ docker-compose -f docker-compose.csv2rdf.yml up
-
 # ローカルでサーバが立ち上がります(http://localhost:3000)
-$ docker-compose build
-$ docker-compose up
+$ docker compose up --build
 ```
 
 ## 中身
 
 ### Webアプリケーション
 
-基本 `Nuxt.js` で動いていますが `https://prismdb.takanakahiko.me/sparqle` のみ `virtuoso` にプロキシされています
+基本 `Nuxt.js` で動いていますが `https://prismdb.takanakahiko.me/sparql` のみ `virtuoso` にプロキシされています
 
 - `web/` : nuxtのアプリケーションがあります
-- `virtuoso/`(`csv2rdf`により自動生成) : sparqleエンドポイント用のファイルがあります
+- `virtuoso/` : SPARQLエンドポイントを提供するトリプルストアです
 
 ### csv2rdf
 
 - `_data/` : RDFを生成するためのファイルがあります
-- `csv2rdf/` : csv(`_data/`)をrdf(`virtuoso/`)に変換する処理があります
+- `csv2rdf/` : csv(`_data/`)からRDFを生成する処理があります
+- virtuosoのDockerビルド時に自動実行されます
 
 ### デプロイ
 

@@ -20,17 +20,24 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v3
 
-      - name: prepara rdfs
-        working-directory: csv2rdf
-        run: | 
-          npm ci
-          BASE_URL=https://prismdb.takanakahiko.me npm start
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-      - if: matrix.SERVICE_NAME == 'web'
-        run: echo "BUILD_ARGS=--build-arg SPARQL_ENDPOINT_URL=${{ env.SPARQL_ENDPOINT_URL }}" >> $GITHUB_ENV
-      
-      - if: matrix.SERVICE_NAME == 'virtuoso'
-        run: echo "BUILD_ARGS=--build-arg DBA_PASSWORD=${{ env.DBA_PASSWORD }}" >> $GITHUB_ENV
+      - name: Build web
+        if: matrix.SERVICE_NAME == 'web'
+        uses: docker/build-push-action@v6
+        with:
+          context: ./web
+          build-args: |
+            SPARQL_ENDPOINT_URL=${{ env.SPARQL_ENDPOINT_URL }}
 
-      - name: Build a docker image
-        run: docker build ${{ matrix.SERVICE_NAME }} $BUILD_ARGS
+      - name: Build virtuoso
+        if: matrix.SERVICE_NAME == 'virtuoso'
+        uses: docker/build-push-action@v6
+        with:
+          context: ./virtuoso
+          build-contexts: |
+            csv2rdf=./csv2rdf
+            data=./_data
+          build-args: |
+            DBA_PASSWORD=${{ env.DBA_PASSWORD }}

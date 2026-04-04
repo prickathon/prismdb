@@ -3,20 +3,15 @@ import * as fs from 'fs'
 import * as rimraf from 'rimraf'
 
 const main = async () => {
-  // virtuosoディレクトリを削除し，virtuoso/toLoadディレクトリを作成
-  if(fs.existsSync('../virtuoso/data')) rimraf.sync('../virtuoso/data')
-  fs.mkdirSync('../virtuoso/data')
-  fs.mkdirSync('../virtuoso/data/toLoad')
+  // 出力ディレクトリを作成
+  if(fs.existsSync('./output')) rimraf.sync('./output')
+  fs.mkdirSync('./output')
 
   // schema.ttl を作成
   const schema = new Csv2rdf()
   await schema.load('../_data/schema/classes-setting.json')
   await schema.load('../_data/schema/properties-setting.json')
-  await schema.export('../virtuoso/data/toLoad/prism-schema.ttl')
-
-  // webでホストする schema.ttl も更新
-  if(fs.existsSync('../web/assets/prism-schema.ttl')) fs.unlinkSync('../web/assets/prism-schema.ttl')
-  await schema.export('../web/assets/prism-schema.ttl')
+  await schema.export('./output/prism-schema.ttl')
 
   // output.ttl(virtuosoにロードするデータ)を作成
   const csv2rdf = new Csv2rdf()
@@ -39,7 +34,7 @@ const main = async () => {
   await csv2rdf.load('../_data/team/pripara-teams-setting.json')
   await csv2rdf.load('../_data/team/prichan-teams-setting.json')
   await csv2rdf.load('../_data/brand/brands-setting.json')
-  await csv2rdf.export('../virtuoso/data/toLoad/output.ttl')
+  await csv2rdf.export('./output/output.ttl')
 }
 
 (async () => {

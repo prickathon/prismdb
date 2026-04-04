@@ -4,22 +4,19 @@
 
 ## Environment
 
-- docker
-- docker-compose
-
-または
-
 - node(新しめのやつ)
 - npm(新しめのやつ)
 
 ## Usage
 
+virtuosoのDockerビルド時に自動実行されます。
+
 ```bash
-# 変換処理が実行されます
-$ docker-compose -f ../docker-compose.csv2rdf.yml up
+# リポジトリ直下ディレクトリで
+$ docker compose build virtuoso
 ```
 
-または
+手動で実行する場合:
 
 ```bash
 # 依存パッケージのインストール

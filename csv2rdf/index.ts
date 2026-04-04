@@ -14,10 +14,6 @@ const main = async () => {
   await schema.load('../_data/schema/properties-setting.json')
   await schema.export('../virtuoso/data/toLoad/prism-schema.ttl')
 
-  // webでホストする schema.ttl も更新
-  if(fs.existsSync('../web/assets/prism-schema.ttl')) fs.unlinkSync('../web/assets/prism-schema.ttl')
-  await schema.export('../web/assets/prism-schema.ttl')
-
   // output.ttl(virtuosoにロードするデータ)を作成
   const csv2rdf = new Csv2rdf()
   await csv2rdf.load('../_data/character/pripara-characters-setting.json')

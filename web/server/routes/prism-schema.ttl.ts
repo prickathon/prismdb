@@ -1,5 +1,5 @@
 import * as N3 from 'n3'
-import { SparqleResponse } from '~/types/SparqleResponse'
+import type { SparqleResponse } from '~/types/SparqleResponse'
 
 export default defineEventHandler(async () => {
   const query = `SELECT ?s ?p ?o WHERE {

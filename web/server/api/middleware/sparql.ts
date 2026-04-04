@@ -1,4 +1,4 @@
-import { KeyValue } from './util'
+import type { KeyValue } from './util'
 
 interface Binding {
     [key: string]: {

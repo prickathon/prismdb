@@ -10,6 +10,9 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 11
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '25'
       - uses: imas/setup-rdflint@v1
       - working-directory: csv2rdf
         run: |

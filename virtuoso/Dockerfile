@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.4
 
-FROM node:20.8.0 AS csv2rdf-builder
+FROM node:25.9.0 AS csv2rdf-builder
 ENV BASE_URL=https://prismdb.takanakahiko.me
 COPY --from=csv2rdf package.json package-lock.json* /app/csv2rdf/
 WORKDIR /app/csv2rdf

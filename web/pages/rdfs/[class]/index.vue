@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SparqleResponse } from '~/types/SparqleResponse'
+import type { SparqleResponse } from '~/types/SparqleResponse'
 
 const route = useRoute()
 

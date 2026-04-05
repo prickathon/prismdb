@@ -1,0 +1,14 @@
+@import "bulma/css/bulma.css";
+
+:root {
+  --bulma-primary-h: 256deg;
+  --bulma-primary-s: 60%;
+  --bulma-primary-l: 59%;
+  --bulma-primary-invert-l: 100%;
+  --bulma-link-h: 256deg;
+  --bulma-link-s: 60%;
+  --bulma-link-l: 59%;
+  --bulma-text-h: 0deg;
+  --bulma-text-s: 0%;
+  --bulma-text-l: 29%;
+}

@@ -28,22 +28,22 @@ const bindings2object = (
 ) => {
   const ret: KeyValue = {}
   Object.keys(arrayParameters).forEach((predicateName) => {
-    const parameterName = arrayParameters[predicateName]
+    const parameterName = arrayParameters[predicateName]!
     ret[parameterName] = []
   })
   bindings.forEach((b) => {
-    const pred = b.pred.value
+    const pred = b.pred!.value
     if (!pred.includes(schemaUri)) { return }
     const predicateName = pred.replace(schemaUri, '')
-    let value = uri2key(b.obj.value) as any
-    switch (b.obj.datatype) {
+    let value = uri2key(b.obj!.value) as any
+    switch (b.obj!.datatype) {
       case 'http://www.w3.org/2001/XMLSchema#integer':
         value = parseInt(value)
         break
     }
     if (arrayParameters && (predicateName in arrayParameters)) {
-      const parameterName = arrayParameters[predicateName]
-      ret[parameterName].push(value)
+      const parameterName = arrayParameters[predicateName]!
+      ret[parameterName]!.push(value)
     } else {
       ret[predicateName] = value
     }
@@ -55,7 +55,7 @@ export default class {
   static async getKeys (className: string) {
     const query = `SELECT ?sub WHERE { ?sub <${typePredUri}> <${schema2uri(className)}> }`
     const resp = await this.q(query)
-    const subjectUris = resp.results.bindings.map(b => b.sub.value)
+    const subjectUris = resp.results.bindings.map(b => b.sub!.value)
     const ret = subjectUris.map(uri2key)
     return ret
   }
@@ -64,10 +64,10 @@ export default class {
     const classUrl = schema2uri(className)
     const query = `SELECT ?sub ?pred ?obj WHERE { ?sub <${typePredUri}> <${classUrl}>; ?pred ?obj. }`
     const resp = await this.q(query)
-    const subjectUris = resp.results.bindings.map(b => b.sub.value)
+    const subjectUris = resp.results.bindings.map(b => b.sub!.value)
     const uniqueSubjectUris = subjectUris.filter((x, i, self) => self.indexOf(x) === i)
     return uniqueSubjectUris.map((subjectUri) => {
-      const targetBindings = resp.results.bindings.filter(b => b.sub.value === subjectUri)
+      const targetBindings = resp.results.bindings.filter(b => b.sub!.value === subjectUri)
       const instance = bindings2object(targetBindings, arrayParameters)
       instance._key = uri2key(subjectUri)
       return instance

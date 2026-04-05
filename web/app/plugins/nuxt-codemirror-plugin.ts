@@ -1,4 +1,4 @@
-import { defineNuxtPlugin } from '#app'
+import { defineNuxtPlugin } from '#imports'
 import VueCodemirror from 'vue-codemirror'
 import { StreamLanguage } from '@codemirror/language'
 import { sparql } from '@codemirror/legacy-modes/mode/sparql'

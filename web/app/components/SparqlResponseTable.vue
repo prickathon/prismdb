@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SparqleResponse } from '~/types/SparqleResponse'
+import type { SparqleResponse } from '~~/shared/types/SparqleResponse'
 const props = defineProps({
   response: {
     type: Object as PropType<SparqleResponse>,

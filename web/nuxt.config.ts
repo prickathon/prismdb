@@ -1,6 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
+  compatibilityDate: '2026-04-05',
   app: {
     head: {
       title: 'PrismDB',
@@ -16,7 +17,7 @@ export default defineNuxtConfig({
     '/sparql': { proxy: process.env.SPARQL_ENDPOINT_URL }
   },
   css: [
-    '@/assets/buefy-like.scss'
+    '@/assets/buefy-like.css'
   ],
   typescript: {
     typeCheck: true

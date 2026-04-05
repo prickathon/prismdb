@@ -1,5 +1,5 @@
 import * as N3 from 'n3'
-import type { SparqleResponse } from '~/types/SparqleResponse'
+import type { SparqleResponse } from '~~/shared/types/SparqleResponse'
 
 export default defineEventHandler(async () => {
   const query = `SELECT ?s ?p ?o WHERE {
@@ -19,9 +19,9 @@ export default defineEventHandler(async () => {
 
   const writer = new N3.Writer()
   for (const binding of json.results.bindings) {
-    const subject = N3.DataFactory.namedNode(binding.s.value)
-    const predicate = N3.DataFactory.namedNode(binding.p.value)
-    const o = binding.o
+    const subject = N3.DataFactory.namedNode(binding.s!.value)
+    const predicate = N3.DataFactory.namedNode(binding.p!.value)
+    const o = binding.o!
     const object = o.type === 'uri'
       ? N3.DataFactory.namedNode(o.value)
       : N3.DataFactory.literal(o.value, 'datatype' in o ? N3.DataFactory.namedNode(o.datatype) : undefined)

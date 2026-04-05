@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SparqleResponse } from '~/types/SparqleResponse'
+import type { SparqleResponse } from '~~/shared/types/SparqleResponse'
 
 const route = useRoute()
 
@@ -24,7 +24,7 @@ const label = computed(() => {
   let ret = ''
   response.value?.results.bindings.forEach((binding) => {
     const labelUri = 'http://www.w3.org/2000/01/rdf-schema#label'
-    if (binding.Property.value === labelUri) { ret = binding.Value.value }
+    if (binding.Property?.value === labelUri) { ret = binding.Value!.value }
   })
   return ret
 })

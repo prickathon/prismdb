@@ -1,16 +1,18 @@
 <script setup lang="ts">
-import type { SparqleResponse } from '~~/shared/types/SparqleResponse'
+import type { SparqleResponse } from "~~/shared/types/SparqleResponse";
 
-const route = useRoute()
+const route = useRoute();
 
-const schemeBaseUrl = 'https://prismdb.takanakahiko.me/prism-schema.ttl#' // これは環境変数でいいかも
-const className = (route.params.class as string).charAt(0).toUpperCase() + (route.params.class as string).slice(1) // 先頭を大文字にする
-const classUri = `${schemeBaseUrl}${className}`
-const typePredUri = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
+const schemeBaseUrl = "https://prismdb.takanakahiko.me/prism-schema.ttl#"; // これは環境変数でいいかも
+const className =
+	(route.params.class as string).charAt(0).toUpperCase() +
+	(route.params.class as string).slice(1); // 先頭を大文字にする
+const classUri = `${schemeBaseUrl}${className}`;
+const typePredUri = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type";
 const query = `SELECT ?URI
 WHERE {
   ?URI <${typePredUri}> <${classUri}> .
-}`
+}`;
 // ラベル生えたら以下に切り替え
 // const query = `SELECT ?Label ?URI
 // WHERE {
@@ -18,16 +20,16 @@ WHERE {
 //        <https://www.w3.org/2000/01/rdf-schema#label> ?Label .
 // }`
 
-const { data: response, error } = await useFetch<SparqleResponse>('/sparql', {
-  method: 'GET',
-  params: { query, format: 'json' },
-  headers: { 'Content-Type': 'application/sparql-query+json' }
-})
+const { data: response, error } = await useFetch<SparqleResponse>("/sparql", {
+	method: "GET",
+	params: { query, format: "json" },
+	headers: { "Content-Type": "application/sparql-query+json" },
+});
 if (error.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Data not found' })
+	throw createError({ statusCode: 404, statusMessage: "Data not found" });
 }
 if (!response.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Data not found' })
+	throw createError({ statusCode: 404, statusMessage: "Data not found" });
 }
 </script>
 

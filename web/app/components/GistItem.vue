@@ -1,34 +1,39 @@
 <script setup lang="ts">
 const props = defineProps({
-  gistUrl: {
-    type: String,
-    required: true
-  }
-})
+	gistUrl: {
+		type: String,
+		required: true,
+	},
+});
 
 const m = props.gistUrl.match(
-  /https:\/\/gist\.github\.com\/.+?\/([0-9a-z]+)(#.+)?/
-) as RegExpMatchArray
+	/https:\/\/gist\.github\.com\/.+?\/([0-9a-z]+)(#.+)?/,
+) as RegExpMatchArray;
 
-const { data, error } = await useFetch<any>(`https://api.github.com/gists/${m[1]}`)
+const { data, error } = await useFetch<{
+	description: string;
+	files: Record<string, { content: string; type: string }>;
+}>(`https://api.github.com/gists/${m[1]}`);
 if (error.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Data not found' })
+	throw createError({ statusCode: 404, statusMessage: "Data not found" });
 }
 if (!data.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Data not found' })
+	throw createError({ statusCode: 404, statusMessage: "Data not found" });
 }
 
-const file = data.value.files[Object.keys(data.value.files)[0]]
+const fileKey = Object.keys(data.value.files)[0] as string;
+// biome-ignore lint/style/noNonNullAssertion: Gist APIのレスポンスには必ずファイルが含まれる
+const file = data.value.files[fileKey]!;
 
-const code = file.content
+const code = file.content;
 const cmOptions = {
-  mode: file.type,
-  lineNumbers: true,
-  readOnly: true,
-  fullLines: true
-}
-const title = data.value.description
-const editorLink = `https://prismdb.takanakahiko.me/sparql?qtxt=${encodeURIComponent(code)}`
+	mode: file.type,
+	lineNumbers: true,
+	readOnly: true,
+	fullLines: true,
+};
+const title = data.value.description;
+const editorLink = `https://prismdb.takanakahiko.me/sparql?qtxt=${encodeURIComponent(code)}`;
 </script>
 
 <template>

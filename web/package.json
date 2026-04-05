@@ -1,36 +1,35 @@
 {
-  "name": "prismdb-web",
-  "version": "1.0.0",
-  "description": "prismdb は プリティーシリーズの二次創作です",
-  "author": "takanakahiko",
-  "private": true,
-  "scripts": {
-    "generateTtl": "ts-node scripts/index.ts",
-    "dev": "nuxt dev",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
-    "lint": "eslint .",
-    "precommit": "npm run lint"
-  },
-  "dependencies": {
-    "@codemirror/legacy-modes": "^6.5.2",
-    "@codemirror/theme-one-dark": "^6.1.3",
-    "bulma": "^1.0.4",
-    "cross-env": "^10.1.0",
-    "express": "^5.2.1",
-    "n3": "^2.0.3",
-    "nuxt": "^4.4.2",
-    "vue-codemirror": "^6.1.1"
-  },
-  "devDependencies": {
-    "@nuxt/eslint-config": "^1.15.2",
-    "@types/express": "^5.0.6",
-    "@types/n3": "^1.26.1",
-    "eslint": "^10.2.0",
-    "prettier": "^3.8.1",
-    "rimraf": "^6.1.3",
-    "typescript": "^6.0.2",
-    "vue-tsc": "^3.2.6"
-  }
+	"name": "prismdb-web",
+	"version": "1.0.0",
+	"description": "prismdb は プリティーシリーズの二次創作です",
+	"author": "takanakahiko",
+	"private": true,
+	"scripts": {
+		"generateTtl": "ts-node scripts/index.ts",
+		"dev": "nuxt dev",
+		"build": "nuxt build",
+		"start": "nuxt start",
+		"generate": "nuxt generate",
+		"lint": "biome check .",
+		"lint:fix": "biome check --fix .",
+		"precommit": "npm run lint"
+	},
+	"dependencies": {
+		"@codemirror/legacy-modes": "^6.5.2",
+		"@codemirror/theme-one-dark": "^6.1.3",
+		"bulma": "^1.0.4",
+		"cross-env": "^10.1.0",
+		"express": "^5.2.1",
+		"n3": "^2.0.3",
+		"nuxt": "^4.4.2",
+		"vue-codemirror": "^6.1.1"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.10",
+		"@types/express": "^5.0.6",
+		"@types/n3": "^1.26.1",
+		"rimraf": "^6.1.3",
+		"typescript": "^6.0.2",
+		"vue-tsc": "^3.2.6"
+	}
 }

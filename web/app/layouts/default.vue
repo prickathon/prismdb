@@ -1,8 +1,10 @@
 <script setup lang="ts">
-const route = useRoute()
+const route = useRoute();
 
-const menuActive = useState('menuActive', () => false)
-watch(route, () => { menuActive.value = false })
+const menuActive = useState("menuActive", () => false);
+watch(route, () => {
+	menuActive.value = false;
+});
 </script>
 
 <template>

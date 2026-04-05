@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path"
-import * as csv from "async-csv";
+import { parse } from "csv-parse/sync";
 import * as N3 from 'n3'
 const { DataFactory } = N3;
 const { namedNode, literal, defaultGraph, quad } = DataFactory;
@@ -62,11 +62,10 @@ const addQuad = (store: N3.Store, row:Object, columnSetting:ColumnSetting, setti
     }
 }
 
-const getCsvData = async (filePath: string): Promise<Object[]> => {
+const getCsvData = (filePath: string): Object[] => {
     const fullPath = path.join(process.cwd(), filePath)
-    const columnsFileData = await fs.readFileSync(fullPath)
-    const csvData = await csv.parse(columnsFileData.toString(), { columns: true })
-    return csvData as Object[]
+    const fileData = fs.readFileSync(fullPath)
+    return parse(fileData.toString(), { columns: true }) as Object[]
 }
 
 const getDatas = async (path: string | string[]): Promise<object[]> => {

@@ -1,10 +1,9 @@
 import Csv2rdf from './csv2rdf'
 import * as fs from 'fs'
-import * as rimraf from 'rimraf'
 
 const main = async () => {
   // 出力ディレクトリを作成
-  if(fs.existsSync('./output')) rimraf.sync('./output')
+  fs.rmSync('./output', { recursive: true, force: true })
   fs.mkdirSync('./output')
 
   // schema.ttl を作成

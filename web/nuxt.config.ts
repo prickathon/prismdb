@@ -14,7 +14,7 @@ export default defineNuxtConfig({
     }
   },
   routeRules: {
-    '/sparql': { proxy: process.env.SPARQL_ENDPOINT_URL }
+    '/sparql': { proxy: process.env.SPARQL_ENDPOINT_URL || 'https://prismdb.takanakahiko.me/sparql' }
   },
   css: [
     '@/assets/buefy-like.css'

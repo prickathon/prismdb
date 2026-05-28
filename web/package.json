@@ -21,7 +21,7 @@
 		"cross-env": "^10.1.0",
 		"express": "^5.2.1",
 		"n3": "^2.0.3",
-		"nuxt": "^4.4.2",
+		"nuxt": "^4.4.6",
 		"vue-codemirror": "^6.1.1"
 	},
 	"devDependencies": {

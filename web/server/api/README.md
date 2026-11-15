@@ -9,22 +9,27 @@
 ## エンドポイント
 
 character
+
 - /api/character : キャラクターのインスタンス一覧
 - /api/character/${key} : 特定キャラクターのインスタンス
 
 episode
+
 - /api/episode : エピソードのインスタンス一覧
 - /api/episode/${key} : 特定エピソードのインスタンス
 
 song
+
 - /api/song : 曲のインスタンス一覧
 - /api/song/${key} : 特定の曲のインスタンス
 
 live
+
 - /api/live : ライブのインスタンス一覧
 - /api/live/${key} : 特定のライブのインスタンス
 
 series
+
 - /api/series : シリーズのインスタンス一覧
 - /api/series/${key} : 特定のシリーズのインスタンス
 
@@ -35,7 +40,7 @@ series
 
 ## 仕様
 
-エンドポイントは 
+エンドポイントは
 
 - /api/${クラス名}
 - /api/${クラス名}/${キー名}

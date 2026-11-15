@@ -41,7 +41,7 @@ export default defineEventHandler(async () => {
 	const turtle = await new Promise<string>((resolve, reject) => {
 		writer.end((error, result) => {
 			if (error) reject(error);
-			else resolve(result);
+			else resolve(result ?? "");
 		});
 	});
 
